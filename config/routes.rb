@@ -15,8 +15,10 @@ Rails.application.routes.draw do
     # camp_items
     resources :camp_items
 
+    resources :camp_comments, only: [:new, :create]
+
     # camps
-    resources :camps
+    resources :camps, only: [:index, :show]
 
   end
 
@@ -24,28 +26,32 @@ Rails.application.routes.draw do
     registrations: "public/registrations",
     sessions: 'public/sessions'
   }
-  
-  
-  
-  
+
+
   # 管理者用
   # URL /admin/sign_in ...
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     sessions: "admin/sessions"
   }
-  
+
   namespace :admin do
     # homes
     get '/' => 'homes#top'
 
     # cunstomers
-    resources :customers
+    resources :customers, only: [:index, :show, :edit, :update]
 
     # camp_items
-    resources :camp_items
+    resources :camp_items, only: [:index, :show]
 
     # camps
-    resources :camps
+    resources :camps, only: [:show, :edit, :update, :new, :create, :destroy]
+
+    #camp_comments
+    resources :camp_comments, only: [:show, :destroy]
+
+    #camp_item_comments
+    resources :camp_item_comments, only: [:show, :destroy]
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
