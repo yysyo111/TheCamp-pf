@@ -9,6 +9,8 @@ class ApplicationController < ActionController::Base
     :first_name,
     :first_name_kana,
     :last_name_kana,
+    :introduction,
     ])
   end
 end
+
