@@ -2,11 +2,16 @@ Rails.application.routes.draw do
 
   # 顧客用
   # URL /customers/sign_in ...
+    devise_for :customers,skip: [:passwords], controllers: {
+    registrations: "public/registrations",
+    sessions: 'public/sessions'
+  }
+
   scope module: :public do
     # customers
     get "customers/unsubscribe" => "customers#unsubscribe"
     patch "customers/withdraw" => "customers#withdraw"
-    resource :customers, only: [:edit, :update, :index, :show]
+    resources :customers, only: [:index, :edit, :update, :show]
 
     # homes
     root to: 'homes#top'
@@ -22,10 +27,7 @@ Rails.application.routes.draw do
 
   end
 
-  devise_for :customers,skip: [:passwords], controllers: {
-    registrations: "public/registrations",
-    sessions: 'public/sessions'
-  }
+
 
 
   # 管理者用
