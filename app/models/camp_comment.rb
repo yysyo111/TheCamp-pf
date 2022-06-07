@@ -1,0 +1,2 @@
+class CampComment < ApplicationRecord
+end

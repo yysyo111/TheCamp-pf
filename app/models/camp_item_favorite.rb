@@ -1,0 +1,2 @@
+class CampItemFavorite < ApplicationRecord
+end
