@@ -4,7 +4,7 @@
   <thead>
     <tr>
       <th>プロフィール画像</th>
-      <td><%= image_tag 'no_image.jpeg', size: "100x100"  %></td>
+      <td><%= image_tag @customer.get_profile_image(100,100) %></td>
     </tr>
     <tr>
       <th>会員ID</th>
