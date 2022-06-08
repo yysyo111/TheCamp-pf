@@ -1,1 +1,28 @@
 <h1>管理者側会員詳細</h1>
+<h1>会員詳細</h1>
+<table>
+  <thead>
+    <tr>
+      <th>プロフィール画像</th>
+      <td><%= image_tag 'no_image.jpeg', size: "100x100"  %></td>
+    </tr>
+    <tr>
+      <th>会員ID</th>
+      <td><%= @customer.id %></td>
+    </tr>
+    <tr>
+      <th>氏名</th>
+      <td><%= @customer.last_name %><%= @customer.first_name %></td>
+    </tr>
+    <tr>
+      <th>自己紹介文</th>
+      <td><%= @customer.introduction %></td>
+    </tr>
+    <tr>
+      <th>メールアドレス</th>
+      <td><%= @customer.email %></td>
+    </tr>
+  </thead>
+</table>
+<%= link_to "戻る", admin_customers_path %>
+<%= link_to "プロフィールを編集する", edit_admin_customer_path(@customer.id) %>
