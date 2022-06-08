@@ -28,8 +28,6 @@ Rails.application.routes.draw do
   end
 
 
-
-
   # 管理者用
   # URL /admin/sign_in ...
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
@@ -55,6 +53,8 @@ Rails.application.routes.draw do
     #camp_item_comments
     resources :camp_item_comments, only: [:show, :destroy]
   end
+
+
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
