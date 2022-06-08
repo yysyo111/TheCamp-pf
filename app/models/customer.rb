@@ -5,7 +5,13 @@ class Customer < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_one_attached :profile_image
-
+  
+  has_many :camp_items, dependent: :destroy
+  has_many :camp_comments, dependent: :destroy
+  has_many :camp_item_comments, dependent: :destroy
+  has_many :camp_favorites, dependent: :destroy
+  has_many :camp_item_favorites, dependent: :destroy
+  
   # 退会済ユーザーをブロック
   def active_for_authentication?
     super && (is_deleted == false)
