@@ -1,1 +1,38 @@
 <h1>管理者側会員詳細</h1>
+<h1>会員詳細</h1>
+<table>
+  <thead>
+    <tr>
+      <th>プロフィール画像</th>
+      <th><%= image_tag @customer.get_profile_image(100,100) %></th>
+    </tr>
+    <tr>
+      <th>会員ID</th>
+      <th><%= @customer.id %></th>
+    </tr>
+    <tr>
+      <th>氏名</th>
+      <th><%= @customer.last_name %><%= @customer.first_name %></th>
+    </tr>
+    <tr>
+      <th>自己紹介文</th>
+      <th><%= @customer.introduction %></th>
+    </tr>
+    <tr>
+      <th>メールアドレス</th>
+      <th><%= @customer.email %></th>
+    </tr>
+    <tr>
+      <th>会員ステータス</th>
+      <th>
+        <% if @customer.is_deleted == false %>
+          有効
+        <% else %>
+          退会済み
+        <% end %>
+      </th>
+    </tr>
+  </thead>
+</table>
+<%= link_to "戻る", admin_customers_path %>
+<%= link_to "プロフィールを編集する", edit_admin_customer_path(@customer.id) %>

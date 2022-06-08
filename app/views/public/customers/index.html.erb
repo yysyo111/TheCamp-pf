@@ -1,1 +1,30 @@
 <h1>会員一覧</h1>
+<table>
+  <thead>
+    <tr>
+      <th>プロフィール画像</th>
+      <th>会員ID</th>
+      <th>氏名</th>
+      <th>メールアドレス</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @customers.each do |customer| %>
+    <tr>
+      <td><%= image_tag customer.get_profile_image(100,100) %></td>
+      <td><%= customer.id %></td>
+      <td><%= customer.last_name %><%= customer.first_name %></td>
+      <td><%= customer.email %></td>
+      <% if current_customer.id == customer.id %>
+        <td><%= link_to "詳細へ", customer_path(customer.id) %></td>
+      <% end %>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+
+
+
+
