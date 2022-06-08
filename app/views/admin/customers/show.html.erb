@@ -4,23 +4,33 @@
   <thead>
     <tr>
       <th>プロフィール画像</th>
-      <td><%= image_tag @customer.get_profile_image(100,100) %></td>
+      <th><%= image_tag @customer.get_profile_image(100,100) %></th>
     </tr>
     <tr>
       <th>会員ID</th>
-      <td><%= @customer.id %></td>
+      <th><%= @customer.id %></th>
     </tr>
     <tr>
       <th>氏名</th>
-      <td><%= @customer.last_name %><%= @customer.first_name %></td>
+      <th><%= @customer.last_name %><%= @customer.first_name %></th>
     </tr>
     <tr>
       <th>自己紹介文</th>
-      <td><%= @customer.introduction %></td>
+      <th><%= @customer.introduction %></th>
     </tr>
     <tr>
       <th>メールアドレス</th>
-      <td><%= @customer.email %></td>
+      <th><%= @customer.email %></th>
+    </tr>
+    <tr>
+      <th>会員ステータス</th>
+      <th>
+        <% if @customer.is_deleted == false %>
+          有効
+        <% else %>
+          退会済み
+        <% end %>
+      </th>
     </tr>
   </thead>
 </table>
