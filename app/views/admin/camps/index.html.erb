@@ -1,0 +1,5 @@
+<h1>キャンプ場一覧</h1>
+<% @camps.each do |camp| %>
+  <%= camp.address %>
+  <%= link_to "詳細へ", admin_camp_path(camp.id) %>
+<% end %>

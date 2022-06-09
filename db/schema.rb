@@ -105,8 +105,8 @@ ActiveRecord::Schema.define(version: 2022_06_07_062413) do
     t.string "address", null: false
     t.integer "phone_number", null: false
     t.integer "area", default: 0, null: false
-    t.float "latitude", null: false
-    t.float "longitude", null: false
+    t.float "latitude"
+    t.float "longitude"
     t.boolean "parking", default: true, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

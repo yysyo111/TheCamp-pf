@@ -1,1 +1,31 @@
 <h1>キャンプ場投稿フォーム</h1>
+<%= form_with(model: @camp, url: admin_camps_path, local: true) do |f| %>
+  <div>
+    <%= f.label :admin_id,"管理者id" %>
+    <%= f.label :admin_id %>
+
+    <%= f.label :name,"キャンプ場名" %>
+    <%= f.text_field :name, placeholder: "キャンプ場名" %>
+
+    <%= f.label :phone_number,"電話番号" %>
+    <%= f.text_field :phone_number, placeholder: "電話番号" %>
+
+    <!--%= f.label :area,"エリア" %>-->
+    <!--%= f.text_field :area %>-->
+
+    <%= f.label :address,"住所" %>
+    <%= f.text_field :address, class: "new-performance-box", id: "gmap", placeholder: "Google Mapの住所をコピーして貼り付けてください" %>
+ 
+    <!--%= f.label :latitude,"緯度" %>-->
+    <!--%= f.text_field :latitude,:value =>"緯度", id: :latitude %>-->
+
+    <!--%= f.label :longitude,"経度" %>-->
+    <!--%= f.text_field :longitude,:value =>"経度", id: :longitude %>-->
+
+    <%= f.submit %>
+  </div>
+<% end %>
+
+
+<!--https://qiita.com/kakeru0520sou1/items/9a39b3a122a8be5b9b65 -->
+<!--参考記事-->
