@@ -3,8 +3,11 @@
   <thead>
     <%= form_with(model: @camp, url: admin_camps_path, local: true) do |f| %>
     <tr>
-      <th><%= f.label :admin_id,"管理者" %></th>
-      <th><%= f.label :admin_id %></th>
+      <th><%= f.label :admin_id, "管理者" %></th>
+    </tr>
+    <tr>
+      <th>画像</th>
+      <th><%= f.file_field :camp_image, accept: "image/*" %></th>
     </tr>
     <tr>
       <th><%= f.label :name,"キャンプ場名" %></th>

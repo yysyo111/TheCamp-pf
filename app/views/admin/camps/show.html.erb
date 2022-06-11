@@ -2,10 +2,14 @@
   <div class="row">
     <div class="col-12">
       <table>
-        <tbodyy>
+        <tbody>
           <tr>
             <td>管理者ID</td>
             <td><%= @camp.admin_id %></td>
+          </tr>
+          <tr>
+            <td>画像</td>
+            <td><%= image_tag @camp.get_camp_image(500, 500) %></td>
           </tr>
           <tr>
             <td>キャンプ場名</td>
@@ -23,8 +27,13 @@
             <td>住所</td>
             <td><%= @camp.address %></td>
           </tr>
+          <tr>
+            <td>投稿日:</td>
+            <td><%= @camp.created_at.strftime('%Y/%m/%d') %></td>
+          </tr>
         </tbody>
       </table>
+      <%= link_to "削除", admin_camp_path(@camp.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
       <!--#mapの表示-->
       <div id="map"></div>
     </div>

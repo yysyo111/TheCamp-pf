@@ -20,8 +20,8 @@
       <td><%= camp.area_i18n %></td>
       <td><%= camp.address %></td>
       <td><%= link_to "詳細へ", admin_camp_path(camp.id) %></td>
-      <td><%= link_to "キャンプ場投稿", new_admin_camp_path(camp) %></td>
     </tr>
     <% end %>
   </tbody>
 </table>
+<%= link_to "キャンプ場投稿", new_admin_camp_path(@camp) %>
