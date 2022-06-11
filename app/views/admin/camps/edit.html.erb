@@ -1,1 +1,57 @@
 <h1>キャンプ場編集</h1>
+<table>
+  <thead>
+    <%= form_with(model: @camp, url: admin_camp_path(@camp.id), local: true) do |f| %>
+    <tr>
+      <th><%= f.label :admin_id, "管理者" %></th>
+    </tr>
+    <tr>
+      <th>画像</th>
+      <th><%= f.file_field :camp_image, accept: "image/*" %></th>
+    </tr>
+    <tr>
+      <th><%= f.label :name,"キャンプ場名" %></th>
+      <th><%= f.text_field :name, placeholder: "キャンプ場名" %></th>
+    </tr>
+    <tr>
+      <th><%= f.label :phone_number,"電話番号" %></th>
+      <th><%= f.text_field :phone_number, placeholder: "電話番号" %></th>
+    </tr>
+    <tr>
+      <th><%= f.label :area,"エリア" %></th>
+      <th>
+        <%= f.radio_button :area, Camp.areas.key(0) %>
+        <%= f.label :area, Camp.areas_i18n[:hokkaido] %><br>
+
+        <%= f.radio_button :area, Camp.areas.key(1) %>
+        <%= f.label :area, Camp.areas_i18n[:tohoku] %><br>
+
+        <%= f.radio_button :area, Camp.areas.key(2) %>
+        <%= f.label :area, Camp.areas_i18n[:kanto] %><br>
+
+        <%= f.radio_button :area, Camp.areas.key(3) %>
+        <%= f.label :area, Camp.areas_i18n[:chubu] %><br>
+
+        <%= f.radio_button :area, Camp.areas.key(4) %>
+        <%= f.label :area, Camp.areas_i18n[:kinki] %><br>
+
+        <%= f.radio_button :area, Camp.areas.key(5) %>
+        <%= f.label :area, Camp.areas_i18n[:chugoku] %><br>
+
+        <%= f.radio_button :area, Camp.areas.key(6) %>
+        <%= f.label :area, Camp.areas_i18n[:shikoku] %><br>
+
+        <%= f.radio_button :area, Camp.areas.key(7) %>
+        <%= f.label :area, Camp.areas_i18n[:kyushu] %><br> 　<!--_i18nで日本語化-->
+      </th>
+    </tr>
+    <tr>
+      <th><%= f.label :address,"住所" %></th>
+      <th><%= f.text_field :address, class: "new-performance-box", id: "gmap", placeholder: "Google Mapの住所をコピーして貼り付けてください" %></th>
+    </tr>
+    <tr>
+      <th><%= f.submit %></th>
+    </tr>
+    <% end %>
+  </thead>
+</table>
