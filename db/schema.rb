@@ -93,8 +93,8 @@ ActiveRecord::Schema.define(version: 2022_06_07_062413) do
   create_table "camp_items", force: :cascade do |t|
     t.integer "customer_id", null: false
     t.string "name", null: false
-    t.string "location", null: false
-    t.float "rate", null: false
+    t.text "impression", null: false
+    t.float "rate"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

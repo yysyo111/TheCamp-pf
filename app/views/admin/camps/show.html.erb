@@ -33,7 +33,9 @@
           </tr>
         </tbody>
       </table>
+      <%= link_to "戻る", admin_camps_path %>
       <%= link_to "削除", admin_camp_path(@camp.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+      <%= link_to "編集", edit_admin_camp_path(@camp.id) %>
       <!--#mapの表示-->
       <div id="map"></div>
     </div>
