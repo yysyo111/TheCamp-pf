@@ -1,0 +1,12 @@
+ja: # 日本語の設定を行う
+  enums: # enumの設定を行う
+    camp: #カラム名
+      area: #モデル名
+        hokkaido: "北海道地方"
+        tohoku: "東北地方"
+        kanto: "関東地方"
+        chubu: "中部地方"
+        kinki: "近畿地方"
+        chugoku: "中国地方"
+        shikoku: "四国地方"
+        kyushu: "九州地方"

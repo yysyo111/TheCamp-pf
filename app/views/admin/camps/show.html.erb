@@ -1,3 +1,38 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <table>
+        <tbodyy>
+          <tr>
+            <td>管理者ID</td>
+            <td><%= @camp.admin_id %></td>
+          </tr>
+          <tr>
+            <td>キャンプ場名</td>
+            <td><%= @camp.name %></td>
+          </tr>
+          <tr>
+            <td>電話番号</td>
+            <td><%= @camp.phone_number %></td>
+          </tr>
+          <tr>
+            <td>エリア</td>
+            <td><%= @camp.area_i18n %></td>
+          </tr>
+          <tr>
+            <td>住所</td>
+            <td><%= @camp.address %></td>
+          </tr>
+        </tbody>
+      </table>
+      <!--#mapの表示-->
+      <div id="map"></div>
+    </div>
+  </div>
+</div>
+
+
+
 <script type="text/javascript">
   function initMap() {
 // #latitude,longitudeから位置を特定
@@ -36,5 +71,5 @@
          width: 500px;}
 </style>
 
-<!--#mapの表示-->
-<div id="map"></div>
+
+

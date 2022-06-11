@@ -1,5 +1,27 @@
 <h1>キャンプ場一覧</h1>
-<% @camps.each do |camp| %>
-  <%= camp.address %>
-  <%= link_to "詳細へ", admin_camp_path(camp.id) %>
-<% end %>
+<table>
+  <thead>
+    <tr>
+      <th>管理者ID</th>
+      <th>キャンプ場名</th>
+      <th>電話番号</th>
+      <th>エリア</th>
+      <th>住所</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @camps.each do |camp| %>
+    <tr>
+      <td><%= camp.admin_id %></td>
+      <td><%= camp.name %></td>
+      <td><%= camp.phone_number %></td>
+      <td><%= camp.area_i18n %></td>
+      <td><%= camp.address %></td>
+      <td><%= link_to "詳細へ", admin_camp_path(camp.id) %></td>
+      <td><%= link_to "キャンプ場投稿", new_admin_camp_path(camp) %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
