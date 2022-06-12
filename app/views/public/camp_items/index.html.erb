@@ -1,1 +1,21 @@
 <h1>キャンプアイテム一覧</h1>
+<table>
+  <thead>
+    <tr>
+      <th>アイテム画像</th>
+      <th>アイテム名</th>
+      <th>感想</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @camp_items.each do |camp_item| %>
+    <tr>
+      <td><%= image_tag camp_item.get_camp_item_image(100, 100) %></td>
+      <td><%= camp_item.name %></td>
+      <td><%= simple_format(camp_item.impression) %></td>
+      <td><%= link_to "詳細へ", camp_item_path(camp_item.id) %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

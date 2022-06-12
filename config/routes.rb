@@ -20,10 +20,10 @@ Rails.application.routes.draw do
     # camp_items
     resources :camp_items
 
-    resources :camp_comments, only: [:new, :create]
-
     # camps
-    resources :camps, only: [:index, :show]
+    resources :camps, only: [:index, :show] do
+      resources :camp_comments, only: [:new, :create]
+    end
 
   end
 

@@ -4,8 +4,9 @@ class CreateCampComments < ActiveRecord::Migration[6.1]
       
       t.integer :camp_id, null: false
       t.integer :customer_id, null: false
-      t.float :rate, null: false
+      t.float :rate
       t.text :comment, null: false
+      t.string :title, null: false 
 
       t.timestamps
     end

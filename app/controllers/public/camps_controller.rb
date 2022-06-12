@@ -1,9 +1,12 @@
 class Public::CampsController < ApplicationController
-    
-  def index 
-  end 
-  
-  def show 
+
+  def index
+    @camps = Camp.all
   end
-  
+
+  def show
+    @camp = Camp.find(params[:id])
+    @camp_comment = CampComment.new
+  end
+
 end

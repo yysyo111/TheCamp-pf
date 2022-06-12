@@ -1,1 +1,29 @@
-<h1>キャンプ場一覧</h1>
+<div class="container">
+  <div class="row">
+    <h1>キャンプ場一覧</h1>
+  </div>
+  <div class="row">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>キャンプ場名</th>
+          <th>電話番号</th>
+          <th>エリア</th>
+          <th>住所</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @camps.each do |camp| %>
+        <tr>
+          <td><%= camp.name %></td>
+          <td><%= camp.phone_number %></td>
+          <td><%= camp.area_i18n %></td>
+          <td><%= camp.address %></td>
+          <td><%= link_to "詳細へ", camp_path(camp.id), class: "btn btn-success" %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
