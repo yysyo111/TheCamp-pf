@@ -15,6 +15,30 @@
           <th><%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %></th>
         </tr>
         <tr>
+          <th>
+            <div class="form-group" id="star">
+              <%= f.label :rate %>
+              <%= f.hidden_field :rate, id: :review_star, class: 'form-control' %>
+            </div>
+        
+            <script>
+            //初回読み込み、リロード、ページ切り替えで動く。20行目 ページ切り替え時（初回ページも対象）//ページ切り替え後にさせたい処理を中に書く　手法でjQueryが動く．
+            $(document).on('turbolinks:load', function() {
+              $('#star').empty();　//これがないとブラウザバックで星が増え続ける不具合が発生します。ページを表示する度に星5つを読み込むことになる
+              $('#star').raty({
+                size: 36,
+                starOff:  '<%= asset_path('star-off.png') %>',
+                starOn : '<%= asset_path('star-on.png') %>',
+                starHalf: '<%= asset_path('star-half.png') %>',
+                //half: false, 今回は５段階評価で星️半分評価は入力できないように設定
+                scoreName: 'camp_comment[rate]', //これがbookモデルのrateカラムへ値を保存という意味
+                half: true,
+              });
+            })
+            </script>
+          </th>
+        </tr>
+        <tr>
           <th><%= f.submit "送信する", class: "btn btn-success" %></th>
         </tr>
         <% end %>
