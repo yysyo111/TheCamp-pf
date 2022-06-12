@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="row">
+    <h3>口コミ投稿画面</h3>
+  </div>
+  <div class="row">
+    <table>
+      <thead>
+        <%= form_with(model:[@camp, @camp_comment], local: true) do |f| %>
+        <tr>
+          <th><%= f.label :title, "タイトル:" %></th>
+          <th><%= f.text_area :title, placeholder: "タイトルをここに" %></th>
+        </tr>
+        <tr>
+          <th><%= f.label :comment, "コメント:" %></th>
+          <th><%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %></th>
+        </tr>
+        <tr>
+          <th><%= f.submit "送信する", class: "btn btn-success" %></th>
+        </tr>
+        <% end %>
+      </thead>
+    </table>
+  </div>
+</div>

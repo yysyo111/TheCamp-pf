@@ -3,7 +3,11 @@ class Camp < ApplicationRecord
   belongs_to :admin
   has_many :camp_comments, dependent: :destroy
   has_many :camp_favorites, dependent: :destroy
-
+  
+  def camp_favorited_by?(customer)
+    camp_favorites.exists?(customer_id: customer.id)
+  end
+  
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
 

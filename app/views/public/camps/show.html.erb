@@ -1,3 +1,4 @@
+<!--キャンプ場情報表示-->
 <div class="container">
   <div class="row">
     <h3>キャンプ場詳細</h3>
@@ -25,13 +26,30 @@
             <td>住所:</td>
             <td><%= @camp.address %></td>
           </tr>
+          <tr>
+            <td>
+            <% if @camp.camp_favorited_by?(current_customer) %>
+              <p>
+                <%= link_to camp_camp_favorites_path(@camp), method: :delete do %>
+                  ♥<%= @camp.camp_favorites.count %>
+                <% end %>
+              </p>
+              <% else %>
+              <p>
+                <%= link_to camp_camp_favorites_path(@camp), method: :post do %>
+                  ♡<%= @camp.camp_favorites.count %>
+                <% end %>
+              </p>
+            <% end %>
+            </td>
+          </tr>
         </tbody>
       </table>
       <%= link_to "戻る", camps_path, class: "btn btn-success" %>
     </div>
   </div>
 </div>
-
+<!--地図表示-->
 <div class="container d-flex justify-content-center">
   <div class="row">
     <div class="col-12">
@@ -40,7 +58,26 @@
     </div>
   </div>
 </div>
-
+<!--コメント表示-->
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h3 class="text-center">キャンプ場口コミ一覧</h3>
+      <% @camp.camp_comments.each do |camp_comment| %>
+        <%= image_tag camp_comment.customer.get_profile_image(100,100) %>
+        コメント者：<%= camp_comment.customer.last_name %><%= camp_comment.customer.first_name %><br>
+        タイトル：<%= camp_comment.title %><br>
+        コメント内容：<%= camp_comment.comment %><br>
+        投稿日：<%= camp_comment.created_at.strftime('%Y/%m/%d') %><br>
+        <% if camp_comment.customer == current_customer %>
+          <%= link_to "コメント削除", camp_camp_comment_path(camp_comment.camp, camp_comment), method: :delete, class: "btn btn-success" %><br>
+        <% end %>
+      <% end %>
+      <p>コメント件数：<%= @camp.camp_comments.count %></p>
+      <%= link_to "コメント投稿へ", new_camp_camp_comment_path(@camp, @camp_comment), class: "btn btn-success" %>
+    </div>
+  </div>
+</div>
 
 <script type="text/javascript">
   function initMap() {
@@ -71,7 +108,7 @@
   }
 </script>
 
-<script async defer src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= "#{ENV['GOOGLE_MAP_API']}" %>&callback=initMap">
+<script async defer src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%=ENV['GOOGLE_MAP_API']%>&callback=initMap">
 </script>
 
 <style type="text/css">
