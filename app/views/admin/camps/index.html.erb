@@ -1,27 +1,37 @@
-<h1>キャンプ場一覧</h1>
-<table>
-  <thead>
-    <tr>
-      <th>管理者ID</th>
-      <th>キャンプ場名</th>
-      <th>電話番号</th>
-      <th>エリア</th>
-      <th>住所</th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @camps.each do |camp| %>
-    <tr>
-      <td><%= camp.admin_id %></td>
-      <td><%= camp.name %></td>
-      <td><%= camp.phone_number %></td>
-      <td><%= camp.area_i18n %></td>
-      <td><%= camp.address %></td>
-      <td><%= link_to "詳細へ", admin_camp_path(camp.id) %></td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
-<%= link_to "キャンプ場投稿", new_admin_camp_path(@camp) %>
+<div class="container">
+  <div class="row">
+    <h1>キャンプ場一覧</h1>
+    <div class="icon ml-auto">
+      <%= link_to  new_admin_camp_path(@camp), style: "font-size:40px;" do %>
+        <i class="fas fa-map" style="color: green;"></i>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>管理者ID</th>
+          <th>キャンプ場名</th>
+          <th>電話番号</th>
+          <th>エリア</th>
+          <th>住所</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @camps.each do |camp| %>
+        <tr>
+          <td><%= camp.admin_id %></td>
+          <td><%= camp.name %></td>
+          <td><%= camp.phone_number %></td>
+          <td><%= camp.area_i18n %></td>
+          <td><%= camp.address %></td>
+          <td><%= link_to "詳細へ", admin_camp_path(camp.id), class: "btn btn-success" %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
