@@ -1,32 +1,42 @@
-<h1>キャンプ場詳細</h1>
 <div class="container">
   <div class="row">
-    <div class="col-12">
+    <h3>キャンプ場詳細</h3>
+  </div>
+  <div class="row">
+    <div class="col-6">
+      <%= image_tag @camp.get_camp_image(500, 500) %>
+    </div>
+    <div class="col-6">
       <table>
         <tbody>
           <tr>
-            <td>画像</td>
-            <td><%= image_tag @camp.get_camp_image(500, 500) %></td>
-          </tr>
-          <tr>
-            <td>キャンプ場名</td>
+            <td>キャンプ場名:</td>
             <td><%= @camp.name %></td>
           </tr>
           <tr>
-            <td>電話番号</td>
+            <td>電話番号:</td>
             <td><%= @camp.phone_number %></td>
           </tr>
           <tr>
-            <td>エリア</td>
+            <td>エリア:</td>
             <td><%= @camp.area_i18n %></td>
           </tr>
           <tr>
-            <td>住所</td>
+            <td>住所:</td>
             <td><%= @camp.address %></td>
           </tr>
         </tbody>
       </table>
-      <div id="map"></div>
+      <%= link_to "戻る", camps_path, class: "btn btn-success" %>
+    </div>
+  </div>
+</div>
+
+<div class="container d-flex justify-content-center">
+  <div class="row">
+    <div class="col-12">
+      <h3 class="text-center">Google Map</h3>
+      <div id="map"></div>  <!--#mapの表示-->
     </div>
   </div>
 </div>
@@ -64,8 +74,8 @@
 <script async defer src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= "#{ENV['GOOGLE_MAP_API']}" %>&callback=initMap">
 </script>
 
-
 <style type="text/css">
   #map { height: 500px;
-         width: 500px;}
+         width: 1000px;}
 </style>
+
