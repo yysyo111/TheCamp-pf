@@ -10,6 +10,7 @@
   </thead>
   <tbody>
     <% @customers.each do |customer| %>
+      <% if customer.is_deleted == false %>
     <tr>
       <td><%= image_tag customer.get_profile_image(100,100) %></td>
       <td><%= customer.id %></td>
@@ -19,6 +20,7 @@
         <td><%= link_to "詳細へ", customer_path(customer.id) %></td>
       <% end %>
     </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>

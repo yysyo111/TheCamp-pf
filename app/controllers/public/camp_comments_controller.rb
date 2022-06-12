@@ -15,6 +15,11 @@ class Public::CampCommentsController < ApplicationController
     redirect_to camp_path(@camp.id)
   end
 
+  def destroy
+    CampComment.find(params[:id]).destroy
+    redirect_to camp_path(params[:camp_id])
+  end
+
   def camp_comment_params
     params.require(:camp_comment).permit(:comment, :title)
   end
