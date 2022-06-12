@@ -1,17 +1,18 @@
 class Public::CampCommentsController < ApplicationController
 
   def new
+    @camp = Camp.find(params[:camp_id])
     @camp_comment = CampComment.new
   end
 
   def create
     @camp = Camp.find(params[:camp_id])
-    # comment = CampComment.new(camp_comment_params)
-    # comment.customer_id = current_customer.id
-    @camp_comment = current_customer.camp_comments.new(camp_comment_params) #上の記述と同じ
-    @camp_comment.camp_id = camp.id
+    @camp_comment = CampComment.new(camp_comment_params)
+    @camp_comment.customer_id = current_customer.id
+    # @comment = current_customer.camp_comments.new(camp_comment_params) #上の記述と同じ
+    @camp_comment.camp_id = @camp.id
     @camp_comment.save
-    redirect_to camps_path(camp)
+    redirect_to camp_path(@camp.id)
   end
 
   def camp_comment_params
