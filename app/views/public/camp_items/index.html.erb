@@ -7,33 +7,22 @@
       <th>感想</th>
       <th></th>
       <th></th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
     <% @camp_items.each do |camp_item| %>
-    <tr>
+    <tr id="camp_item_<%= camp_item.id %>" >
       <td><%= image_tag camp_item.get_camp_item_image(100, 100) %></td>
       <td><%= camp_item.name %></td>
       <td><%= simple_format(camp_item.impression) %></td>
       <!--キャンプアイテムのいいね機能-->
-      <td>
-        <% if camp_item.camp_item_favorited_by?(current_customer) %>
-        <p>
-          <%= link_to camp_item_camp_item_favorites_path(camp_item), method: :delete do %>
-            ♥<%= camp_item.camp_item_favorites.count %>
-          <% end %>
-        </p>
-        <% else %>
-        <p>
-          <%= link_to camp_item_camp_item_favorites_path(camp_item), method: :post do %>
-            ♡<%= camp_item.camp_item_favorites.count %>
-          <% end %>
-        </p>
-        <% end %>
+      <td class="favorite-btn">
+        <%= render 'public/camp_item_favorites/favorite-btn', camp_item: camp_item %>
       </td>
       <td><%= link_to "詳細へ", camp_item_path(camp_item.id) %></td>
     </tr>
     <% end %>
   </tbody>
 </table>
-<td><%= link_to "キャンプアイテムを投稿する", new_camp_item_path %></td>
+<%= link_to "キャンプアイテムを投稿する", new_camp_item_path %>

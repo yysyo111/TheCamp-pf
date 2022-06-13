@@ -28,22 +28,12 @@
               <!--ここまで星表示の記述-->
             </td>
           </tr>
-          <tr>
+          <!--いいね機能の非同期通信-->
+          <tr id="camp_item_<%= @camp_item.id %>" >
             <td>
-              <!--いいね機能-->
-              <% if @camp_item.camp_item_favorited_by?(current_customer) %>
-              <p>
-                <%= link_to camp_item_camp_item_favorites_path(@camp_item), method: :delete do %>
-                  ♥<%= @camp_item.camp_item_favorites.count %>
-                <% end %>
-              </p>
-              <% else %>
-              <p>
-                <%= link_to camp_item_camp_item_favorites_path(@camp_item), method: :post do %>
-                  ♡<%= @camp_item.camp_item_favorites.count %>
-                <% end %>
-              </p>
-              <% end %>
+              <td class="favorite-btn">
+                <%= render 'public/camp_item_favorites/favorite-btn', camp_item: @camp_item %>
+              </td>
             </td>
           </tr>
           <tr>
