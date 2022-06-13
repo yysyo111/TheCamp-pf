@@ -30,10 +30,8 @@
           </tr>
           <!--いいね機能の非同期通信-->
           <tr id="camp_item_<%= @camp_item.id %>" >
-            <td>
-              <td class="favorite-btn">
-                <%= render 'public/camp_item_favorites/favorite-btn', camp_item: @camp_item %>
-              </td>
+            <td class="favorite-btn">
+              <%= render 'public/camp_item_favorites/favorite-btn', camp_item: @camp_item %>
             </td>
           </tr>
           <tr>
