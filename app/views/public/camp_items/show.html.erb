@@ -22,6 +22,14 @@
           </tr>
           <tr>
             <td>
+              <!--星の表示-->
+              <h4 class="mb-3">評価：<%= @camp_item.rate %></h4>
+              <div id="rate_<%= @camp_item.id %>" class="form-group"></div>
+              <!--ここまで星表示の記述-->
+            </td>
+          </tr>
+          <tr>
+            <td>
               <!--いいね機能-->
               <% if @camp_item.camp_item_favorited_by?(current_customer) %>
               <p>
@@ -68,5 +76,19 @@
     </div>
   </div>
 </div>
-
+<script>
+// $(document).on('turbolinks:load', function() {
+// ターボリンクはいらない
+  // $('#rate_%= camp_comment.id %>').empty();
+  $('#rate_<%= @camp_item.id %>').raty({
+    size: 20,
+    starOff:  '<%= asset_path('star-off.png') %>',
+    starOn : '<%= asset_path('star-on.png') %>',
+    starHalf: '<%= asset_path('star-half.png') %>',
+    half: true,
+    readOnly: true,
+    score: <%= @camp_item.rate %>
+  });
+// });
+</script>
 

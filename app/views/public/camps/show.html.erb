@@ -28,6 +28,7 @@
           </tr>
           <tr>
             <td>
+            <!--いいね機能-->
             <% if @camp.camp_favorited_by?(current_customer) %>
               <p>
                 <%= link_to camp_camp_favorites_path(@camp), method: :delete do %>
@@ -63,6 +64,7 @@
   <div class="row">
     <div class="col-12">
       <h3 class="text-center">キャンプ場口コミ一覧</h3>
+      <!--コメント機能-->
       <% @camp_comments.each do |camp_comment| %>
         <%= image_tag camp_comment.customer.get_profile_image(100,100) %>
         コメント者：<%= camp_comment.customer.last_name %><%= camp_comment.customer.first_name %><br>
@@ -72,11 +74,11 @@
         <% if camp_comment.customer == current_customer %>
           <%= link_to "コメント削除", camp_camp_comment_path(camp_comment.camp, camp_comment), method: :delete, class: "btn btn-success" %><br>
         <% end %>
-        <!--星の表示：まだ表示できていない-->
+        <!--星の表示-->
         <h4 class="mb-3">評価：<%= camp_comment.rate %></h4>
         <div id="rate_<%= camp_comment.id %>" class="form-group"></div>
         <script>
-        // $(document).on('turbolinks:load', function() { 
+        // $(document).on('turbolinks:load', function() {
         // ターボリンクはいらない
           // $('#rate_%= camp_comment.id %>').empty();
           $('#rate_<%= camp_comment.id %>').raty({
