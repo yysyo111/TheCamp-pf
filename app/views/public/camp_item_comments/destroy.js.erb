@@ -1,0 +1,4 @@
+$("#comments_number").html("<%= j(render 'public/camp_item_comments/number', camp_item: @camp_item ) %>");
+$("#comments_area").html("<%= j(render 'public/camp_item_comments/comment', camp_item: @camp_item ) %>");
+$("#comments_form").html("<%= j(render 'public/camp_item_comments/form', camp_item: @camp_item, camp_item_comment: @camp_item_comment ) %>");
+$("textarea").val('');
