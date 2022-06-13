@@ -1,13 +1,13 @@
 <% if camp_item.camp_item_favorited_by?(current_customer) %>
 <p>
   <%= link_to camp_item_camp_item_favorites_path(camp_item), method: :delete, remote: true do %>
-    ♥<%= camp_item.camp_item_favorites.count %>
+    <i class="fas fa-heart"></i><%= camp_item.camp_item_favorites.count %>
   <% end %>
 </p>
 <% else %>
 <p>
   <%= link_to camp_item_camp_item_favorites_path(camp_item), method: :post, remote: true do %>
-    ♡<%= camp_item.camp_item_favorites.count %>
+    <i class="far fa-heart"></i><%= camp_item.camp_item_favorites.count %>
   <% end %>
 </p>
 <% end %>

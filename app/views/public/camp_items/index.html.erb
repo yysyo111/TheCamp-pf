@@ -2,6 +2,7 @@
 <table>
   <thead>
     <tr>
+      <th>投稿者</th>
       <th>アイテム画像</th>
       <th>アイテム名</th>
       <th>感想</th>
@@ -13,6 +14,10 @@
   <tbody>
     <% @camp_items.each do |camp_item| %>
     <tr id="camp_item_<%= camp_item.id %>" >
+      <td>
+        <%= image_tag camp_item.customer.get_profile_image(100, 100) %><br>
+        <%= camp_item.customer.last_name %><%= camp_item.customer.first_name %>
+      </td>
       <td><%= image_tag camp_item.get_camp_item_image(100, 100) %></td>
       <td><%= camp_item.name %></td>
       <td><%= simple_format(camp_item.impression) %></td>
@@ -20,9 +25,9 @@
       <td class="favorite-btn">
         <%= render 'public/camp_item_favorites/favorite-btn', camp_item: camp_item %>
       </td>
-      <td><%= link_to "詳細へ", camp_item_path(camp_item.id) %></td>
+      <td><%= link_to "詳細へ", camp_item_path(camp_item.id), class: "btn btn-success" %></td>
     </tr>
     <% end %>
   </tbody>
 </table>
-<%= link_to "キャンプアイテムを投稿する", new_camp_item_path %>
+<%= link_to "キャンプアイテムを投稿する", new_camp_item_path, class: "btn btn-success" %>

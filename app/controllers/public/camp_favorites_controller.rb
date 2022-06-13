@@ -1,4 +1,5 @@
 class Public::CampFavoritesController < ApplicationController
+  before_action :authenticate_customer!
 
   def create
     camp = Camp.find(params[:camp_id])

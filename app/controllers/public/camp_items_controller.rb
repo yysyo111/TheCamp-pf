@@ -1,4 +1,5 @@
 class Public::CampItemsController < ApplicationController
+  before_action :authenticate_customer!
 
   def index
     @camp_items = CampItem.all

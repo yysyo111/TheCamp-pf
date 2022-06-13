@@ -17,7 +17,7 @@
       <td><%= customer.last_name %><%= customer.first_name %></td>
       <td><%= customer.email %></td>
       <% if current_customer.id == customer.id %>
-        <td><%= link_to "詳細へ", customer_path(customer.id) %></td>
+        <td><%= link_to "詳細へ", customer_path(customer.id), class: "btn btn-success" %></td>
       <% end %>
     </tr>
       <% end %>

@@ -1,4 +1,5 @@
 class Public::CampCommentsController < ApplicationController
+  before_action :authenticate_customer!
 
   def new
     @camp = Camp.find(params[:camp_id])

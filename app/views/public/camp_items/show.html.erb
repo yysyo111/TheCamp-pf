@@ -5,15 +5,19 @@
       <table>
         <tbody>
           <tr>
-            <td>アイテム画像</td>
+            <td>投稿者:</td>
+            <td><%= @camp_item.customer.last_name %><%= @camp_item.customer.first_name %></td>
+          </tr>
+          <tr>
+            <td>アイテム画像:</td>
             <td><%= image_tag @camp_item.get_camp_item_image(200, 200) %></td>
           </tr>
           <tr>
-            <td>キャンプアイテム</td>
+            <td>キャンプアイテム:</td>
             <td><%= @camp_item.name %></td>
           </tr>
           <tr>
-            <td>感想</td>
+            <td>感想:</td>
             <td><%= @camp_item.impression %></td>
           </tr>
           <tr>
@@ -21,9 +25,9 @@
             <td><%= @camp_item.created_at.strftime('%Y/%m/%d') %></td>
           </tr>
           <tr>
-            <td><%= link_to "削除", camp_item_path(@camp_item.id), method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
-            <td><%= link_to "戻る", camp_items_path %></td>
-            <td><%= link_to "編集", edit_camp_item_path(@camp_item.id) %></td>
+            <td><%= link_to "削除", camp_item_path(@camp_item.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-success" %></td>
+            <td><%= link_to "戻る", camp_items_path, class: "btn btn-success" %></td>
+            <td><%= link_to "編集", edit_camp_item_path(@camp_item.id), class: "btn btn-success" %></td>
           </tr>
           <tr>
             <td>
@@ -44,22 +48,23 @@
             <td id="comments_number">
               <%= render 'public/camp_item_comments/number', camp_item: @camp_item %>
             </td>
-            <td>
-              <div id="comments_area">
-                <%= render 'public/camp_item_comments/comment', camp_item: @camp_item %>
-              </div>
-            </td>
-            <td>
-              <div id="comments_form">
-                <%= render 'public/camp_item_comments/form', camp_item: @camp_item, camp_item_comment: @camp_item_comment %>
-              </div>
-            </td>
           </tr>
         </tbody>
       </table>
     </div>
+    <div class="col-12">
+      <div id="comments_area">
+        <%= render 'public/camp_item_comments/comment', camp_item: @camp_item %>
+      </div>
+      <div id="comments_form">
+        <%= render 'public/camp_item_comments/form', camp_item: @camp_item, camp_item_comment: @camp_item_comment %>
+      </div>
+    </div>
   </div>
 </div>
+ <td>
+
+
 <script>
 // $(document).on('turbolinks:load', function() {
 // ターボリンクはいらない

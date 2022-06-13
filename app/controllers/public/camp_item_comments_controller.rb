@@ -1,8 +1,9 @@
 class Public::CampItemCommentsController < ApplicationController
+  before_action :authenticate_customer!
 
   def new
-    @camp_item = CampItem.find(params[:camp_item_id])
-    @camp_item_comment = CampItemComment.new
+    # @camp_item = CampItem.find(params[:camp_item_id])
+    # @camp_item_comment = CampItemComment.new
   end
 
   def create
