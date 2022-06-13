@@ -10,3 +10,7 @@ Admin.create!(
    email: 'syo@test',
    password: 'syotest'
 )
+
+# テーブルcreate(
+#    絡むめい：)
+

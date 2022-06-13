@@ -21,6 +21,44 @@
             <td><%= @camp_item.created_at.strftime('%Y/%m/%d') %></td>
           </tr>
           <tr>
+            <td>
+              <!--いいね機能-->
+              <% if @camp_item.camp_item_favorited_by?(current_customer) %>
+              <p>
+                <%= link_to camp_item_camp_item_favorites_path(@camp_item), method: :delete do %>
+                  ♥<%= @camp_item.camp_item_favorites.count %>
+                <% end %>
+              </p>
+              <% else %>
+              <p>
+                <%= link_to camp_item_camp_item_favorites_path(@camp_item), method: :post do %>
+                  ♡<%= @camp_item.camp_item_favorites.count %>
+                <% end %>
+              </p>
+              <% end %>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div>
+                <!--コメント機能-->
+                <p>コメント件数：<%= @camp_item.camp_item_comments.count %></p>
+                <% @camp_item.camp_item_comments.each do |camp_item_comment| %>
+                  <%= image_tag camp_item_comment.customer.get_profile_image(100,100) %><br>
+                  名前：<%= camp_item_comment.customer.last_name %><%= camp_item_comment.customer.first_name %><br>
+                  投稿日：<%= camp_item_comment.created_at.strftime('%Y/%m/%d') %><br>
+                  コメント内容：<%= camp_item_comment.comment %><br>
+                <% end %>
+              </div>
+              <div>
+                <%= form_with model: [@camp_item, @camp_item_comment] do |f| %>
+                  <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
+                  <%= f.submit "送信する" %>
+                <% end %>
+              </div>
+            </td>
+          </tr>
+          <tr>
             <td><%= link_to "削除", camp_item_path(@camp_item.id), method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
             <td><%= link_to "戻る", camp_items_path %></td>
             <td><%= link_to "編集", edit_camp_item_path(@camp_item.id) %></td>
@@ -30,3 +68,5 @@
     </div>
   </div>
 </div>
+
+

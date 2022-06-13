@@ -15,12 +15,13 @@
           <th><%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %></th>
         </tr>
         <tr>
+          <th>星評価:</th>
           <th>
+            <!--星機能-->
             <div class="form-group" id="star">
-              <%= f.label :rate %>
+              <%= f.label :rate, "星評価" %>
               <%= f.hidden_field :rate, id: :review_star, class: 'form-control' %>
             </div>
-        
             <script>
             //初回読み込み、リロード、ページ切り替えで動く。20行目 ページ切り替え時（初回ページも対象）//ページ切り替え後にさせたい処理を中に書く　手法でjQueryが動く．
             $(document).on('turbolinks:load', function() {
@@ -32,9 +33,9 @@
                 starHalf: '<%= asset_path('star-half.png') %>',
                 //half: false, 今回は５段階評価で星️半分評価は入力できないように設定
                 scoreName: 'camp_comment[rate]', //これがbookモデルのrateカラムへ値を保存という意味
-                half: true,
+                half: true
               });
-            })
+            });
             </script>
           </th>
         </tr>

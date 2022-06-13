@@ -6,6 +6,7 @@ class Public::CampItemsController < ApplicationController
 
   def show
     @camp_item = CampItem.find(params[:id])
+    @camp_item_comment = CampItemComment.new
   end
 
   def new
