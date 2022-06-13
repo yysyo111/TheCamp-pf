@@ -76,7 +76,8 @@
         <h4 class="mb-3">評価：<%= camp_comment.rate %></h4>
         <div id="rate_<%= camp_comment.id %>" class="form-group"></div>
         <script>
-        // $(document).on('turbolinks:load', function() {
+        // $(document).on('turbolinks:load', function() { 
+        // ターボリンクはいらない
           // $('#rate_%= camp_comment.id %>').empty();
           $('#rate_<%= camp_comment.id %>').raty({
             size: 20,

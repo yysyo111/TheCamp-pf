@@ -3,9 +3,9 @@
     <h3>口コミ投稿画面</h3>
   </div>
   <div class="row">
+    <%= form_with(model:[@camp, @camp_comment], local: true) do |f| %>
     <table>
       <thead>
-        <%= form_with(model:[@camp, @camp_comment], local: true) do |f| %>
         <tr>
           <th><%= f.label :title, "タイトル:" %></th>
           <th><%= f.text_area :title, placeholder: "タイトルをここに" %></th>
@@ -20,30 +20,32 @@
             <!--星機能-->
             <div class="form-group" id="star">
               <%= f.label :rate, "星評価" %>
-              <%= f.hidden_field :rate, id: :review_star, class: 'form-control' %>
+              <%#= f.hidden_field :rate, id: :review_star, class: 'form-control' %>
+              <!--上の記述は、javascript側でhidden_fieldが読み込まれるためいらない-->
             </div>
-            <script>
-            //初回読み込み、リロード、ページ切り替えで動く。20行目 ページ切り替え時（初回ページも対象）//ページ切り替え後にさせたい処理を中に書く　手法でjQueryが動く．
-            $(document).on('turbolinks:load', function() {
-              $('#star').empty();　//これがないとブラウザバックで星が増え続ける不具合が発生します。ページを表示する度に星5つを読み込むことになる
-              $('#star').raty({
-                size: 36,
-                starOff:  '<%= asset_path('star-off.png') %>',
-                starOn : '<%= asset_path('star-on.png') %>',
-                starHalf: '<%= asset_path('star-half.png') %>',
-                //half: false, 今回は５段階評価で星️半分評価は入力できないように設定
-                scoreName: 'camp_comment[rate]', //これがbookモデルのrateカラムへ値を保存という意味
-                half: true
-              });
-            });
-            </script>
           </th>
         </tr>
         <tr>
           <th><%= f.submit "送信する", class: "btn btn-success" %></th>
         </tr>
-        <% end %>
       </thead>
     </table>
+  <% end %>
   </div>
 </div>
+
+ <script>
+  //初回読み込み、リロード、ページ切り替えで動く。20行目 ページ切り替え時（初回ページも対象）//ページ切り替え後にさせたい処理を中に書く　手法でjQueryが動く．
+  // $(document).on('turbolinks:load', function() {　ここの記述は、javascript側で書く
+    // $('#star').empty();　//これがないとブラウザバックで星が増え続ける不具合が発生します。ページを表示する度に星5つを読み込むことになる
+    $('#star').raty({
+      size: 36,
+      starOff:  '<%= asset_path('star-off.png') %>',
+      starOn : '<%= asset_path('star-on.png') %>',
+      starHalf: '<%= asset_path('star-half.png') %>',
+      //half: false, 今回は５段階評価で星️半分評価は入力できないように設定
+      scoreName: 'camp_comment[rate]', //これがcamp_commentモデルのrateカラムへ値を保存という意味
+      half: true
+    });
+  // });
+  </script>
