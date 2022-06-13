@@ -6,6 +6,7 @@ class Public::CampItemsController < ApplicationController
 
   def show
     @camp_item = CampItem.find(params[:id])
+    @camp_item_comment = CampItemComment.new
   end
 
   def new
@@ -41,6 +42,6 @@ class Public::CampItemsController < ApplicationController
   private
 
   def camp_item_params
-    params.require(:camp_item).permit(:name, :impression, :camp_item_image)
+    params.require(:camp_item).permit(:name, :impression, :camp_item_image, :rate)
   end
 end

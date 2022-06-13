@@ -18,7 +18,10 @@ Rails.application.routes.draw do
     get '/about' => 'homes#about', as: 'about'
 
     # camp_items
-    resources :camp_items
+    resources :camp_items do
+      resources :camp_item_comments, only: [:new, :create, :destroy]
+      resource :camp_item_favorites, only: [:create, :destroy]
+    end
 
     # camps
     resources :camps, only: [:index, :show] do

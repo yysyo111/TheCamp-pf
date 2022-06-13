@@ -3,6 +3,11 @@ class CampItem < ApplicationRecord
   belongs_to :customer
   has_many :camp_item_favorites, dependent: :destroy
   has_many :camp_item_comments, dependent: :destroy
+  
+  def camp_item_favorited_by?(customer)
+    camp_item_favorites.exists?(customer_id: customer.id)
+  end
+  
 
   has_one_attached :camp_item_image
 

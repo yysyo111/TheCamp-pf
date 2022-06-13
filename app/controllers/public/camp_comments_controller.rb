@@ -21,6 +21,6 @@ class Public::CampCommentsController < ApplicationController
   end
 
   def camp_comment_params
-    params.require(:camp_comment).permit(:comment, :title)
+    params.require(:camp_comment).permit(:comment, :title, :rate)
   end
 end
