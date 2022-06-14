@@ -7,6 +7,7 @@ class Admin::CampsController < ApplicationController
 
   def show
     @camp = Camp.find(params[:id])
+    @camp_comments = @camp.camp_comments
   end
 
   def new

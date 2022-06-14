@@ -1,4 +1,4 @@
- <% camp_item.camp_item_comments.each do |camp_item_comment| %>
+<% camp_item.camp_item_comments.each do |camp_item_comment| %>
   <%= image_tag camp_item_comment.customer.get_profile_image(100,100) %><br>
   名前：<%= camp_item_comment.customer.last_name %><%= camp_item_comment.customer.first_name %><br>
   投稿日：<%= camp_item_comment.created_at.strftime('%Y/%m/%d') %>
