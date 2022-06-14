@@ -2,7 +2,7 @@
   <h4 class="text-center">キャンプアイテム一覧</h4>
   <div class="row">
     <div class="col-8"></div>
-    <div class="col-4">
+    <div class="col-4 my-3	">
       <!--タグ検索窓-->
       <%= form_tag camp_items_path, method: :get, class: 'boards__searchForm' do %>
         <%= select_tag :tag_id, options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]),
@@ -15,9 +15,10 @@
       <!--タグ検索窓-->
     </div>
   </div>
+</div>
+<div class="container">
   <div class="row">
-    <table>
-    <div class="col-6">
+    <table class="table">
       <thead>
         <tr>
           <th>投稿者</th>
@@ -29,8 +30,6 @@
           <th></th>
         </tr>
       </thead>
-    </div>
-    <div class="col-6">
       <tbody>
         <% @camp_items.each do |camp_item| %>
         <tr id="camp_item_<%= camp_item.id %>" >
@@ -56,8 +55,7 @@
         </tr>
         <% end %>
       </tbody>
-    </div>
     </table>
-  </div>
   <%= link_to "キャンプアイテムを投稿する", new_camp_item_path, class: "btn btn-success" %>
+  </div>
 </div>
