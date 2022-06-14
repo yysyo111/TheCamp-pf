@@ -1,4 +1,14 @@
 <h1>キャンプアイテム一覧</h1>
+<!--タグ検索窓-->
+<%= form_tag camp_items_path, method: :get, class: 'boards__searchForm' do %>
+  <%= select_tag :tag_id, options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]),
+     {
+       prompt: 'アイテムを絞り込む',
+       onchange: 'submit(this.form);'
+     }
+  %>
+<% end %>
+<!--タグ検索窓-->
 <table>
   <thead>
     <tr>
@@ -6,7 +16,7 @@
       <th>アイテム画像</th>
       <th>アイテム名</th>
       <th>感想</th>
-      <th></th>
+      <th>タグ</th>
       <th></th>
       <th></th>
     </tr>
@@ -21,6 +31,13 @@
       <td><%= image_tag camp_item.get_camp_item_image(100, 100) %></td>
       <td><%= camp_item.name %></td>
       <td><%= simple_format(camp_item.impression) %></td>
+      <!--タグ検索-->
+      <td>
+        <% camp_item.tags.each do |tag| %>
+          <%= tag.name %>
+        <% end %>
+      </td>
+      <!--ここまでタグ検索-->
       <!--キャンプアイテムのいいね機能-->
       <td class="favorite-btn">
         <%= render 'public/camp_item_favorites/favorite-btn', camp_item: camp_item %>

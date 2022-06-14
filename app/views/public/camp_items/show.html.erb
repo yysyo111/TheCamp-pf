@@ -21,6 +21,16 @@
             <td><%= @camp_item.impression %></td>
           </tr>
           <tr>
+            <!--タグ表示-->
+            <td>タグ：</td>
+            <td>
+              <% @camp_item.tags.each do |tag| %>
+                <%= tag.name %>
+              <% end %>
+            </td>
+            <!--タグ表示ここまで-->
+          </tr>
+          <tr>
             <td>投稿日:</td>
             <td><%= @camp_item.created_at.strftime('%Y/%m/%d') %></td>
           </tr>
@@ -62,7 +72,6 @@
     </div>
   </div>
 </div>
- <td>
 
 
 <script>

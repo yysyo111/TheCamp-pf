@@ -11,6 +11,20 @@ Admin.create!(
    password: 'syotest'
 )
 
-# テーブルcreate(
-#    絡むめい：)
-
+# tag検索データ
+Tag.create([
+   { name: 'テント' },
+   { name: '寝具/シュラフ' },
+   { name: 'コット/ベッド' },
+   { name: 'クーラーボックス' },
+   { name: '調理器具' },
+   { name: '燃料/着火用具' },
+   { name: '食器' },
+   { name: 'ランタン' },
+   { name: 'イス' },
+   { name: 'テーブル' },
+   { name: 'その他' }
+   ])
+   
+   
+   
