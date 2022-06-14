@@ -1,1 +1,37 @@
 <h1>キャンプアイテム一覧</h1>
+<table>
+  <thead>
+    <tr>
+      <th>投稿者</th>
+      <th>アイテム画像</th>
+      <th>アイテム名</th>
+      <th>感想</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @camp_items.each do |camp_item| %>
+    <tr id="camp_item_<%= camp_item.id %>" >
+      <td>
+        <%= link_to admin_customer_path(camp_item.customer.id ) do %>
+        <%= image_tag camp_item.customer.get_profile_image(100, 100) %><br>
+        <%= camp_item.customer.last_name %><%= camp_item.customer.first_name %>
+        <% end %>
+      </td>
+      <td>
+        <%= link_to admin_camp_item_path(camp_item.id) do %>
+          <%= image_tag camp_item.get_camp_item_image(100, 100) %>
+        <% end %>
+      </td>
+      <td><%= camp_item.name %></td>
+      <td><%= simple_format(camp_item.impression) %></td>
+      <!--キャンプアイテムのいいねカウント-->
+      <td>いいね数:<%= camp_item.camp_item_favorites.count %></td>
+      <td>コメント件数：<%= camp_item.camp_item_comments.count %></td>
+      <td><%= link_to "詳細へ", admin_camp_item_path(camp_item.id), class: "btn btn-success" %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
