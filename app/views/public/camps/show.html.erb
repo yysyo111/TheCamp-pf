@@ -36,11 +36,11 @@
             <!--星の平均-->
             <td>口コミ平均評価:<%= @camp.get_camp_review_avg %></td>
             <td>
-              <div id="rate_<%= @camp.get_camp_review_avg %>" class="form-group"></div>
+              <div id="star_rate_<%= @camp_comment.id %>" class="form-group"></div>
               <script>
               // ターボリンクはいらない
                 // $('#rate_<%#= @camp.get_camp_review_avg %>').empty();
-                $('#rate_<%= @camp.get_camp_review_avg %>').raty({
+                $('#star_rate_<%= @camp_comment.id %>').raty({
                   size: 20,
                   starOff:  '<%= asset_path('star-off.png') %>',
                   starOn : '<%= asset_path('star-on.png') %>',
@@ -48,7 +48,7 @@
                   half: true,
                   readOnly: true,
                   score: <%= @camp.get_camp_review_avg %>
-                })
+                });
               </script>
             </td>
             <!--星の平均-->
@@ -59,6 +59,9 @@
     </div>
   </div>
 </div>
+
+
+
 <!--地図表示-->
 <div class="container d-flex justify-content-center">
   <div class="row">
