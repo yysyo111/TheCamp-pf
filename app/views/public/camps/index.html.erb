@@ -15,25 +15,14 @@
       </thead>
       <tbody>
         <% @camps.each do |camp| %>
-        <tr>
+        <tr id="camp_<%= camp.id %>">
           <td><%= camp.name %></td>
           <td><%= camp.phone_number %></td>
           <td><%= camp.area_i18n %></td>
           <td><%= camp.address %></td>
-          <td>
-          <% if camp.camp_favorited_by?(current_customer) %>
-              <p>
-                <%= link_to camp_camp_favorites_path(camp), method: :delete do %>
-                  ♥<%= camp.camp_favorites.count %>
-                <% end %>
-              </p>
-              <% else %>
-              <p>
-                <%= link_to camp_camp_favorites_path(camp), method: :post do %>
-                  ♡<%= camp.camp_favorites.count %>
-                <% end %>
-              </p>
-            <% end %>
+          <td class="favorite-btn">
+          <!--いいね機能非同期-->
+            <%= render 'public/camp_favorites/favorite-btn', camp: camp %>
           </td>
           <td><%= link_to "詳細へ", camp_path(camp.id), class: "btn btn-success" %></td>
         </tr>

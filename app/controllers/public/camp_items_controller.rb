@@ -1,7 +1,9 @@
 class Public::CampItemsController < ApplicationController
+  before_action :authenticate_customer!
 
   def index
-    @camp_items = CampItem.all
+    # @camp_items = CampItem.all
+    @camp_items = params[:tag_id].present? ? Tag.find(params[:tag_id]).camp_items: CampItem.all
   end
 
   def show
@@ -42,6 +44,6 @@ class Public::CampItemsController < ApplicationController
   private
 
   def camp_item_params
-    params.require(:camp_item).permit(:name, :impression, :camp_item_image, :rate)
+    params.require(:camp_item).permit(:name, :impression, :camp_item_image, :rate, tag_ids: [])
   end
 end

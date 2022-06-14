@@ -26,22 +26,10 @@
             <td>住所:</td>
             <td><%= @camp.address %></td>
           </tr>
-          <tr>
-            <td>
-            <!--いいね機能-->
-            <% if @camp.camp_favorited_by?(current_customer) %>
-              <p>
-                <%= link_to camp_camp_favorites_path(@camp), method: :delete do %>
-                  ♥<%= @camp.camp_favorites.count %>
-                <% end %>
-              </p>
-              <% else %>
-              <p>
-                <%= link_to camp_camp_favorites_path(@camp), method: :post do %>
-                  ♡<%= @camp.camp_favorites.count %>
-                <% end %>
-              </p>
-            <% end %>
+          <tr id="camp_<%= @camp.id %>">
+            <!--いいね機能非同期通信-->
+            <td class="favorite-btn">
+              <%= render 'public/camp_favorites/favorite-btn', camp: @camp %>
             </td>
           </tr>
         </tbody>

@@ -1,8 +1,12 @@
 class Admin::CampItemsController < ApplicationController
-  
-  def index 
-  end 
-  
-  def show 
-  end 
+  before_action :authenticate_admin!
+
+  def index
+    @camp_items = CampItem.all
+  end
+
+  def show
+    @camp_item = CampItem.find(params[:id])
+    @camp_item_comment = CampItemComment.new
+  end
 end

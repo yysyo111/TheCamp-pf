@@ -1,17 +1,19 @@
-<h1>キャンプアイテム編集</h1>
-<%= form_with model: @camp_item do |f| %>
-
-  <h4>アイテム画像</h4>
-  <%= f.file_field :camp_item_image, accept: "image/*" %>
-
-  <h4>キャンプアイテム</h4>
-  <%= f.text_field :name %>
-
-  <h4>感想</h4>
-  <%= f.text_area :impression %>
-
-  <%= f.submit "更新" %>
-
-
-<% end %>
-<td><%= link_to "戻る", camp_item_path(@camp_item.id) %></td>
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h1>キャンプアイテム編集</h1>
+      <%= form_with model: @camp_item do |f| %>
+        <h4>アイテム画像</h4>
+          <%= f.file_field :camp_item_image, accept: "image/*" %>
+        <h4>キャンプアイテム</h4>
+          <%= f.text_field :name %>
+        <h4>感想</h4>
+          <%= f.text_area :impression %><br>
+        <%= f.submit "更新", class: "btn btn-success mb-3" %>
+      <% end %>
+    </div>
+    <div class="col-12 ">
+      <%= link_to "戻る", camp_item_path(@camp_item.id), class: "btn btn-success" %>
+    </div>
+  </div>
+</div>
