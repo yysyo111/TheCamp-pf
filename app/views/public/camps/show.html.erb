@@ -33,6 +33,7 @@
             </td>
           </tr>
           <tr>
+            <% if @camp.get_camp_review_avg != -1 %>
             <!--星の平均-->
             <td>口コミ平均:<%#= @camp.get_camp_review_avg %></td>
             <td>
@@ -51,6 +52,7 @@
                 });
               </script>
             </td>
+            <% end %>
             <!--星の平均-->
           </tr>
         </tbody>

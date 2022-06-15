@@ -2,6 +2,7 @@ class Public::CampsController < ApplicationController
   before_action :authenticate_customer!
 
   def index
+    # 絞り込み表示
     if params[:area].present?
       @camps = Camp.where(area: params[:area])
     else

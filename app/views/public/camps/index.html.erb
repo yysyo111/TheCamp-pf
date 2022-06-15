@@ -1,9 +1,11 @@
 <div class="container">
   <div class="row">
     <h1>キャンプ場一覧</h1>
+    <!--キャンプ場のエリア絞り込み表示機能-->
     <%= form_tag(camps_path, method: "get", class: 'boards__searchForm') do %>
       <%= select_tag :area, options_for_select(Camp.areas_i18n.invert, selected: @value), { prompt: 'アイテムを絞り込む', onchange: 'submit(this.form);' } %>
     <% end %>
+    <!--ここまで絞り込み表示機能-->
   </div>
   <div class="row">
     <table class="table">
