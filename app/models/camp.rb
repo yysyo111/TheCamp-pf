@@ -3,11 +3,11 @@ class Camp < ApplicationRecord
   belongs_to :admin
   has_many :camp_comments, dependent: :destroy
   has_many :camp_favorites, dependent: :destroy
-  
+
   def camp_favorited_by?(customer)
     camp_favorites.exists?(customer_id: customer.id)
   end
-  
+
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
 
@@ -24,7 +24,7 @@ class Camp < ApplicationRecord
     end
     camp_image.variant(resize_to_limit: [width, height]).processed
   end
-  
+
   def get_camp_review_avg
     avg_rate = self.camp_comments.group("camp_comments.camp_id").average("camp_comments.rate").values.first
     if avg_rate > 4.5

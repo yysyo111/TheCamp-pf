@@ -2,7 +2,12 @@ class Public::CampsController < ApplicationController
   before_action :authenticate_customer!
 
   def index
-    @camps = Camp.all
+    if params[:area].present?
+      @camps = Camp.where(area: params[:area])
+    else
+      @camps = Camp.all
+    end
+      @value = params[:area]
   end
 
   def show
