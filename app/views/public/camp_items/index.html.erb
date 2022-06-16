@@ -3,7 +3,7 @@
   <div class="row">
     <div class="col-9"></div>
     <div class="col-2 my-3">
-      <!--タグ検索窓-->
+    <!--タグ検索窓-->
       <%= form_tag camp_items_path, method: :get, class: 'boards__searchForm' do %>
         <%= select_tag :tag_id, options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]),
            {
@@ -12,58 +12,44 @@
            }
         %>
       <% end %>
-      <!--タグ検索窓-->
     </div>
+    <!--タグ検索窓-->
+    <!--アイコン-->
     <div class="col-1 icon ml-auto">
-      <%= link_to new_camp_item_path, style: "font-size:40px;" do %>
-        <i class="fas fa-campground" style="color: green;"></i>
-      <% end %>
+    <%= link_to new_camp_item_path, style: "font-size:40px;" do %>
+      <i class="fas fa-campground" style="color: green;"></i>
+    <% end %>
     </div>
+    <!--アイコン-->
   </div>
-</div>
-<div class="container">
-  <div class="row">
-    <table class="table">
-      <thead>
-        <tr>
-          <th>投稿者</th>
-          <th>アイテム画像</th>
-          <th>アイテム名</th>
-          <th>感想</th>
-          <th>タグ</th>
-          <th></th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @camp_items.each do |camp_item| %>
-        <tr id="camp_item_<%= camp_item.id %>" >
-          <td>
-            <%= image_tag camp_item.customer.get_profile_image(100, 100) %><br>
-            <%= camp_item.customer.last_name %><%= camp_item.customer.first_name %>
-          </td>
-          <td><%= image_tag camp_item.get_camp_item_image(100, 100) %></td>
-          <td><%= camp_item.name %></td>
-          <td><%= simple_format(camp_item.impression) %></td>
-          <!--タグ検索-->
-          <td>
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    <% @camp_items.each do |camp_item| %>
+      <div class="col">
+        <div class="card h-80">
+          <%= image_tag camp_item.get_camp_item_image(50, 50) %>  <!--アイテム画像-->
+          <div class="card-body">
+            <div id="camp_item_<%= camp_item.id %>">
+            <h5 class="card-title"><%= link_to camp_item.name, camp_item_path(camp_item.id) %></h5>  <!--アイテムの名前とshowページへのリンク-->
+            <!--いいね機能非同期-->
+            <div class="favorite-btn">
+              <%= render 'public/camp_item_favorites/favorite-btn', camp_item: camp_item %>
+            </div>
+            <!--いいね機能非同期-->
+            <%= image_tag camp_item.customer.get_profile_image(100, 100) %> <!--プロフィール画像と名前-->
+            <%= camp_item.customer.last_name %><%= camp_item.customer.first_name %><br> <!--プロフィール画像と名前-->
+            <%= simple_format(camp_item.impression) %> <!--感想-->
+            <!--タグ検索-->
             <% camp_item.tags.each do |tag| %>
-              <%= tag.name %>
+              タグ：<%= tag.name %>
             <% end %>
-          </td>
           <!--ここまでタグ検索-->
-          <!--キャンプアイテムのいいね機能-->
-          <td class="favorite-btn">
-            <%= render 'public/camp_item_favorites/favorite-btn', camp_item: camp_item %>
-          </td>
-          <td><%= link_to "詳細へ", camp_item_path(camp_item.id), class: "btn btn-success" %></td>
-        </tr>
-        <% end %>
-      </tbody>
-    </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
   </div>
 </div>
-
 
 <div class="container">
   <div class="row">
@@ -73,3 +59,4 @@
     </div>
   </div>
 </div>
+
