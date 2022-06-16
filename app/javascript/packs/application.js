@@ -17,5 +17,5 @@ window.$ = window.jQuery = require('jquery');
 require('packs/raty')
 
 Rails.start()
-Turbolinks.start()
+
 ActiveStorage.start()
