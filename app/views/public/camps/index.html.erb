@@ -33,7 +33,7 @@
           <td>
           <!--星の平均-->
           <% if camp.get_camp_review_avg != -1 %>
-            <%= camp.get_camp_review_avg %>
+            <%= camp.get_camp_review_avg %>点
           <% end %>
           <!--星の平均-->
           </td>
@@ -46,6 +46,7 @@
         <% end %>
       </tbody>
     </table>
+    <%= paginate @camps %>
   </div>
 </div>
 
