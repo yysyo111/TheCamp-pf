@@ -4,9 +4,9 @@ class Public::CampsController < ApplicationController
   def index
     # 絞り込み表示
     if params[:area].present?
-      @camps = Camp.where(area: params[:area]).page(params[:page]).per(5)
+      @camps = Camp.where(area: params[:area]).page(params[:page]).per(3)
     else
-      @camps = Camp.all.page(params[:page]).per(5)
+      @camps = Camp.all.page(params[:page]).per(3)
     end
       @value = params[:area]
   end
