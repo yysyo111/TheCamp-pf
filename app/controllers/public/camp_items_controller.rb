@@ -3,7 +3,8 @@ class Public::CampItemsController < ApplicationController
 
   def index
     # @camp_items = CampItem.all
-    @camp_items = params[:tag_id].present? ? Tag.find(params[:tag_id]).camp_items: CampItem.all
+    @camp_items = params[:tag_id].present? ? Tag.find(params[:tag_id]).camp_items.page(params[:page]).per(3): CampItem.all.page(params[:page]).per(3)
+    # キャンプアイテムのページネーション追加
   end
 
   def show
