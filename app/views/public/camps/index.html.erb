@@ -1,10 +1,13 @@
 <div class="container">
+  <h4>キャンプ場一覧</h4>
   <div class="row">
-    <h1>キャンプ場一覧</h1>
+    <div class="col-10"></div>
     <!--キャンプ場のエリア絞り込み表示機能-->
-    <%= form_tag(camps_path, method: "get", class: 'boards__searchForm') do %>
-      <%= select_tag :area, options_for_select(Camp.areas_i18n.invert, selected: @value), { prompt: 'アイテムを絞り込む', onchange: 'submit(this.form);' } %>
-    <% end %>
+    <div class="col-2 my-2">
+      <%= form_tag(camps_path, method: "get", class: 'boards__searchForm') do %>
+        <%= select_tag :area, options_for_select(Camp.areas_i18n.invert, selected: @value), { prompt: 'エリア', onchange: 'submit(this.form);' } %>
+      <% end %>
+    </div>
     <!--ここまで絞り込み表示機能-->
   </div>
   <div class="row">
@@ -15,6 +18,8 @@
           <th>電話番号</th>
           <th>エリア</th>
           <th>住所</th>
+          <th>レビュー</th>
+          <th></th>
           <th></th>
         </tr>
       </thead>
@@ -25,6 +30,13 @@
           <td><%= camp.phone_number %></td>
           <td><%= camp.area_i18n %></td>
           <td><%= camp.address %></td>
+          <td>
+          <!--星の平均-->
+          <% if camp.get_camp_review_avg != -1 %>
+            <%= camp.get_camp_review_avg %>
+          <% end %>
+          <!--星の平均-->
+          </td>
           <td class="favorite-btn">
           <!--いいね機能非同期-->
             <%= render 'public/camp_favorites/favorite-btn', camp: camp %>

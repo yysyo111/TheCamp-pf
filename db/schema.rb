@@ -104,7 +104,7 @@ ActiveRecord::Schema.define(version: 2022_06_07_062413) do
     t.integer "admin_id", null: false
     t.string "name", null: false
     t.string "address", null: false
-    t.integer "phone_number", null: false
+    t.string "phone_number", null: false
     t.integer "area", default: 0, null: false
     t.float "latitude"
     t.float "longitude"
