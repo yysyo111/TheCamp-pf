@@ -1,5 +1,6 @@
 class Public::CampItemsController < ApplicationController
   before_action :authenticate_customer!
+  before_action :ensure_correct_customer, only: [:edit, :update, :destroy]
 
   def index
     # @camp_items = CampItem.all
@@ -19,8 +20,11 @@ class Public::CampItemsController < ApplicationController
   def create
     @camp_item = CampItem.new(camp_item_params)
     @camp_item.customer_id = current_customer.id
-    @camp_item.save!
-    redirect_to camp_items_path
+    if @camp_item.save
+    redirect_to camp_items_path, notice: "アイテムの投稿に成功しました"
+    else
+      render :new
+    end
   end
 
   def edit
@@ -30,7 +34,7 @@ class Public::CampItemsController < ApplicationController
   def update
     @camp_item = CampItem.find(params[:id])
     if @camp_item.update(camp_item_params)
-      redirect_to camp_item_path(@camp_item.id)
+      redirect_to camp_item_path(@camp_item.id), notice: "アイテムの更新に成功しました"
     else
       render 'edit'
     end
@@ -39,12 +43,19 @@ class Public::CampItemsController < ApplicationController
   def destroy
     @camp_item = CampItem.find(params[:id])
     @camp_item.destroy
-    redirect_to camp_items_path
+    redirect_to camp_items_path, notice: "アイテムの削除に成功しました"
   end
 
   private
 
   def camp_item_params
     params.require(:camp_item).permit(:name, :impression, :camp_item_image, :rate, tag_ids: [])
+  end
+
+  def ensure_correct_customer
+    @camp_item = CampItem.find(params[:id])
+    unless @camp_item.customer == current_customer
+      redirect_to camp_items_path
+    end
   end
 end

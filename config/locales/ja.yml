@@ -292,3 +292,14 @@ ja: # 日本語の設定を行う
         last_name_kana: セイ
         email: メールアドレス
         password: パスワード
+      camp:
+        name: キャンプ場名
+        address: 住所
+        phone_number: 電話番号
+      camp_item:
+        name: アイテム
+        impression: 感想
+      camp_comment:
+        title: タイトル
+        comment: コメント
+        rate: レビュー

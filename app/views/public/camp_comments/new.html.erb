@@ -1,4 +1,14 @@
 <div class="container">
+  <% if @camp_comment.errors.any? %>
+  <div id="error_explanation">
+    <h3><%= pluralize(@camp_comment.errors.count, "") %> 件のエラーが出ました</h3>
+    <ul>
+      <% @camp_comment.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
   <div class="row">
     <h3>口コミ投稿画面</h3>
   </div>

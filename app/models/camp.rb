@@ -4,6 +4,9 @@ class Camp < ApplicationRecord
   has_many :camp_comments, dependent: :destroy
   has_many :camp_favorites, dependent: :destroy
 
+  # バリデーション
+  validates :name, :address, :phone_number, presence: true
+
   def camp_favorited_by?(customer)
     camp_favorites.exists?(customer_id: customer.id)
   end

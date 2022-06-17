@@ -46,7 +46,7 @@ Rails.application.routes.draw do
     resources :customers, only: [:index, :show, :edit, :update]
 
     # camp_items
-    resources :camp_items, only: [:index, :show] do
+    resources :camp_items, only: [:index, :show, :destroy] do
       resources :camp_item_comments, only: [:show, :destroy]
     end
 

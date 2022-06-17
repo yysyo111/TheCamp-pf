@@ -1,4 +1,14 @@
 <div class="container">
+  <% if @camp_item.errors.any? %>
+  <div id="error_explanation">
+    <h3><%= pluralize(@camp_item.errors.count, "") %> 件のエラーが出ました</h3>
+    <ul>
+      <% @camp_item.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
   <div class="row">
     <div class="col-12">
       <h1>キャンプアイテム編集</h1>

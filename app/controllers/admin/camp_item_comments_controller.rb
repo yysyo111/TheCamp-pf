@@ -7,6 +7,6 @@ class Admin::CampItemCommentsController < ApplicationController
 
   def destroy
     CampItemComment.find(params[:camp_item_id]).destroy
-    redirect_to admin_camp_item_path(params[:id])
+    redirect_to admin_camp_item_path(params[:id]), notice: "口コミの削除に成功しました"
   end
 end

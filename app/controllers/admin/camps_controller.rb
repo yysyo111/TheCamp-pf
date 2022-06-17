@@ -18,8 +18,11 @@ class Admin::CampsController < ApplicationController
     @camp = Camp.new(camp_params)
     @camp.admin_id = current_admin.id #ログイン中のユーザーの情報を取得
 
-    @camp.save
-    redirect_to admin_camps_path
+    if @camp.save
+      redirect_to admin_camps_path, notice: "キャンプ場の登録に成功しました"
+    else
+      render :new
+    end
   end
 
   def edit
@@ -29,7 +32,7 @@ class Admin::CampsController < ApplicationController
   def update
     @camp = Camp.find(params[:id])
     if @camp.update(camp_params)
-      redirect_to admin_camp_path(@camp.id)
+      redirect_to admin_camp_path(@camp.id), notice: "キャンプ場の更新に成功しました"
     else
       render 'edit'
     end
@@ -38,7 +41,7 @@ class Admin::CampsController < ApplicationController
   def destroy
     @camp = Camp.find(params[:id])
     @camp.destroy
-    redirect_to admin_camps_path(@camp)
+    redirect_to admin_camps_path(@camp), notice: "キャンプ場の削除に成功しました"
   end
 
   private

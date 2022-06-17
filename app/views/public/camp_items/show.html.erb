@@ -5,12 +5,11 @@
       <table>
         <tbody>
           <tr>
-            <td>投稿者:</td>
-            <td><%= @camp_item.customer.last_name %><%= @camp_item.customer.first_name %></td>
+            <td><%= image_tag @camp_item.get_camp_item_image(200, 200) %></td>
           </tr>
           <tr>
-            <td>アイテム画像:</td>
-            <td><%= image_tag @camp_item.get_camp_item_image(200, 200) %></td>
+            <td>投稿者:</td>
+            <td><%= @camp_item.customer.last_name %><%= @camp_item.customer.first_name %></td>
           </tr>
           <tr>
             <td>キャンプアイテム:</td>

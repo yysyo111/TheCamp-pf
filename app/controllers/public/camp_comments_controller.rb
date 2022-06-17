@@ -12,13 +12,16 @@ class Public::CampCommentsController < ApplicationController
     @camp_comment.customer_id = current_customer.id
     # @comment = current_customer.camp_comments.new(camp_comment_params) #上の記述と同じ
     @camp_comment.camp_id = @camp.id
-    @camp_comment.save
-    redirect_to camp_path(@camp.id)
+    if @camp_comment.save
+    redirect_to camp_path(@camp.id), notice: "レビューの投稿に成功しました"
+    else
+      render :new
+    end
   end
 
   def destroy
     CampComment.find(params[:id]).destroy
-    redirect_to camp_path(params[:camp_id])
+    redirect_to camp_path(params[:camp_id]), notice: "レビューの削除に成功しました"
   end
 
   def camp_comment_params

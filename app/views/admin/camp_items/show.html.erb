@@ -28,6 +28,9 @@
             <td><%= link_to "戻る", admin_camp_items_path, class: "btn btn-success" %></td>
           </tr>
           <tr>
+            <td><%= link_to "削除", admin_camp_item_path, method: :delete, class: "btn btn-success" %></td>
+          </tr>
+          <tr>
             <td>
               <!--星の表示-->
               <h4 class="mb-3">評価：<%= @camp_item.rate %></h4>

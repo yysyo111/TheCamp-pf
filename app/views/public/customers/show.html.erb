@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-12">
-      
+
       <h1>会員詳細</h1>
       <table>
         <thead>
@@ -27,7 +27,7 @@
           </tr>
         </thead>
       </table>
-      <%= link_to "戻る", customers_path(@customer), class: "btn btn-success" %>
+      <%= link_to "戻る", customers_path, class: "btn btn-success" %>
       <%= link_to "プロフィールを編集する", edit_customer_path(@customer.id), class: "btn btn-success" %>
     </div>
   </div>
