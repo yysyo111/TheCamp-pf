@@ -2,7 +2,7 @@ class Admin::CampItemsController < ApplicationController
   before_action :authenticate_admin!
 
   def index
-    @camp_items = CampItem.all
+    @camp_items = CampItem.all.page(params[:page]).per(3)
   end
 
   def show
