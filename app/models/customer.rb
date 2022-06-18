@@ -11,7 +11,7 @@ class Customer < ApplicationRecord
   has_many :camp_item_comments, dependent: :destroy
   has_many :camp_favorites, dependent: :destroy
   has_many :camp_item_favorites, dependent: :destroy
-  
+
   # バリデーション
   validates :first_name, :last_name, :first_name_kana, :last_name_kana, presence: true
 
@@ -26,6 +26,16 @@ class Customer < ApplicationRecord
       profile_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
     end
     profile_image.variant(resize_to_limit: [width, height]).processed
+  end
+
+  def self.guest
+    find_or_create_by!(email: 'guest@example.com') do |customer|
+      customer.password = SecureRandom.urlsafe_base64
+      customer.first_name = "guest"
+      customer.last_name = "user"
+      customer.first_name_kana = "ゲスト"
+      customer.last_name_kana = "ユーザー"
+    end
   end
 end
 

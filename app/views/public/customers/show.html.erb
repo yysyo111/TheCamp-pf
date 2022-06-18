@@ -9,10 +9,10 @@
             <th>プロフィール画像</th>
             <td><%= image_tag @customer.get_profile_image(100,100) %></td>
           </tr>
-          <tr>
-            <th>会員ID</th>
-            <td><%= @customer.id %></td>
-          </tr>
+          <!--<tr>-->
+            <!--<th>会員ID</th>-->
+            <!--<td><#%= @customer.id %></td>-->
+          <!--</tr>-->
           <tr>
             <th>氏名</th>
             <td><%= @customer.last_name %><%= @customer.first_name %></td>
@@ -28,7 +28,9 @@
         </thead>
       </table>
       <%= link_to "戻る", customers_path, class: "btn btn-success" %>
-      <%= link_to "プロフィールを編集する", edit_customer_path(@customer.id), class: "btn btn-success" %>
+      <% if @customer.email != "guest@example.com" %>
+        <%= link_to "プロフィールを編集する", edit_customer_path(@customer.id), class: "btn btn-success" %>
+      <% end %>
     </div>
   </div>
 </div>
