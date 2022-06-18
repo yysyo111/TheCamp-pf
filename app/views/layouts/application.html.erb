@@ -2,29 +2,53 @@
 <html>
   <head>
     <title>TheCamp</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
     <header>
-    <% if customer_signed_in? %>
-      <li>
-        <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
-      </li>
-    <% else %>
-      <li>
-        <%= link_to "新規登録", new_customer_registration_path %>
-      </li>
-      <li>
-        <%= link_to "ログイン", new_customer_session_path %>
-      </li>
-    <% end %>
+      <%= render 'layouts/header' %>
     </header>
-    <%= yield %>
+    <main>
+       <div class="container">
+        <div class="row d-flex justify-content-center">
+          <div class="col-12">
+            <p id="notice"><%= notice %></p>
+          </div>
+        </div>
+      </div>
+      <%= yield %>
+    </main>
+    <footer>
+      <div class="container">
+        <div class="row d-flex justify-content-center">
+          <ul>
+            <li class="list-inline-item">
+              <%= link_to do %>
+                <i class="fab fa-instagram-square fa-2x social-btn size"></i>
+              <% end %>
+            </li>
+            <li class="list-inline-item">
+              <%= link_to do %>
+                <i class="fab fa-facebook-square fa-2x social-btn size"></i>
+              <% end %>
+            </li>
+            <li class="list-inline-item">
+              <%= link_to do %>
+                <i class="fab fa-twitter-square fa-2x social-btn size"></i>
+              <% end %>
+            </li>
+          </ul>
+        </div>
+        <div class="row d-flex justify-content-center">
+          <p>© 2022 The Camp</p>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>

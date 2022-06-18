@@ -1,0 +1,42 @@
+<div class="container">
+  <% if @customer.errors.any? %>
+  <div id="error_explanation">
+    <h3><%= pluralize(@customer.errors.count, "") %> 件のエラーが出ました</h3>
+    <ul>
+      <% @customer.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
+  <div class="row">
+    <div class="col-12">
+      <h4>会員編集</h4>
+      <%= form_with model: @customer, url: customer_path(@customer.id), method: :patch do |f| %>
+
+        <label>会員ID</label>
+        <label><%= @customer.id %></label>
+
+        <h4>画像</h4>
+        <%= f.file_field :profile_image, accept: "image/*" %>
+
+        <h4>氏名</h4>
+      　<%= f.text_field :last_name %>
+      　<%= f.text_field :first_name %>
+
+      　<h4>フリガナ</h4>
+      　<%= f.text_field :last_name_kana %>
+      　<%= f.text_field :first_name_kana %>
+
+      　<h4>自己紹介文</h4>
+      　<%= f.text_area :introduction %>
+
+      　<h4>メールアドレス</h4>
+      　<%= f.email_field :email, autocomplete: "email" %>
+
+      　<%= f.submit "編集内容を保存", class: "btn btn-success" %>
+      　<%= link_to "退会する", customers_unsubscribe_path, class: "btn btn-success" %>
+      <% end %>
+    </div>
+  </div>
+</div>

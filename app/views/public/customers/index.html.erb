@@ -1,0 +1,44 @@
+<div class="container">
+  <div class="row">
+    <h1>会員一覧</h1>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>プロフィール画像</th>
+          <!--<th>会員ID</th>-->
+          <th>氏名</th>
+          <th>メールアドレス</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @customers.each do |customer| %>
+          <% if customer.is_deleted == false %>
+        <tr>
+          <td><%= image_tag customer.get_profile_image(100,100) %></td>
+          <!--<td><%#= customer.id %></td>-->
+          <td><%= customer.last_name %><%= customer.first_name %></td>
+          <td><%= customer.email %></td>
+          <% if customer.email != "guest@example.com" %>
+            <% if current_customer.id == customer.id %>
+              <td><%= link_to "詳細へ", customer_path(customer.id), class: "btn btn-success" %></td>
+            <% end %>
+          <% end %>
+        </tr>
+          <% end %>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-12 d-flex justify-content-center my-2">
+      <!--ページネーション-->
+      <%= paginate @customers, theme: 'twitter-bootstrap-4' %>
+    </div>
+  </div>
+</div>
+
+
+
+

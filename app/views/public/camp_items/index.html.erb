@@ -1,0 +1,66 @@
+<div class="container">
+  <h4 class="text-center">キャンプアイテム一覧</h4>
+  <div class="row">
+    <div class="col-9"></div>
+    <div class="col-2 my-3">
+    <!--タグ検索窓-->
+      <%= form_tag camp_items_path, method: :get, class: 'boards__searchForm' do %>
+        <%= select_tag :tag_id, options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]),
+           {
+             prompt: 'アイテムを絞り込む',
+             onchange: 'submit(this.form);'
+           }
+        %>
+      <% end %>
+    </div>
+    <!--タグ検索窓-->
+    <!--アイコン-->
+    <div class="col-1 icon ml-auto">
+    <%= link_to new_camp_item_path, style: "font-size:40px;" do %>
+      <i class="fas fa-campground" style="color: green;"></i>
+    <% end %>
+    </div>
+    <!--アイコン-->
+  </div>
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    <% @camp_items.each do |camp_item| %>
+      <div class="col">
+        <div class="card h-100">
+          <div id="img">
+            <%= image_tag camp_item.get_camp_item_image(250, 250), class: "index-img" %>  <!--アイテム画像-->
+          </div>
+          <div class="card-body">
+            <div id="camp_item_<%= camp_item.id %>">
+            <h5 class="card-title"><%= link_to camp_item.name, camp_item_path(camp_item.id) %></h5>  <!--アイテムの名前とshowページへのリンク-->
+            <!--いいね機能非同期-->
+            <div class="favorite-btn">
+              <%= render 'public/camp_item_favorites/favorite-btn', camp_item: camp_item %>
+            </div>
+            <!--いいね機能非同期-->
+            <%= image_tag camp_item.customer.get_profile_image(100, 100) %> <!--プロフィール画像と名前-->
+            <%= camp_item.customer.last_name %><%= camp_item.customer.first_name %><br> <!--プロフィール画像と名前-->
+            <%= simple_format(camp_item.impression) %> <!--感想-->
+            <!--タグ検索-->
+            <% camp_item.tags.each do |tag| %>
+              タグ：<%= tag.name %>
+            <% end %>
+          <!--ここまでタグ検索-->
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-12 d-flex justify-content-center my-2">
+      <!--ページネーション-->
+      <%= paginate @camp_items, theme: 'twitter-bootstrap-4' %>
+    </div>
+  </div>
+</div>
+
+
+

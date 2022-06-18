@@ -4,9 +4,9 @@ class CreateCampItems < ActiveRecord::Migration[6.1]
       
       t.integer :customer_id, null: false
       t.string :name, null: false
-      t.string :location, null: false
-      t.float :rate, null: false
-
+      t.text :impression, null: false
+      t.float :rate
+      
       t.timestamps
     end
   end

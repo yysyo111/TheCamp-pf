@@ -1,0 +1,127 @@
+<div class="container">
+  <div class="row">
+    <h3>キャンプ場詳細</h3>
+  </div>
+  <div class="row">
+    <div class="col-6">
+      <%= image_tag @camp.get_camp_image(500, 500) %>
+    </div>
+    <div class="col-6">
+      <table>
+        <tbody>
+          <tr>
+            <td>管理者ID:</td>
+            <td><%= @camp.admin_id %></td>
+          </tr>
+          <tr>
+            <td>キャンプ場名:</td>
+            <td><%= @camp.name %></td>
+          </tr>
+          <tr>
+            <td>電話番号:</td>
+            <td><%= @camp.phone_number %></td>
+          </tr>
+          <tr>
+            <td>エリア:</td>
+            <td><%= @camp.area_i18n %></td>
+          </tr>
+          <tr>
+            <td>住所:</td>
+            <td><%= @camp.address %></td>
+          </tr>
+          <tr>
+            <td>投稿日:</td>
+            <td><%= @camp.created_at.strftime('%Y/%m/%d') %></td>
+          </tr>
+        </tbody>
+      </table>
+      <%= link_to "戻る", admin_camps_path, class: "btn btn-success" %>
+      <%= link_to "削除", admin_camp_path(@camp.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-success" %>
+      <%= link_to "編集", edit_admin_camp_path(@camp.id), class: "btn btn-success" %>
+    </div>
+  </div>
+</div>
+
+<div class="container d-flex justify-content-center">
+  <div class="row">
+    <div class="col-12">
+      <h3 class="text-center">Google Map</h3>
+      <div id="map"></div>  <!--#mapの表示-->
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h3 class="text-center">キャンプ場口コミ一覧</h3>
+      <% @camp_comments.each do |camp_comment| %>
+        <%= image_tag camp_comment.customer.get_profile_image(100,100) %>
+        コメント者：<%= camp_comment.customer.last_name %><%= camp_comment.customer.first_name %><br>
+        タイトル：<%= camp_comment.title %><br>
+        コメント内容：<%= camp_comment.comment %><br>
+        投稿日：<%= camp_comment.created_at.strftime('%Y/%m/%d') %><br>
+        <!--星の表示-->
+        <h4 class="mb-3">評価：<%= camp_comment.rate %></h4>
+        <div id="rate_<%= camp_comment.id %>" class="form-group"></div>
+        <script>
+        // $(document).on('turbolinks:load', function() {
+        // ターボリンクはいらない
+          $('#rate_<%= camp_comment.id %>').empty(); // これをつけないと星が増え続ける
+          $('#rate_<%= camp_comment.id %>').raty({
+            size: 20,
+            starOff:  '<%= asset_path('star-off.png') %>',
+            starOn : '<%= asset_path('star-on.png') %>',
+            starHalf: '<%= asset_path('star-half.png') %>',
+            half: true,
+            readOnly: true,
+            score: <%= camp_comment.rate %>
+          })
+        // });
+        </script>
+        <%= link_to "口コミ詳細へ", admin_camp_camp_comment_path(camp_comment.id), class: "btn btn-success" %><br>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
+
+
+<script type="text/javascript">
+  function initMap() {
+// #latitude,longitudeから位置を特定
+    var test ={lat: <%= @camp.latitude %>, lng: <%= @camp.longitude %>};
+    var map = new google.maps.Map(document.getElementById('map'), {
+              zoom: 15,
+              center: test
+              });
+    var transitLayer = new google.maps.TransitLayer();
+    transitLayer.setMap(map);
+
+    var contentString = '住所：<%= @camp.address %>';
+    var infowindow = new google.maps.InfoWindow({
+      content: contentString
+    });
+
+//  #Map上の指定した位置にピンを挿して表示する, // マーカーを立てる場所の緯度経度を指定
+    var marker = new google.maps.Marker({
+                  position: test,
+                  map: map,
+                  title: contentString
+                 });
+
+     marker.addListener('click', function() {
+       infowindow.open(map, marker);
+     });
+  }
+</script>
+
+<script async defer src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= "#{ENV['GOOGLE_MAP_API']}" %>&callback=initMap">
+</script>
+
+<style type="text/css">
+  #map { height: 500px;
+         width: 1000px;}
+</style>
+

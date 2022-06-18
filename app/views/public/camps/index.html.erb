@@ -1,0 +1,49 @@
+<div class="container">
+  <h4>キャンプ場一覧</h4>
+  <div class="row">
+    <div class="col-10"></div>
+    <!--キャンプ場のエリア絞り込み表示機能-->
+    <div class="col-2 my-2">
+      <%= form_tag(camps_path, method: "get", class: 'boards__searchForm') do %>
+        <%= select_tag :area, options_for_select(Camp.areas_i18n.invert, selected: @value), { prompt: 'エリア', onchange: 'submit(this.form);' } %>
+      <% end %>
+    </div>
+    <!--ここまで絞り込み表示機能-->
+  </div>
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    <% @camps.each do |camp| %>
+      <div class="col">
+        <div class="card h-100">
+          <%= image_tag camp.get_camp_image(500, 500) %>
+          <div class="card-body">
+            <div id="camp_<%= camp.id %>">
+            <h5 class="card-title"><%= link_to camp.name, camp_path(camp.id) %></h5>
+            <!--いいね機能非同期-->
+            <div class="favorite-btn">
+              <%= render 'public/camp_favorites/favorite-btn', camp: camp %>
+            </div>
+            <!--いいね機能非同期-->
+            <!--星の平均-->
+            <% if camp.get_camp_review_avg != -1 %>
+              レビュー：<%= camp.get_camp_review_avg %>点<br>
+            <% end %>
+            <!--星の平均-->
+            電話番号：<%= camp.phone_number %><br>
+            エリア：<%= camp.area_i18n %><br>
+            住所：<%= camp.address %><br>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-12 d-flex justify-content-center my-2">
+      <!--ページネーション-->
+      <%= paginate @camps, theme: 'twitter-bootstrap-4' %>
+    </div>
+  </div>
+</div>

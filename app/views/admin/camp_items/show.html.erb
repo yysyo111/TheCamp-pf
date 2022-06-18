@@ -1,0 +1,84 @@
+<h1>キャンプアイテム詳細</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <table>
+        <tbody>
+          <tr>
+            <td>投稿者:</td>
+            <td><%= @camp_item.customer.last_name %><%= @camp_item.customer.first_name %></td>
+          </tr>
+          <tr>
+            <td>アイテム画像:</td>
+            <td><%= image_tag @camp_item.get_camp_item_image(200, 200) %></td>
+          </tr>
+          <tr>
+            <td>キャンプアイテム:</td>
+            <td><%= @camp_item.name %></td>
+          </tr>
+          <tr>
+            <td>感想:</td>
+            <td><%= @camp_item.impression %></td>
+          </tr>
+          <tr>
+            <td>投稿日:</td>
+            <td><%= @camp_item.created_at.strftime('%Y/%m/%d') %></td>
+          </tr>
+          <tr>
+            <td><%= link_to "戻る", admin_camp_items_path, class: "btn btn-success" %></td>
+          </tr>
+          <tr>
+            <td><%= link_to "削除", admin_camp_item_path, method: :delete, class: "btn btn-success" %></td>
+          </tr>
+          <tr>
+            <td>
+              <!--星の表示-->
+              <h4 class="mb-3">評価：<%= @camp_item.rate %></h4>
+              <div id="rate_<%= @camp_item.id %>" class="form-group"></div>
+              <!--ここまで星表示の記述-->
+            </td>
+          </tr>
+          <!--いいね機能の件数-->
+          <tr>
+            <td>いいね数:<%= @camp_item.camp_item_favorites.count %></td>
+          </tr>
+          <tr>
+            <!--コメント機能の件数-->
+            <td>
+              コメント件数：<%= @camp_item.camp_item_comments.count %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-12">
+      <div>
+        <% @camp_item.camp_item_comments.each do |camp_item_comment| %>
+          <%= image_tag camp_item_comment.customer.get_profile_image(100,100) %><br>
+          名前：<%= camp_item_comment.customer.last_name %><%= camp_item_comment.customer.first_name %><br>
+          投稿日：<%= camp_item_comment.created_at.strftime('%Y/%m/%d') %>
+          コメント内容：<%= camp_item_comment.comment %>
+          <%= link_to "詳細へ", admin_camp_item_camp_item_comment_path(camp_item_comment.id), class: "btn btn-success"  %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<script>
+// $(document).on('turbolinks:load', function() {
+// ターボリンクはいらない
+  $('#rate_<%= @camp_item.id %>').empty();
+  $('#rate_<%= @camp_item.id %>').raty({
+    size: 20,
+    starOff:  '<%= asset_path('star-off.png') %>',
+    starOn : '<%= asset_path('star-on.png') %>',
+    starHalf: '<%= asset_path('star-half.png') %>',
+    half: true,
+    readOnly: true,
+    score: <%= @camp_item.rate %>
+  });
+// });
+</script>

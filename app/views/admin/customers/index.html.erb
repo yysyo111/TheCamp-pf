@@ -1,0 +1,40 @@
+<h1>管理者側会員一覧</h1>
+<h1>会員一覧</h1>
+<table>
+  <thead>
+    <tr>
+      <th>プロフィール画像</th>
+      <th>会員ID</th>
+      <th>氏名</th>
+      <th>メールアドレス</th>
+      <th>ステータス</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @customers.each do |customer| %>
+    <tr>
+      <td><%= image_tag customer.get_profile_image(100,100) %></td>
+      <td><%= customer.id %></td>
+      <td><%= customer.last_name %><%= customer.first_name %></td>
+      <td><%= customer.email %></td>
+      <td><%= link_to "詳細へ", admin_customer_path(customer.id) %></td>
+      <td>
+        <% if customer.is_deleted == false %>
+        　有効会員
+      　<% else %>
+        　退会済み
+      　<% end %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<div class="container">
+  <div class="row">
+    <div class="col-12 d-flex justify-content-center my-2">
+      <!--ページネーション-->
+      <%= paginate @customers, theme: 'twitter-bootstrap-4' %>
+    </div>
+  </div>
+</div>
