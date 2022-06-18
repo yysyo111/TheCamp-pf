@@ -69,5 +69,7 @@ gem 'ransack'
 
 gem 'dotenv-rails'
 
+gem 'bootstrap4-kaminari-views'
+
 
 
