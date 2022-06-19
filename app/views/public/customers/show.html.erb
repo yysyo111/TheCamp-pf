@@ -1,35 +1,15 @@
-<div class="container">
-  <div class="row">
-    <div class="col-12">
-
-      <h1>会員詳細</h1>
-      <table>
-        <thead>
-          <tr>
-            <th>プロフィール画像</th>
-            <td><%= image_tag @customer.get_profile_image(100,100) %></td>
-          </tr>
-          <!--<tr>-->
-            <!--<th>会員ID</th>-->
-            <!--<td><#%= @customer.id %></td>-->
-          <!--</tr>-->
-          <tr>
-            <th>氏名</th>
-            <td><%= @customer.last_name %><%= @customer.first_name %></td>
-          </tr>
-          <tr>
-            <th>自己紹介文</th>
-            <td><%= @customer.introduction %></td>
-          </tr>
-          <tr>
-            <th>メールアドレス</th>
-            <td><%= @customer.email %></td>
-          </tr>
-        </thead>
-      </table>
-      <%= link_to "戻る", customers_path, class: "btn btn-success" %>
+<h4 class="text-center">会員詳細</h4>
+<div class="container d-flex justify-content-center">
+  <div class="card h-100" style="width: 350px;">
+    <div class="img"><%= image_tag @customer.get_profile_image(1000,1000), class: "show-img p-2" %></div>
+    <div class="card-body">
+      <h5 class="card-title">プロフィール</h5>
+      <p class="card-text">氏名：<%= @customer.last_name %><%= @customer.first_name %></p>
+      <p class="card-text">自己紹介:<%= @customer.introduction %></p>
+      <p class="card-text">メールアドレス：<%= @customer.email %></p>
+      <%= link_to "戻る", customers_path, class: "btn btn-info" %>
       <% if @customer.email != "guest@example.com" %>
-        <%= link_to "プロフィールを編集する", edit_customer_path(@customer.id), class: "btn btn-success" %>
+        <%= link_to "プロフィールを編集する", edit_customer_path(@customer.id), class: "btn btn-info" %>
       <% end %>
     </div>
   </div>

@@ -1,28 +1,28 @@
-<div class="container">
-  <div class="row">
-    <h1>会員一覧</h1>
+<div class="container my-3 px-5">
+  <h4 class="text-center my-3">会員一覧</h4>
+  <div class="row px-5">
     <table class="table">
       <thead>
         <tr>
-          <th>プロフィール画像</th>
+          <th class="col-2">プロフィール</th>
           <!--<th>会員ID</th>-->
-          <th>氏名</th>
-          <th>メールアドレス</th>
+          <th class="col-2"></th>
+          <th class="col-8"></th>
         </tr>
       </thead>
       <tbody>
         <% @customers.each do |customer| %>
           <% if customer.is_deleted == false %>
         <tr>
-          <td><%= image_tag customer.get_profile_image(100,100) %></td>
+          <td class="col-2"><%= image_tag customer.get_profile_image(70,70) %></td>
           <!--<td><%#= customer.id %></td>-->
-          <td><%= customer.last_name %><%= customer.first_name %></td>
-          <td><%= customer.email %></td>
+          <td class="col-2 align-middle"><%= customer.last_name %><%= customer.first_name %></td>
           <% if customer.email != "guest@example.com" %>
             <% if current_customer.id == customer.id %>
-              <td><%= link_to "詳細へ", customer_path(customer.id), class: "btn btn-success" %></td>
+              <td><%= link_to "詳細", customer_path(customer.id), class: "btn btn-info my-3" %></td>
             <% end %>
           <% end %>
+          <td class="col-8"></td>
         </tr>
           <% end %>
         <% end %>

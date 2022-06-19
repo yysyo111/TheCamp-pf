@@ -4,7 +4,7 @@ class Public::CustomersController < ApplicationController
   before_action :ensure_guest_user, only: [:edit, :show]
 
   def index
-    @customers = Customer.all.page(params[:page]).per(3)
+    @customers = Customer.all.page(params[:page]).per(5)
   end
 
   def show
