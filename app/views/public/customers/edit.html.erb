@@ -1,63 +1,54 @@
-<div class="container">
-  <div class="row mx-5 px-5">
+<div class="container ">
+  <h4 lass="text-center">会員編集</h4>
+  <% if @customer.errors.any? %>
+  <div id="error_explanation">
+    <h3><%= pluralize(@customer.errors.count, "") %> 件のエラーが出ました</h3>
+    <ul>
+      <% @customer.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
+  <div class="row">
     <div class="col-12">
-      <% if @customer.errors.any? %>
-      <div id="error_explanation">
-        <h3><%= pluralize(@customer.errors.count, "") %> 件のエラーが出ました</h3>
-        <ul>
-          <% @customer.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-        </ul>
+      <%= form_with model: @customer, url: customer_path(@customer.id), method: :patch do |f| %>
+
+      <div class="field">
+        <span>画像</span>
+        <%= f.file_field :profile_image, accept: "image/*" %>
+      </div>
+
+      <div class="field">
+        <span>氏名</span>
+         <%= f.text_field :last_name %>
+      　 <%= f.text_field :first_name %>
+      </div>
+
+      <div class="field">
+      　<span>フリガナ</span>
+      　  <%= f.text_field :last_name_kana %>
+      　 <%= f.text_field :first_name_kana %>
+      </div>
+
+      <div class="field">
+      　<span>自己紹介文</span>
+      　<%= f.text_area :introduction %>
+      </div>
+
+      <div class="field">
+      　<span>メールアドレス</span>
+      　<%= f.email_field :email, autocomplete: "email" %>
+      </div>
+
+      <div class="actions">
+      　<%= f.submit "編集内容を保存", class: "btn btn-info my-2" %>
+      </div>
+
+      <div class="actions">
+      　<%= link_to "退会する", customers_unsubscribe_path, class: "btn btn-info my-2" %>
       </div>
       <% end %>
-    <div>
-  <div>
-</div>
-
-<div class="container">
-  <div class="row">
-    <div class="px-5 mx-5">
-      <div class="mx-3"><h3 class="mb-5">会員編集</h3></div>
-      <div class="row mx-5 px-5">
-        <div class="col-12">
-          <%= form_with model: @customer, url: customer_path(@customer.id), method: :patch do |f| %>
-
-          <div class="field">
-            <div class="col-6">画像</div>
-            <div class="col-6"><%= f.file_field :profile_image, accept: "image/*" %></div>
-          </div>
-
-          <div class="field">
-            <div class="col-6">氏名</div>
-          　<div class="col-6"><%= f.text_field :last_name %><%= f.text_field :first_name %></div>
-          </div>
-
-          <div class="field">
-          　<div class="col-6">フリガナ</div>
-          　<div class="col-6"><%= f.text_field :last_name_kana %><%= f.text_field :first_name_kana %></div>
-          </div>
-
-          <div class="field">
-          　<div class="col-6">自己紹介文</div>
-          　<div class="col-6"><%= f.text_area :introduction %></div>
-          </div>
-
-          <div class="field">
-          　<div class="col-6">メールアドレス</div>
-          　<div class="col-6"><%= f.email_field :email, autocomplete: "email" %></div>
-          </div>
-
-          <div class="actions">
-          　<%= f.submit "編集内容を保存", class: "btn btn-success col-4 offset-2" %>
-          </div>
-
-          <div class="actions">
-          　<%= link_to "退会する", customers_unsubscribe_path, class: "btn btn-success col-4 offset-2" %>
-          </div>
-          <% end %>
-        </div>
-      </div>
     </div>
   </div>
 </div>
