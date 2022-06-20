@@ -7,10 +7,10 @@
       <p class="card-text">氏名：<%= @customer.last_name %><%= @customer.first_name %></p>
       <p class="card-text">自己紹介:<%= @customer.introduction %></p>
       <p class="card-text">メールアドレス：<%= @customer.email %></p>
-      <%= link_to "戻る", customers_path, class: "btn btn-info" %>
       <% if @customer.email != "guest@example.com" %>
-        <%= link_to "プロフィールを編集する", edit_customer_path(@customer.id), class: "btn btn-info my-2" %>
+        <%= link_to "プロフィールを編集する", edit_customer_path(@customer.id), class: "btn btn-info my-2 d-flex justify-content-center" %>
       <% end %>
+      <%= link_to "戻る", customers_path, class: "btn btn-info d-flex justify-content-center" %>
     </div>
   </div>
 </div>
