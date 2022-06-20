@@ -79,3 +79,14 @@ footer{
 .pagination>li>a:hover {
   border-radius: 15px;    /*角を丸くする*/
 }
+
+.comment-img {
+  height: 100%;
+  width: 100%;
+}
+
+#profile-image {
+  height: 300px;
+  width: 300px;
+  border-radius: 10px;
+}
