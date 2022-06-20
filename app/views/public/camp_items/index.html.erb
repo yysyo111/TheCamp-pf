@@ -32,12 +32,29 @@
           <div class="card-body">
             <div id="camp_item_<%= camp_item.id %>">
             <h5 class="card-title"><%= link_to camp_item.name, camp_item_path(camp_item.id) %></h5>  <!--アイテムの名前とshowページへのリンク-->
+            <!--レビュー表示-->
+            <div id="rate_<%= camp_item.id %>" class="form-group"></div>
+            <script>
+            // $(document).on('turbolinks:load', function() {
+            // ターボリンクはいらない
+              $('#rate_<%= camp_item.id %>').empty();
+              $('#rate_<%= camp_item.id %>').raty({
+                size: 20,
+                starOff:  '<%= asset_path('star-off.png') %>',
+                starOn : '<%= asset_path('star-on.png') %>',
+                starHalf: '<%= asset_path('star-half.png') %>',
+                half: true,
+                readOnly: true,
+                score: <%= camp_item.rate %>
+              });
+            // });
+            </script>
+            <!--レビュー表示-->
             <!--いいね機能非同期-->
             <div class="favorite-btn">
               <%= render 'public/camp_item_favorites/favorite-btn', camp_item: camp_item %>
             </div>
             <!--いいね機能非同期-->
-            <%#= image_tag camp_item.customer.get_profile_image(50, 50) %><!--プロフィール画像と名前-->
             投稿者：<%= camp_item.customer.last_name %><%= camp_item.customer.first_name %><br> <!--プロフィール画像と名前-->
             感想：<%= camp_item.impression %><br> <!--感想-->
             <!--タグ検索-->

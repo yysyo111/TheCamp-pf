@@ -20,16 +20,29 @@
           <div class="card-body">
             <div id="camp_<%= camp.id %>">
             <h5 class="card-title"><%= link_to camp.name, camp_path(camp.id) %></h5>
+            <!--星の平均-->
+            <% if camp.get_camp_review_avg != -1 %>
+              <div id="star_rate_<%= camp.id %>" class="form-group"></div>
+              <script>
+              // ターボリンクはいらない
+                // $('#rate_<%#= @camp.get_camp_review_avg %>').empty();
+                $('#star_rate_<%= camp.id %>').raty({
+                  size: 20,
+                  starOff:  '<%= asset_path('star-off.png') %>',
+                  starOn : '<%= asset_path('star-on.png') %>',
+                  starHalf: '<%= asset_path('star-half.png') %>',
+                  half: true,
+                  readOnly: true,
+                  score: <%= camp.get_camp_review_avg %>
+                });
+              </script>
+            <% end %>
+            <!--星の平均-->
             <!--いいね機能非同期-->
             <div class="favorite-btn">
               <%= render 'public/camp_favorites/favorite-btn', camp: camp %>
             </div>
             <!--いいね機能非同期-->
-            <!--星の平均-->
-            <% if camp.get_camp_review_avg != -1 %>
-              レビュー：<%= camp.get_camp_review_avg %>点<br>
-            <% end %>
-            <!--星の平均-->
             電話番号：<%= camp.phone_number %><br>
             エリア：<%= camp.area_i18n %><br>
             住所：<%= camp.address %><br>
