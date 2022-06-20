@@ -37,14 +37,14 @@
               <%= render 'public/camp_item_favorites/favorite-btn', camp_item: camp_item %>
             </div>
             <!--いいね機能非同期-->
-            <%= image_tag camp_item.customer.get_profile_image(100, 100) %> <!--プロフィール画像と名前-->
-            <%= camp_item.customer.last_name %><%= camp_item.customer.first_name %><br> <!--プロフィール画像と名前-->
-            <%= simple_format(camp_item.impression) %> <!--感想-->
+            <%#= image_tag camp_item.customer.get_profile_image(50, 50) %><!--プロフィール画像と名前-->
+            投稿者：<%= camp_item.customer.last_name %><%= camp_item.customer.first_name %><br> <!--プロフィール画像と名前-->
+            感想：<%= camp_item.impression %><br> <!--感想-->
             <!--タグ検索-->
             <% camp_item.tags.each do |tag| %>
               タグ：<%= tag.name %>
             <% end %>
-          <!--ここまでタグ検索-->
+            <!--ここまでタグ検索-->
             </div>
           </div>
         </div>
