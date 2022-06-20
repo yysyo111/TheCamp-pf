@@ -1,1 +1,50 @@
-<h1>ようこそ!TheCampへ!</h1>
+<div class="container">
+  <h4 class="text-center">ようこそ!TheCampへ!</h4>
+  <h6 class="text-center">ログイン後にキャンプ場の詳細を確認できます。</h6>
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    <% @camps.each do |camp| %>
+      <div class="col">
+        <div class="card h-100">
+          <div id="camp-img">
+            <%= image_tag camp.get_camp_image(500, 500), class: "camp-index-img p-2" %>
+          </div>
+          <div class="card-body">
+            <div id="camp_<%= camp.id %>">
+            <h5 class="card-title"><%= link_to camp.name, camp_path(camp.id) %></h5>
+            <!--星の平均-->
+            <% if camp.get_camp_review_avg != -1 %>
+              <div id="star_rate_<%= camp.id %>" class="form-group"></div>
+              <script>
+              // ターボリンクはいらない
+                // $('#rate_<%#= @camp.get_camp_review_avg %>').empty();
+                $('#star_rate_<%= camp.id %>').raty({
+                  size: 20,
+                  starOff:  '<%= asset_path('star-off.png') %>',
+                  starOn : '<%= asset_path('star-on.png') %>',
+                  starHalf: '<%= asset_path('star-half.png') %>',
+                  half: true,
+                  readOnly: true,
+                  score: <%= camp.get_camp_review_avg %>
+                });
+              </script>
+            <% end %>
+            <!--星の平均-->
+            電話番号：<%= camp.phone_number %><br>
+            エリア：<%= camp.area_i18n %><br>
+            住所：<%= camp.address %><br>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-12 d-flex justify-content-center my-2">
+      <!--ページネーション-->
+      <%= paginate @camps, theme: 'twitter-bootstrap-4' %>
+    </div>
+  </div>
+</div>

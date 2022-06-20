@@ -1,8 +1,6 @@
 class Public::HomesController < ApplicationController
-    
+
   def top
-  end
-    
-  def about 
+    @camps = Camp.all.page(params[:page]).per(3)
   end
 end

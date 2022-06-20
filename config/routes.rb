@@ -19,7 +19,7 @@ Rails.application.routes.draw do
 
     # homes
     root to: 'homes#top'
-    get '/about' => 'homes#about', as: 'about'
+    # get '/about' => 'homes#about', as: 'about'
 
     # camp_items
     resources :camp_items do
