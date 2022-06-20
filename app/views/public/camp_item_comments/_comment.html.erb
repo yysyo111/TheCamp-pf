@@ -2,8 +2,11 @@
   <%= image_tag camp_item_comment.customer.get_profile_image(100,100) %><br>
   投稿者：<%= camp_item_comment.customer.last_name %><%= camp_item_comment.customer.first_name %><br>
   コメント内容：<%= camp_item_comment.comment %><br>
-  投稿日：<%= camp_item_comment.created_at.strftime('%Y/%m/%d') %>
+  投稿日：<%= camp_item_comment.created_at.strftime('%Y/%m/%d') %><br>
   <% if camp_item_comment.customer == current_customer %>
     <%= link_to "削除", camp_item_camp_item_comment_path(camp_item_comment.camp_item, camp_item_comment), method: :delete, remote: true, class: "btn btn-info" %><br>
+  <% end %>
+  <% if admin_signed_in? %>
+   <%= link_to "詳細へ", admin_camp_item_camp_item_comment_path(camp_item_comment.id), class: "btn btn-success"  %><br>
   <% end %>
 <% end %>
