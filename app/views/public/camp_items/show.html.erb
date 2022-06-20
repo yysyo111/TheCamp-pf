@@ -30,9 +30,11 @@
       <div id="comments_number">
         <%= render 'public/camp_item_comments/number', camp_item: @camp_item %>
       </div>
-    <%= link_to "削除", camp_item_path(@camp_item.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-info" %>
     <%= link_to "戻る", camp_items_path, class: "btn btn-info" %>
-    <%= link_to "編集", edit_camp_item_path(@camp_item.id), class: "btn btn-info" %>
+    <% if @camp_item.customer == current_customer %>
+      <%= link_to "削除", camp_item_path(@camp_item.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-info" %>
+      <%= link_to "編集", edit_camp_item_path(@camp_item.id), class: "btn btn-info" %>
+    <% end %>
     </div>
     <!--コメント機能非同期通信-->
     <div class="col-md-6">
