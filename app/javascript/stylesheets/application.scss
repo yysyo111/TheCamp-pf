@@ -15,8 +15,13 @@
   width: 100%;
 }
 
+#profile-img {
+  height: 200px;
+  border-radius: 10px;
+}
+
 main {
-  height: 90vh;
+  height: 100vh;
 }
 
 footer{
@@ -27,6 +32,9 @@ footer{
 }
 
 .size{
-  color: #00CC00; /*緑色にする*/
+  color: #00AA00; /*緑色にする*/
 }
 
+.navbar {
+  background-color: #00AA00;
+}

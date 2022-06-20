@@ -1,54 +1,56 @@
-<div class="container ">
-  <h4 lass="text-center">会員編集</h4>
-  <% if @customer.errors.any? %>
-  <div id="error_explanation">
-    <h3><%= pluralize(@customer.errors.count, "") %> 件のエラーが出ました</h3>
-    <ul>
-      <% @customer.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-    </ul>
-  </div>
-  <% end %>
+<div class="container d-flex justify-content-center">
   <div class="row">
     <div class="col-12">
-      <%= form_with model: @customer, url: customer_path(@customer.id), method: :patch do |f| %>
+    <% if @customer.errors.any? %>
+    <div id="error_explanation">
+      <h3><%= pluralize(@customer.errors.count, "") %> 件のエラーが出ました</h3>
+      <ul>
+        <% @customer.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+    <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+    <h4 class="text-center">会員編集</h4>
+  </div>
+  <div class="row">
+    <div class="col-12">
+    <%= form_with model: @customer, url: customer_path(@customer.id), method: :patch do |f| %>
 
-      <div class="field">
-        <span>画像</span>
-        <%= f.file_field :profile_image, accept: "image/*" %>
+      <div class="form-group row">
+        <label class="col-md-4 col-form-label">画像</label>
+        <div class="col-md-8"><%= f.file_field :profile_image, accept: "image/*", class: "w-100" %></div>
       </div>
 
-      <div class="field">
-        <span>氏名</span>
-         <%= f.text_field :last_name %>
-      　 <%= f.text_field :first_name %>
+      <div class="form-group row">
+        <label class="col-md-4 col-form-label">氏名</label>
+        <div class="col-md-8"><%= f.text_field :last_name, autofocus: true, placeholder: "田中", size: 25 %><%= f.text_field :first_name, placeholder: "太朗", size: 25 %></div>
       </div>
 
-      <div class="field">
-      　<span>フリガナ</span>
-      　  <%= f.text_field :last_name_kana %>
-      　 <%= f.text_field :first_name_kana %>
+      <div class="form-group row">
+        <label class="col-md-4 col-form-label">フリガナ</label>
+        <div class="col-md-8"><%= f.text_field :last_name_kana, autofocus: true, placeholder: "タナカ", size: 25 %><%= f.text_field :first_name_kana, placeholder: "タロウ", size: 25 %></div>
       </div>
 
-      <div class="field">
-      　<span>自己紹介文</span>
-      　<%= f.text_area :introduction %>
+      <div class="form-group row">
+        <label class="col-md-4 col-form-label">自己紹介</label>
+        <div class="col-md-8"><%= f.text_area :introduction %></div>
       </div>
 
-      <div class="field">
-      　<span>メールアドレス</span>
-      　<%= f.email_field :email, autocomplete: "email" %>
+      <div class="form-group row">
+        <label class="col-md-4 col-form-label">メールアドレス</label>
+        <div class="col-md-8"><%= f.email_field :email, autocomplete: "email" %></div>
       </div>
 
-      <div class="actions">
-      　<%= f.submit "編集内容を保存", class: "btn btn-info my-2" %>
+     <div class="form-group" align="center">
+        <%= f.submit "編集内容を保存", class: "btn btn-info" %>
+        <%= link_to "退会する", customers_unsubscribe_path, class: "btn btn-info" %>
       </div>
-
-      <div class="actions">
-      　<%= link_to "退会する", customers_unsubscribe_path, class: "btn btn-info my-2" %>
-      </div>
-      <% end %>
+    <% end %>
     </div>
   </div>
 </div>

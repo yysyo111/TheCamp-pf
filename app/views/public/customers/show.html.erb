@@ -1,7 +1,7 @@
 <h4 class="text-center">会員詳細</h4>
 <div class="container d-flex justify-content-center">
-  <div class="card h-100" style="width: 350px;">
-    <div class="img"><%= image_tag @customer.get_profile_image(1000,1000), class: "show-img p-2" %></div>
+  <div class="card h-100" style="width: 300px;">
+    <div id="profile-img"><%= image_tag @customer.get_profile_image(1000,1000), class: "show-img p-2" %></div>
     <div class="card-body">
       <h5 class="card-title">プロフィール</h5>
       <p class="card-text">氏名：<%= @customer.last_name %><%= @customer.first_name %></p>
@@ -9,7 +9,7 @@
       <p class="card-text">メールアドレス：<%= @customer.email %></p>
       <%= link_to "戻る", customers_path, class: "btn btn-info" %>
       <% if @customer.email != "guest@example.com" %>
-        <%= link_to "プロフィールを編集する", edit_customer_path(@customer.id), class: "btn btn-info" %>
+        <%= link_to "プロフィールを編集する", edit_customer_path(@customer.id), class: "btn btn-info my-2" %>
       <% end %>
     </div>
   </div>
