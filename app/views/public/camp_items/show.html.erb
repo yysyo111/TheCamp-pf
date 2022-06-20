@@ -1,68 +1,42 @@
+
 <div class="container">
-<h3 class="text-center">キャンプアイテム詳細</h3>
+<h5>キャンプアイテム詳細</h5>
   <div class="row">
-    <div class="col-6">
-      <table>
-        <tbody>
-          <tr>
-            <td><%= image_tag @camp_item.get_camp_item_image(200, 200) %></td>
-          </tr>
-          <tr>
-            <td>投稿者:</td>
-            <td><%= @camp_item.customer.last_name %><%= @camp_item.customer.first_name %></td>
-          </tr>
-          <tr>
-            <td>キャンプアイテム:</td>
-            <td><%= @camp_item.name %></td>
-          </tr>
-          <tr>
-            <td>感想:</td>
-            <td><%= @camp_item.impression %></td>
-          </tr>
-          <tr>
-            <!--タグ表示-->
-            <td>タグ：</td>
-            <td>
-              <% @camp_item.tags.each do |tag| %>
-                <%= tag.name %>
-              <% end %>
-            </td>
-            <!--タグ表示ここまで-->
-          </tr>
-          <tr>
-            <td>投稿日:</td>
-            <td><%= @camp_item.created_at.strftime('%Y/%m/%d') %></td>
-          </tr>
-          <tr>
-            <td><%= link_to "削除", camp_item_path(@camp_item.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-success" %></td>
-            <td><%= link_to "戻る", camp_items_path, class: "btn btn-success" %></td>
-            <td><%= link_to "編集", edit_camp_item_path(@camp_item.id), class: "btn btn-success" %></td>
-          </tr>
-          <tr>
-            <td>
-              <!--星の表示-->
-              <h4 class="mb-3">評価：<%= @camp_item.rate %></h4>
-              <div id="rate_<%= @camp_item.id %>" class="form-group"></div>
-              <!--ここまで星表示の記述-->
-            </td>
-          </tr>
-          <!--いいね機能の非同期通信-->
-          <tr id="camp_item_<%= @camp_item.id %>" >
-            <td class="favorite-btn">
-              <%= render 'public/camp_item_favorites/favorite-btn', camp_item: @camp_item %>
-            </td>
-          </tr>
-          <tr>
-            <!--コメント機能非同期通信-->
-            <td id="comments_number">
-              <%= render 'public/camp_item_comments/number', camp_item: @camp_item %>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+    <div class="col-md-6">
+      <div><%= image_tag @camp_item.get_camp_item_image(200, 200) %></div>
+      <div><%= @camp_item.name %></div>
+      <div>
+        <!--星の表示-->
+        <div id="rate_<%= @camp_item.id %>" class="form-group"></div>
+        <!--ここまで星表示の記述-->
+      </div>
+      <!--いいね機能の非同期通信-->
+      <div id="camp_item_<%= @camp_item.id %>" >
+        <div class="favorite-btn">
+          <%= render 'public/camp_item_favorites/favorite-btn', camp_item: @camp_item %>
+        </div>
+      </div>
+      <div>投稿者:<%= @camp_item.customer.last_name %><%= @camp_item.customer.first_name %></div>
+      <div>感想:<%= @camp_item.impression %></div>
+      <!--タグ表示-->
+      <div>
+        <% @camp_item.tags.each do |tag| %>
+          タグ：<%= tag.name %>
+        <% end %>
+      </div>
+      <!--タグ表示ここまで-->
+      <div>投稿日:<%= @camp_item.created_at.strftime('%Y/%m/%d') %></div>
+      <p>評価<%= @camp_item.rate %>点</p>
+      <!--コメント機能非同期通信-->
+      <div id="comments_number">
+        <%= render 'public/camp_item_comments/number', camp_item: @camp_item %>
+      </div>
+    <%= link_to "削除", camp_item_path(@camp_item.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-info" %>
+    <%= link_to "戻る", camp_items_path, class: "btn btn-info" %>
+    <%= link_to "編集", edit_camp_item_path(@camp_item.id), class: "btn btn-info" %>
     </div>
     <!--コメント機能非同期通信-->
-    <div class="col-6">
+    <div class="col-md-6">
       <div id="comments_area">
         <%= render 'public/camp_item_comments/comment', camp_item: @camp_item %>
       </div>
@@ -70,13 +44,12 @@
       <div id="comments_form">
         <%= form_with model: [@camp_item, @camp_item_comment], local: false do |f| %>
           <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
-          <%= f.submit "送信する", class: "btn btn-success" %>
+          <%= f.submit "送信する", class: "btn btn-info" %>
         <% end %>
       </div>
     </div>
   </div>
 </div>
-
 
 <script>
 // $(document).on('turbolinks:load', function() {
@@ -93,4 +66,3 @@
   });
 // });
 </script>
-
