@@ -1,38 +1,25 @@
-<h1>管理者側会員詳細</h1>
-<h1>会員詳細</h1>
-<table>
-  <thead>
-    <tr>
-      <th>プロフィール画像</th>
-      <th><%= image_tag @customer.get_profile_image(100,100) %></th>
-    </tr>
-    <tr>
-      <th>会員ID</th>
-      <th><%= @customer.id %></th>
-    </tr>
-    <tr>
-      <th>氏名</th>
-      <th><%= @customer.last_name %><%= @customer.first_name %></th>
-    </tr>
-    <tr>
-      <th>自己紹介文</th>
-      <th><%= @customer.introduction %></th>
-    </tr>
-    <tr>
-      <th>メールアドレス</th>
-      <th><%= @customer.email %></th>
-    </tr>
-    <tr>
-      <th>会員ステータス</th>
-      <th>
+<h4 class="text-center">管理者側会員詳細</h4>
+<div class="container d-flex justify-content-center">
+  <div class="card h-100" style="width: 300px;">
+    <div id="profile-img"><%= image_tag @customer.get_profile_image(1000,1000), class: "show-img p-2" %></div>
+    <div class="card-body">
+      <h5 class="card-title">プロフィール</h5>
+      <p class="card-text">会員ID：<%= @customer.id %></p>
+      <p class="card-text">氏名：<%= @customer.last_name %><%= @customer.first_name %></p>
+      <p class="card-text">自己紹介:<%= @customer.introduction %></p>
+      <p class="card-text">メールアドレス：<%= @customer.email %></p>
+      <p class="card-text">
+        会員ステータス：
         <% if @customer.is_deleted == false %>
           有効
         <% else %>
           退会済み
         <% end %>
-      </th>
-    </tr>
-  </thead>
-</table>
-<%= link_to "戻る", admin_customers_path %>
-<%= link_to "プロフィールを編集する", edit_admin_customer_path(@customer.id) %>
+      </p>
+      <% if @customer.email != "guest@example.com" %>
+        <%= link_to "プロフィールを編集する", edit_admin_customer_path(@customer.id), class: "btn btn-info my-2 d-flex justify-content-center" %>
+      <% end %>
+      <%= link_to "戻る", admin_customers_path, class: "btn btn-info d-flex justify-content-center" %>
+    </div>
+  </div>
+</div>

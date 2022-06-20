@@ -2,7 +2,8 @@ class Admin::CampItemsController < ApplicationController
   before_action :authenticate_admin!
 
   def index
-    @camp_items = CampItem.all.page(params[:page]).per(3)
+    # @camp_items = CampItem.all.page(params[:page]).per(3)
+    @camp_items = params[:tag_id].present? ? Tag.find(params[:tag_id]).camp_items.page(params[:page]).per(3): CampItem.all.page(params[:page]).per(3)
   end
 
   def show

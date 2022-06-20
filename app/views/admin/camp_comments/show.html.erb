@@ -1,8 +1,8 @@
-<div class="container">
+<h5 class="text-center">キャンプ場口コミ詳細</h5>
+<div class="container d-flex justify-content-center">
   <div class="row">
     <div class="col-12">
-      <h3 class="text-center">キャンプ場口コミ詳細</h3>
-      <%= image_tag @camp_comment.customer.get_profile_image(100,100) %>
+      <%= image_tag @camp_comment.customer.get_profile_image(100,100) %><br>
       コメント者：<%= @camp_comment.customer.last_name %><%= @camp_comment.customer.first_name %><br>
       タイトル：<%= @camp_comment.title %><br>
       コメント内容：<%= @camp_comment.comment %><br>
@@ -25,7 +25,7 @@
         })
       // });
       </script>
-      <%= link_to "削除する", admin_camp_camp_comment_path(@camp_comment.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-success" %>
+      <%= link_to "削除する", admin_camp_camp_comment_path(@camp_comment.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-info" %>
     </div>
   </div>
 </div>

@@ -1,40 +1,50 @@
-<h1>キャンプアイテム一覧</h1>
-<table>
-  <thead>
-    <tr>
-      <th>投稿者</th>
-      <th>アイテム画像</th>
-      <th>アイテム名</th>
-      <th>感想</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
+<div class="container">
+  <h4 class="text-center">管理者キャンプアイテム一覧</h4>
+  <div class="row">
+    <div class="col-9"></div>
+    <div class="col-2 my-3">
+    <!--タグ検索窓-->
+      <%= form_tag admin_camp_items_path, method: :get, class: 'boards__searchForm' do %>
+        <%= select_tag :tag_id, options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]),
+           {
+             prompt: 'アイテムを絞り込む',
+             onchange: 'submit(this.form);'
+           }
+        %>
+      <% end %>
+    </div>
+    <!--タグ検索窓-->
+  </div>
+  <div class="row row-cols-1 row-cols-md-3 g-4">
     <% @camp_items.each do |camp_item| %>
-    <tr id="camp_item_<%= camp_item.id %>" >
-      <td>
-        <%= link_to admin_customer_path(camp_item.customer.id ) do %>
-        <%= image_tag camp_item.customer.get_profile_image(100, 100) %><br>
-        <%= camp_item.customer.last_name %><%= camp_item.customer.first_name %>
-        <% end %>
-      </td>
-      <td>
-        <%= link_to admin_camp_item_path(camp_item.id) do %>
-          <%= image_tag camp_item.get_camp_item_image(100, 100) %>
-        <% end %>
-      </td>
-      <td><%= camp_item.name %></td>
-      <td><%= simple_format(camp_item.impression) %></td>
-      <!--キャンプアイテムのいいねカウント-->
-      <td>いいね数:<%= camp_item.camp_item_favorites.count %></td>
-      <td>コメント件数：<%= camp_item.camp_item_comments.count %></td>
-      <td><%= link_to "詳細へ", admin_camp_item_path(camp_item.id), class: "btn btn-success" %></td>
-    </tr>
+      <div class="col">
+        <div class="card h-100">
+          <div id="img">
+            <%= image_tag camp_item.get_camp_item_image(250, 250), class: "index-img p-2" %>  <!--アイテム画像-->
+          </div>
+          <div class="card-body">
+            <div id="camp_item_<%= camp_item.id %>">
+            <h5 class="card-title"><%= link_to camp_item.name, admin_camp_item_path(camp_item.id) %></h5>  <!--アイテムの名前とshowページへのリンク-->
+            <%#= image_tag camp_item.customer.get_profile_image(50, 50) %><!--プロフィール画像と名前-->
+            投稿者：
+            <%= link_to admin_customer_path(camp_item.customer.id ) do %>
+            <%= camp_item.customer.last_name %><%= camp_item.customer.first_name %><br>
+            <% end %><!--プロフィール画像と名前-->
+            感想：<%= camp_item.impression %><br> <!--感想-->
+            いいね数:<%= camp_item.camp_item_favorites.count %><br>
+            コメント件数：<%= camp_item.camp_item_comments.count %><br>
+            <!--タグ検索-->
+            <% camp_item.tags.each do |tag| %>
+              タグ：<%= tag.name %>
+            <% end %>
+            <!--ここまでタグ検索-->
+            </div>
+          </div>
+        </div>
+      </div>
     <% end %>
-  </tbody>
-</table>
+  </div>
+</div>
 
 <div class="container">
   <div class="row">

@@ -1,38 +1,64 @@
-<!--エラーメッセージ-->
-<% if @customer.errors.any? %>
-<div id="error_explanation">
-  <h3><%= pluralize(@customer.errors.count, "") %> 件のエラーが出ました</h3>
-  <ul>
-    <% @customer.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
+<div class="container d-flex justify-content-center">
+  <div class="row">
+    <div class="col-12">
+    <% if @customer.errors.any? %>
+    <div id="error_explanation">
+      <h3><%= pluralize(@customer.errors.count, "") %> 件のエラーが出ました</h3>
+      <ul>
+        <% @customer.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
     <% end %>
-  </ul>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+    <h4 class="text-center">管理者側会員編集</h4>
+  </div>
+  <div class="row">
+    <div class="col-12">
+    <%= form_with model: @customer, url: admin_customer_path(@customer.id), method: :patch do |f| %>
+
+      <div class="form-group row">
+        <label class="col-md-4 col-form-label">会員ID：<%= @customer.id %></label>
+      </div>
+
+      <div class="form-group row">
+        <label class="col-md-4 col-form-label">画像</label>
+        <div class="col-md-8"><%= f.file_field :profile_image, accept: "image/*", class: "w-100" %></div>
+      </div>
+
+      <div class="form-group row">
+        <label class="col-md-4 col-form-label">氏名</label>
+        <div class="col-md-8"><%= f.text_field :last_name, autofocus: true, placeholder: "姓", size: 25, class: "my-2" %><%= f.text_field :first_name, placeholder: "名", size: 25 %></div>
+      </div>
+
+      <div class="form-group row">
+        <label class="col-md-4 col-form-label">フリガナ</label>
+        <div class="col-md-8"><%= f.text_field :last_name_kana, autofocus: true, placeholder: "セイ", size: 25, class: "my-2" %><%= f.text_field :first_name_kana, placeholder: "メイ", size: 25 %></div>
+      </div>
+
+      <div class="form-group row">
+        <label class="col-md-4 col-form-label">自己紹介</label>
+        <div class="col-md-8"><%= f.text_area :introduction, placeholder: "初めまして", size: 25 %></div>
+      </div>
+
+      <div class="form-group row">
+        <label class="col-md-4 col-form-label">メールアドレス</label>
+        <div class="col-md-8"><%= f.email_field :email, autocomplete: "email", placeholder: "test@example.com", size: 25  %></div>
+      </div>
+
+      <div class="form-group row">
+        <label class="col-md-4 col-form-label">会員ステータス</label>
+        <div class="col-md-8"><%= f.radio_button :is_deleted, false %>有効<%= f.radio_button :is_deleted, true %>退会</div>
+      </div>
+
+     <div class="form-group" align="center">
+        <%= f.submit "編集内容を保存", class: "btn btn-info" %>
+      </div>
+    <% end %>
+    </div>
+  </div>
 </div>
-<% end %>
-<!--エラーメッセージ-->
-<h1>管理者側会員編集</h1>
-<h1>会員編集</h1>
-<%= form_with model: @customer, url: admin_customer_path(@customer.id), method: :patch do |f| %>
-
-  <label>会員ID</label>
-  <label><%= @customer.id %></label>
-
-  <h4>氏名</h4>
-　<%= f.text_field :last_name %>
-　<%= f.text_field :first_name %>
-
-　<h4>フリガナ</h4>
-　<%= f.text_field :last_name_kana %>
-　<%= f.text_field :first_name_kana %>
-
-　<h4>自己紹介文</h4>
-　<%= f.text_area :introduction %>
-
-　<h4>メールアドレス</h4>
-　<%= f.email_field :email, autocomplete: "email" %>
-
-　<h4>会員ステータス</h4>
-　<%= f.radio_button :is_deleted, false %>有効<%= f.radio_button :is_deleted, true %>退会
-
-　<%= f.submit "編集内容を保存" %>
-<% end %>

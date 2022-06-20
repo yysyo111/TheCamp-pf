@@ -1,7 +1,17 @@
 <div class="container">
+  <div class="row d-flex justify-content-center">
+  <h4 class="text-center">キャンプ場一覧</h4>
+    <div class="col-2">
+      <%= form_tag(admin_camps_path, method: "get", class: 'boards__searchForm') do %>
+        <%= select_tag :area, options_for_select(Camp.areas_i18n.invert, selected: @value), { prompt: 'エリアから選ぶ', onchange: 'submit(this.form);' } %>
+      <% end %>
+    </div>
+  </div>
   <div class="row">
-    <h4>キャンプ場一覧</h4>
-    <div class="icon ml-auto">
+    <div class="col-10"></div>
+    <!--キャンプ場のエリア絞り込み表示機能-->
+    <!--ここまで絞り込み表示機能-->
+    <div class="icon col-2">
       <%= link_to  new_admin_camp_path(@camp), style: "font-size:40px;" do %>
         <i class="fas fa-map" style="color: green;"></i>
       <% end %>
@@ -28,7 +38,7 @@
           <td><%= camp.phone_number %></td>
           <td><%= camp.area_i18n %></td>
           <td><%= camp.address %></td>
-          <td><%= link_to "詳細へ", admin_camp_path(camp.id), class: "btn btn-success" %></td>
+          <td><%= link_to "詳細へ", admin_camp_path(camp.id), class: "btn btn-info" %></td>
         </tr>
         <% end %>
       </tbody>

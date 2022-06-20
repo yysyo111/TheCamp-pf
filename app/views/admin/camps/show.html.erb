@@ -35,9 +35,9 @@
           </tr>
         </tbody>
       </table>
-      <%= link_to "戻る", admin_camps_path, class: "btn btn-success" %>
-      <%= link_to "削除", admin_camp_path(@camp.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-success" %>
-      <%= link_to "編集", edit_admin_camp_path(@camp.id), class: "btn btn-success" %>
+      <%= link_to "戻る", admin_camps_path, class: "btn btn-info" %>
+      <%= link_to "削除", admin_camp_path(@camp.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-info" %>
+      <%= link_to "編集", edit_admin_camp_path(@camp.id), class: "btn btn-info" %>
     </div>
   </div>
 </div>
@@ -79,7 +79,7 @@
           })
         // });
         </script>
-        <%= link_to "口コミ詳細へ", admin_camp_camp_comment_path(camp_comment.id), class: "btn btn-success" %><br>
+        <%= link_to "口コミ詳細へ", admin_camp_camp_comment_path(camp_comment.id), class: "btn btn-info" %><br>
       <% end %>
     </div>
   </div>
