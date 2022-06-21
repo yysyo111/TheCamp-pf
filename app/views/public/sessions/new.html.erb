@@ -1,42 +1,30 @@
-<div class="container">
-  <div class="row">
-    <div class="px-5 mx-5">
-      <div class="mx-3"><h3 class="mb-5">ログイン</h3></div>
-      <div class="row mx-5 px-5">
-        <div class="col-12">
-          <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-            <div class="field">
-              <div class="col-6"><%= f.label :メールアドレス %></div>
-              <div class="col-6"><%= f.email_field :email, autofocus: true, autocomplete: "email" %></div>
-            </div>
-
-            <div class="field">
-              <div class="col-6"><%= f.label :パスワード %></div>
-              <div class="col-6"><%= f.password_field :password, autocomplete: "current-password" %></div>
-            </div>
-
-            <% if devise_mapping.rememberable? %>
-              <div class="field">
-                <div class="col-6"><%= f.check_box :remember_me %></div>
-                <div class="col-6"><%= f.label :remember_me %></div>
-              </div>
-            <% end %>
-
-            <div class="actions">
-              <%= f.submit "ログイン", class: "btn btn-info col-4 offset-2" %>
-            </div>
-          <% end %>
-
-
-          <h5>会員登録がお済みではない方</h5>
-          <%= render "public/shared/links" %>から新規登録を行ってください。
-
-        </div>
+<div class="container d-flex justify-content-center my-4">
+  <div class="card card-container">
+    <img id="login_img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
+    <p id="profile-name" class="profile-name-card"></p>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="field">
+        <label><%= f.label :メールアドレス %></label>
+        <div><%= f.email_field :email, autofocus: true, autocomplete: "email" %></div>
       </div>
-    </div>
-  </div>
-</div>
 
+      <div class="field">
+        <label><%= f.label :パスワード %></label>
+        <div><%= f.password_field :password, autocomplete: "current-password" %></div>
+      </div>
 
+      <% if devise_mapping.rememberable? %>
+        <div class="field">
+          <div><%= f.check_box :remember_me %><%= f.label :remember_me %></div>
+        </div>
+      <% end %>
 
+      <div class="actions">
+        <%= f.submit "ログイン", class: "btn btn-info" %>
+      </div>
+    <% end %>
+    <h6 class="text-center">会員登録がお済みではない方</h6>
+    <%= render "public/shared/links" %>から新規登録を行ってください。
+  </div><!-- /card-container -->
+</div><!-- /container -->
 
