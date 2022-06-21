@@ -19,7 +19,7 @@
       <ul class="navbar-nav mr-auto ">
         <% if customer_signed_in? %>
           <li class="nav-item">
-            <%= link_to "アイテムギア一覧", camp_items_path, class: "nav-link" %>
+            <%= link_to "キャンプアイテム一覧", camp_items_path, class: "nav-link" %>
           </li>
           <li class="nav-item">
             <%= link_to "キャンプ場一覧", camps_path, class: "nav-link" %>
@@ -38,7 +38,7 @@
             <%= link_to "会員一覧", admin_customers_path, class: "nav-link" %>
           </li>
           <li class="nav-item">
-            <%= link_to "キャンプギア", admin_camp_items_path, class: "nav-link" %>
+            <%= link_to "キャンプアイテム一覧", admin_camp_items_path, class: "nav-link" %>
           </li>
           <li class="nav-item">
             <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "nav-link" %>
