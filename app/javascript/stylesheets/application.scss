@@ -176,6 +176,10 @@ input[name="tab_item"] {
   header {
   width: 100%;
   }
+
+  main {
+  height: 100%;
+ }
 }
 
 @media screen and (max-width: 768px) {
@@ -186,6 +190,10 @@ input[name="tab_item"] {
  header {
  width: 100%;
  }
+
+ main {
+  height: 100%;
+ }
 }
 
 @media screen and (max-width: 425px){
@@ -195,5 +203,9 @@ input[name="tab_item"] {
 
  header {
  width: 100%;
+ }
+
+ main {
+  height: 100%;
  }
 }

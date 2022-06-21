@@ -20,7 +20,9 @@
       <div class="col">
         <div class="card h-100">
           <div id="img">
-            <%= image_tag camp_item.get_camp_item_image(250, 250), class: "index-img p-2" %>  <!--アイテム画像-->
+            <%= link_to admin_camp_item_path(camp_item.id) do %>
+              <%= image_tag camp_item.get_camp_item_image(250, 250), class: "index-img p-2" %>  <!--アイテム画像-->
+            <% end %>
           </div>
           <div class="card-body">
             <div id="camp_item_<%= camp_item.id %>">
