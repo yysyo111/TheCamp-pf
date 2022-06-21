@@ -7,6 +7,6 @@
     <%= link_to "削除", camp_item_camp_item_comment_path(camp_item_comment.camp_item, camp_item_comment), method: :delete, remote: true, class: "btn btn-info" %><br>
   <% end %>
   <% if admin_signed_in? %>
-   <%= link_to "詳細へ", admin_camp_item_camp_item_comment_path(camp_item_comment.id), class: "btn btn-success"  %><br>
+   <%= link_to "詳細へ", admin_camp_item_camp_item_comment_path(camp_item_comment.id), class: "btn btn-info"  %><br>
   <% end %>
 <% end %>

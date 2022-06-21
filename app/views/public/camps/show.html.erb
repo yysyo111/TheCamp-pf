@@ -1,11 +1,13 @@
-<!--キャンプ場情報表示-->
-<div class="container">
-  <div class="row">
-    <div class="col-12">
-      <h4 class="text-center my-4">キャンプ場詳細</h4>
-    </div>
-  </div>
-  <div class="row">
+<div class="tabs">
+  <input id="all" type="radio" name="tab_item" checked>
+  <label class="tab_item" for="all">キャンプ詳細</label>
+  <input id="programming" type="radio" name="tab_item">
+  <label class="tab_item" for="programming">地図</label>
+  <input id="design" type="radio" name="tab_item">
+  <label class="tab_item" for="design">口コミ一覧</label>
+  <div class="tab_content" id="all_content">
+    <div class="tab_content_description">
+      <div class="row">
     <div class="col-md-6">
       <%= image_tag @camp.get_camp_image(350, 350) %>
     </div>
@@ -44,68 +46,74 @@
       <%= link_to "戻る", camps_path, class: "btn btn-info" %>
     </div>
   </div>
-</div>
-
-<!--地図表示-->
-<div class="container d-flex justify-content-center p-2">
-  <div class="row">
-    <div class="col-md-12">
-      <h5 class="text-center">Google Map</h5>
-      <div id="map"></div>  <!--#mapの表示-->
     </div>
   </div>
-</div>
-
-<!--コメント表示-->
-<div class="container my-5">
-  <h5 class="text-center">口コミ一覧</h5>
-  <div class="row row-cols-1 row-cols-md-3 g-4">
-    <% @camp_comments.each do |camp_comment| %>
-      <div class="col">
-        <div class="card h-100">
-          <div id="profile-img">
-            <%= image_tag camp_comment.customer.get_profile_image(500,500), class: "comment-img p-2" %>  <!--アイテム画像-->
-          </div>
-          <div class="card-body">
-            <div id="rate_<%= camp_comment.id %>" class="form-group"></div>
-            <script>
-            // $(document).on('turbolinks:load', function() {
-            // ターボリンクはいらない
-              $('#rate_<%= camp_comment.id %>').empty();
-              $('#rate_<%= camp_comment.id %>').raty({
-                size: 20,
-                starOff:  '<%= asset_path('star-off.png') %>',
-                starOn : '<%= asset_path('star-on.png') %>',
-                starHalf: '<%= asset_path('star-half.png') %>',
-                half: true,
-                readOnly: true,
-                score: <%= camp_comment.rate %>
-              })
-            // });
-            </script>
-            コメント者：<%= camp_comment.customer.last_name %><%= camp_comment.customer.first_name %><br>
-            タイトル：<%= camp_comment.title %><br>
-            コメント内容：<%= camp_comment.comment %><br>
-            投稿日：<%= camp_comment.created_at.strftime('%Y/%m/%d') %><br>
-            <% if camp_comment.customer == current_customer %>
-              <%= link_to "コメント削除", camp_camp_comment_path(camp_comment.camp, camp_comment), method: :delete, class: "btn btn-info" %><br>
-            <% end %>
+  <div class="tab_content" id="programming_content">
+    <div class="tab_content_description">
+      <!--地図表示-->
+      <div class="container d-flex justify-content-center p-2">
+        <div class="row">
+          <div class="col-md-12">
+            <h5 class="text-center">Google Map</h5>
+            <div id="map"></div>  <!--#mapの表示-->
           </div>
         </div>
       </div>
-    <% end %>
+    </div>
   </div>
-</div>
-<div class="container d-flex justify-content-center">
-  <%= link_to "口コミ投稿", new_camp_camp_comment_path(@camp, @camp_comment), class: "btn btn-info" %>
-</div>
-<!--コメント表示-->
-
-<div class="container">
-  <div class="row">
-    <div class="col-12 d-flex justify-content-center my-2">
-      <!--ページネーション-->
-      <%= paginate @camp_comments, theme: 'twitter-bootstrap-4' %>
+  <div class="tab_content" id="design_content">
+    <div class="tab_content_description">
+      <!--コメント表示-->
+      <div class="container">
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+          <% @camp_comments.each do |camp_comment| %>
+            <div class="col">
+              <div class="card h-100">
+                <div id="profile-img">
+                  <%= image_tag camp_comment.customer.get_profile_image(500,500), class: "comment-img p-2" %>  <!--アイテム画像-->
+                </div>
+                <div class="card-body">
+                  <div id="rate_<%= camp_comment.id %>" class="form-group"></div>
+                  <script>
+                  // $(document).on('turbolinks:load', function() {
+                  // ターボリンクはいらない
+                    $('#rate_<%= camp_comment.id %>').empty();
+                    $('#rate_<%= camp_comment.id %>').raty({
+                      size: 20,
+                      starOff:  '<%= asset_path('star-off.png') %>',
+                      starOn : '<%= asset_path('star-on.png') %>',
+                      starHalf: '<%= asset_path('star-half.png') %>',
+                      half: true,
+                      readOnly: true,
+                      score: <%= camp_comment.rate %>
+                    })
+                  // });
+                  </script>
+                  コメント者：<%= camp_comment.customer.last_name %><%= camp_comment.customer.first_name %><br>
+                  タイトル：<%= camp_comment.title %><br>
+                  コメント内容：<%= camp_comment.comment %><br>
+                  投稿日：<%= camp_comment.created_at.strftime('%Y/%m/%d') %><br>
+                  <% if camp_comment.customer == current_customer %>
+                    <%= link_to "コメント削除", camp_camp_comment_path(camp_comment.camp, camp_comment), method: :delete, class: "btn btn-info" %><br>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <div class="container d-flex justify-content-center">
+        <%= link_to "口コミ投稿", new_camp_camp_comment_path(@camp, @camp_comment), class: "btn btn-info" %>
+      </div>
+      <!--コメント表示-->
+      <div class="container">
+        <div class="row">
+          <div class="col-12 d-flex justify-content-center my-2">
+            <!--ページネーション-->
+            <%= paginate @camp_comments, theme: 'twitter-bootstrap-4' %>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -146,4 +154,3 @@
   #map { height: 300px;
          width: 1000px;}
 </style>
-
