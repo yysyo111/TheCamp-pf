@@ -61,7 +61,7 @@
             感想：<%= camp_item.impression %><br> <!--感想-->
             <!--タグ検索-->
             <% camp_item.tags.each do |tag| %>
-              タグ：<%= tag.name %>
+              ＃<%= link_to tag.name, camp_items_path(tag_id: tag.id) %>
             <% end %>
             <!--ここまでタグ検索-->
             </div>

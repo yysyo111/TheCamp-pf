@@ -15,21 +15,20 @@
           <%= render 'public/camp_item_favorites/favorite-btn', camp_item: @camp_item %>
         </div>
       </div>
-      <div>投稿者:<%= @camp_item.customer.last_name %><%= @camp_item.customer.first_name %></div>
-      <div>感想:<%= @camp_item.impression %></div>
-      <!--タグ表示-->
-      <div>
-        <% @camp_item.tags.each do |tag| %>
-          タグ：<%= tag.name %>
-        <% end %>
-      </div>
-      <!--タグ表示ここまで-->
-      <div>投稿日:<%= @camp_item.created_at.strftime('%Y/%m/%d') %></div>
-      <p>評価<%= @camp_item.rate %>点</p>
       <!--コメント機能非同期通信-->
       <div id="comments_number">
         <%= render 'public/camp_item_comments/number', camp_item: @camp_item %>
       </div>
+      <div>投稿者:<%= @camp_item.customer.last_name %><%= @camp_item.customer.first_name %></div>
+      <div>感想:<%= @camp_item.impression %></div>
+      <div>投稿日:<%= @camp_item.created_at.strftime('%Y/%m/%d') %></div>
+      <!--タグ表示-->
+      <div>
+        <% @camp_item.tags.each do |tag| %>
+          ＃<%= tag.name %>
+        <% end %>
+      </div>
+      <!--タグ表示ここまで-->
     <%= link_to "戻る", camp_items_path, class: "btn btn-info" %>
     <% if @camp_item.customer == current_customer %>
       <%= link_to "削除", camp_item_path(@camp_item.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-info" %>

@@ -55,7 +55,7 @@
             コメント件数：<%= camp_item.camp_item_comments.count %><br>
             <!--タグ検索-->
             <% camp_item.tags.each do |tag| %>
-              タグ：<%= tag.name %>
+              ＃<%= link_to tag.name, admin_camp_items_path(tag_id: tag.id) %>
             <% end %>
             <!--ここまでタグ検索-->
             <!--プロフィール-->

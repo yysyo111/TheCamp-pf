@@ -8,7 +8,7 @@ class CampItem < ApplicationRecord
   has_many :tags, through: :camp_item_tags
 
   # バリデーション
-  validates :name, :impression, presence: true
+  validates :name, :impression, :rate, presence: true
 
   def camp_item_favorited_by?(customer)
     camp_item_favorites.exists?(customer_id: customer.id)
