@@ -1,4 +1,5 @@
 class Camp < ApplicationRecord
+  extend OrderAsSpecified
 
   belongs_to :admin
   has_many :camp_comments, dependent: :destroy
@@ -13,6 +14,9 @@ class Camp < ApplicationRecord
 
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
+
+  # レビューの多い順
+  # scope :rate_count, -> {Camp.order(rate: :desc)}
 
   # enum定義(カリキュラム参考)
   enum area: { hokkaido: 0, tohoku: 1, kanto: 2, chubu: 3, kinki: 4, chugoku: 5, shikoku: 6, kyushu: 7 }

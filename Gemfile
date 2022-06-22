@@ -76,5 +76,4 @@ end
 
 gem 'bootstrap4-kaminari-views'
 
-
-
+gem 'order_as_specified'
