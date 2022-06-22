@@ -1,5 +1,6 @@
 class Camp < ApplicationRecord
   extend OrderAsSpecified
+  # (gem 'order_as_specified'というgem使用しているため、extend OrderAsSpecifiedを記述する)
 
   belongs_to :admin
   has_many :camp_comments, dependent: :destroy
