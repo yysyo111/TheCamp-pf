@@ -11,7 +11,7 @@ class Public::CampsController < ApplicationController
       avg_order_camp_ids = avg_camp_comments.sort {|a,b| b[1]<=>a[1]}.to_h.keys
       @camps = Camp.where(id: avg_order_camp_ids).order_as_specified(id: avg_order_camp_ids).page(params[:page]).per(3)
     # 評価の低い順(gem 'order_as_specified'というgem使用している)
-     elsif params[:rate_asc_count]
+    elsif params[:rate_asc_count]
       avg_camp_comments = CampComment.group(:camp_id).average(:rate)
       avg_order_camp_ids = avg_camp_comments.sort {|a,b| a[1]<=>b[1]}.to_h.keys
       @camps = Camp.where(id: avg_order_camp_ids).order_as_specified(id: avg_order_camp_ids).page(params[:page]).per(3)
