@@ -28,6 +28,7 @@ class Camp < ApplicationRecord
     camp_image.variant(resize_to_limit: [width, height]).processed
   end
 
+  # レビューの平均の記述
   def get_camp_review_avg
     avg_rate = self.camp_comments.group("camp_comments.camp_id").average("camp_comments.rate").values.first
     avg_rate.nil? ? -1 : (avg_rate * 2).round / 2.0

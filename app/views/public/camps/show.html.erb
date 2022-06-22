@@ -9,7 +9,9 @@
     <div class="tab_content_description">
       <div class="row">
     <div class="col-md-6">
-      <%= image_tag @camp.get_camp_image(350, 350) %>
+      <div id="camp-image">
+        <%= image_tag @camp.get_camp_image(350, 350), class: "camp-show-img"  %>
+      </div>
     </div>
     <div class="col-md-6">
       <div>キャンプ場名:<%= @camp.name %></div>

@@ -4,6 +4,7 @@
 .index-img {
   height: 100%;
   width: 100%;
+  border-radius: 15px ;
 }
 
 #img {
@@ -44,12 +45,33 @@ footer{
   height: 200px;
 }
 
+#camp-image{
+  height: 200px;
+  width: 300px;
+}
+
 .camp-index-img{
   height: 100%;
   width: 100%;
   border-radius: 15px ;
 }
 
+.camp-show-img{
+  height: 100%;
+  width: 100%;
+  border-radius: 5px ;
+}
+
+#camp-item-image{
+  height: 150px;
+  width: 200px;
+}
+
+.camp-item-show {
+  height: 100%;
+  width: 100%;
+  border-radius: 5px ;
+}
 
 .card {
   background:#fff;

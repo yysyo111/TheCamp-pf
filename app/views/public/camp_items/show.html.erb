@@ -2,7 +2,9 @@
 <h5 class="text-center my-3">キャンプアイテム詳細</h5>
   <div class="row">
     <div class="col-md-6">
-      <div><%= image_tag @camp_item.get_camp_item_image(200, 200) %></div>
+      <div id="camp-item-image">
+        <%= image_tag @camp_item.get_camp_item_image(500, 500), class: "camp-item-show"  %>
+      </div>
       <div><%= @camp_item.name %></div>
       <div>
         <!--星の表示-->
