@@ -9,7 +9,8 @@ class CampItem < ApplicationRecord
 
   # バリデーション
   validates :name, :impression, :rate, presence: true
-
+  
+  # いいね機能
   def camp_item_favorited_by?(customer)
     camp_item_favorites.exists?(customer_id: customer.id)
   end

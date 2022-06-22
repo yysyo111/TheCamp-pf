@@ -1,5 +1,4 @@
-<h4 class="text-center">キャンプアイテム投稿フォーム</h4>
-<div class="container d-flex justify-content-center">
+<div class="container d-flex justify-content-center my-3">
   <% if @camp_item.errors.any? %>
   <div id="error_explanation">
     <h3><%= pluralize(@camp_item.errors.count, "") %> 件のエラーが出ました</h3>
@@ -10,20 +9,22 @@
     </ul>
   </div>
   <% end %>
+</div>
+<h5 class="text-center my-3">キャンプアイテム投稿フォーム</h5>
+<div class="container d-flex justify-content-center">
   <div class="row">
     <div class="col-12">
     <%= form_with model: @camp_item do |f| %>
 
-      <h4>アイテム画像</h4>
+      <h6>アイテム画像</h6>
       <%= f.file_field :camp_item_image, accept: "image/*" %>
 
-      <h4>キャンプアイテム</h4>
+      <h6>キャンプアイテム</h6>
       <%= f.text_field :name %>
 
-      <h4>感想</h4>
+      <h6>感想</h6>
       <%= f.text_area :impression %>
 
-      <h4>星評価</h4>
       <div class="form-group" id="star">
         <%= f.label :rate, "星評価" %>
         <%#= f.hidden_field :rate, id: :review_star, class: 'form-control' %>
@@ -42,7 +43,7 @@
         <% end %>
       </div>
       <!--ここまでタグ検索機能-->
-      <%= f.submit "投稿", class: "btn btn-success" %>
+      <%= f.submit "投稿", class: "btn btn-info" %>
     <% end %>
     </div>
   </div>

@@ -17,6 +17,7 @@
           <div>電話番号:<%= @camp.phone_number %></div>
           <div>エリア:<%= @camp.area_i18n %></div>
           <div>住所:<%= @camp.address %></div>
+          <div>いいね件数：<%= @camp.camp_favorites.count %></div>
           <div>コメント件数：<%= @camp.camp_comments.count %></div>
           <div>投稿日：<%= @camp.created_at.strftime('%Y/%m/%d') %></div>
           <% if @camp.get_camp_review_avg != -1 %>

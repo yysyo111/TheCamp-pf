@@ -1,11 +1,11 @@
-<h5 class="text-center">キャンプアイテム詳細</h5>
+<h5 class="text-center my-3">キャンプアイテムの口コミ詳細</h5>
 <div class="container d-flex justify-content-center">
  <div class="row">
   <div class="col-12">
     <div>
       <%= image_tag @camp_item_comment.customer.get_profile_image(100,100) %><br>
       名前：<%= @camp_item_comment.customer.last_name %><%= @camp_item_comment.customer.first_name %><br>
-      コメント内容：<%= @camp_item_comment.comment %><br>
+      コメント内容：<%= simple_format(@camp_item_comment.comment) %><br>
       投稿日：<%= @camp_item_comment.created_at.strftime('%Y/%m/%d') %><br>
       <%= link_to "削除する", admin_camp_item_camp_item_comment_path(@camp_item_comment.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-info" %>
     </div>

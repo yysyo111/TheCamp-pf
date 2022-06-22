@@ -1,14 +1,13 @@
-<h5 class="text-center">キャンプ場口コミ詳細</h5>
+<h5 class="text-center my-3">キャンプ場口コミ詳細</h5>
 <div class="container d-flex justify-content-center">
   <div class="row">
     <div class="col-12">
       <%= image_tag @camp_comment.customer.get_profile_image(100,100) %><br>
       コメント者：<%= @camp_comment.customer.last_name %><%= @camp_comment.customer.first_name %><br>
       タイトル：<%= @camp_comment.title %><br>
-      コメント内容：<%= @camp_comment.comment %><br>
+      コメント内容：<%= simple_format(@camp_comment.comment) %><br>
       投稿日：<%= @camp_comment.created_at.strftime('%Y/%m/%d') %><br>
       <!--星の表示-->
-      <h4 class="mb-3">評価：<%= @camp_comment.rate %></h4>
       <div id="rate_<%= @camp_comment.id %>" class="form-group"></div>
       <script>
       // $(document).on('turbolinks:load', function() {

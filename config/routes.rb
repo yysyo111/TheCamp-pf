@@ -19,7 +19,6 @@ Rails.application.routes.draw do
 
     # homes
     root to: 'homes#top'
-    # get '/about' => 'homes#about', as: 'about'
 
     # camp_items
     resources :camp_items do
@@ -44,7 +43,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     # homes
-    # get '/' => 'homes#top' 
+    # get '/' => 'homes#top'
 
     # cunstomers
     resources :customers, only: [:index, :show, :edit, :update]

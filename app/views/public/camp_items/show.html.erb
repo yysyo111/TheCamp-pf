@@ -1,5 +1,5 @@
 <div class="container">
-<h5>キャンプアイテム詳細</h5>
+<h5 class="text-center my-3">キャンプアイテム詳細</h5>
   <div class="row">
     <div class="col-md-6">
       <div><%= image_tag @camp_item.get_camp_item_image(200, 200) %></div>
@@ -20,7 +20,7 @@
         <%= render 'public/camp_item_comments/number', camp_item: @camp_item %>
       </div>
       <div>投稿者:<%= @camp_item.customer.last_name %><%= @camp_item.customer.first_name %></div>
-      <div>感想:<%= @camp_item.impression %></div>
+      <div>感想:<%= simple_format(@camp_item.impression) %></div>
       <div>投稿日:<%= @camp_item.created_at.strftime('%Y/%m/%d') %></div>
       <!--タグ表示-->
       <div>
@@ -34,18 +34,18 @@
       <%= link_to "削除", camp_item_path(@camp_item.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-info" %>
       <%= link_to "編集", edit_camp_item_path(@camp_item.id), class: "btn btn-info" %>
     <% end %>
+    <!--formは固定(部分テンプレートは用意しない)-->
+    <div id="comments_form">
+      <%= form_with model: [@camp_item, @camp_item_comment], local: false do |f| %>
+        <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
+        <%= f.submit "送信する", class: "btn btn-info" %>
+      <% end %>
+    </div>
     </div>
     <!--コメント機能非同期通信-->
     <div class="col-md-6">
       <div id="comments_area">
         <%= render 'public/camp_item_comments/comment', camp_item: @camp_item %>
-      </div>
-      <!--formは固定(部分テンプレートは用意しない)-->
-      <div id="comments_form">
-        <%= form_with model: [@camp_item, @camp_item_comment], local: false do |f| %>
-          <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
-          <%= f.submit "送信する", class: "btn btn-info" %>
-        <% end %>
       </div>
     </div>
   </div>

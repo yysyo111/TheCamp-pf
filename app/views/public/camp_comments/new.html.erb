@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container d-flex justify-content-center my-3">
   <% if @camp_comment.errors.any? %>
   <div id="error_explanation">
     <h3><%= pluralize(@camp_comment.errors.count, "") %> 件のエラーが出ました</h3>
@@ -9,9 +9,9 @@
     </ul>
   </div>
   <% end %>
-  <div class="row">
-    <h3>口コミ投稿画面</h3>
-  </div>
+</div>
+<h5 class="text-center my-3">口コミ投稿画面</h5>
+<div class="container d-flex justify-content-center">
   <div class="row">
     <%= form_with(model:[@camp, @camp_comment], local: true) do |f| %>
     <table>
@@ -25,7 +25,7 @@
           <th><%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %></th>
         </tr>
         <tr>
-          <th>星評価:</th>
+          <th></th>
           <th>
             <!--星機能-->
             <div class="form-group" id="star">
