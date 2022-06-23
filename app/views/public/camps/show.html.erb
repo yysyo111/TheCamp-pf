@@ -64,7 +64,6 @@
   </div>
   <div class="tab_content" id="design_content">
     <div class="tab_content_description">
-      <!--コメント表示-->
       <div class="container">
         <div class="row row-cols-1 row-cols-md-3 g-4">
           <% @camp_comments.each do |camp_comment| %>
@@ -103,10 +102,10 @@
           <% end %>
         </div>
       </div>
+      <!--コメント表示-->
       <div class="container d-flex justify-content-center">
         <%= link_to "口コミ投稿", new_camp_camp_comment_path(@camp, @camp_comment), class: "btn btn-info" %>
       </div>
-      <!--コメント表示-->
       <div class="container">
         <div class="row">
           <div class="col-12 d-flex justify-content-center my-2">

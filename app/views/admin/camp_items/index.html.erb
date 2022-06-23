@@ -48,8 +48,8 @@
             <!--プロフィール-->
             投稿者：
             <%= link_to admin_customer_path(camp_item.customer.id ) do %>
-              <%= camp_item.customer.last_name %><%= camp_item.customer.first_name %><br>
-            <% end %><!--プロフィール画像と名前-->
+              <%= camp_item.customer.last_name %><%= camp_item.customer.first_name %><br> <!--プロフィール画像と名前-->
+            <% end %>
             いいね数：<%= camp_item.camp_item_favorites.count %><br>
             コメント件数：<%= camp_item.camp_item_comments.count %><br>
             投稿日：<%= camp_item.created_at.strftime('%Y/%m/%d') %>

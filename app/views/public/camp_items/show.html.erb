@@ -36,7 +36,7 @@
       <%= link_to "削除", camp_item_path(@camp_item.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-info" %>
       <%= link_to "編集", edit_camp_item_path(@camp_item.id), class: "btn btn-info" %>
     <% end %>
-    <!--formは固定(部分テンプレートは用意しない)-->
+    <!--コメントのformは固定(部分テンプレートは用意しない)-->
     <div id="comments_form">
       <%= form_with model: [@camp_item, @camp_item_comment], local: false do |f| %>
         <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>

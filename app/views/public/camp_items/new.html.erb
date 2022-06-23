@@ -40,18 +40,18 @@
   </div>
 </div>
 
- <script>
-  //初回読み込み、リロード、ページ切り替えで動く。20行目 ページ切り替え時（初回ページも対象）//ページ切り替え後にさせたい処理を中に書く　手法でjQueryが動く．
-  // $(document).on('turbolinks:load', function() {　ここの記述は、javascript側で書く
-    // $('#star').empty();　//これがないとブラウザバックで星が増え続ける不具合が発生します。ページを表示する度に星5つを読み込むことになる
-    $('#star').raty({
-      size: 36,
-      starOff:  '<%= asset_path('star-off.png') %>',
-      starOn : '<%= asset_path('star-on.png') %>',
-      starHalf: '<%= asset_path('star-half.png') %>',
-      //half: false, 今回は５段階評価で星️半分評価は入力できないように設定
-      scoreName: 'camp_item[rate]', //これがcamp_commentモデルのrateカラムへ値を保存という意味
-      half: true
-    });
-  // });
-  </script>
+<script>
+//初回読み込み、リロード、ページ切り替えで動く。20行目 ページ切り替え時（初回ページも対象）//ページ切り替え後にさせたい処理を中に書く　手法でjQueryが動く．
+// $(document).on('turbolinks:load', function() {　ここの記述は、javascript側で書く
+  // $('#star').empty();　//これがないとブラウザバックで星が増え続ける不具合が発生します。ページを表示する度に星5つを読み込むことになる
+  $('#star').raty({
+    size: 36,
+    starOff:  '<%= asset_path('star-off.png') %>',
+    starOn : '<%= asset_path('star-on.png') %>',
+    starHalf: '<%= asset_path('star-half.png') %>',
+    //half: false, 今回は５段階評価で星️半分評価は入力できないように設定
+    scoreName: 'camp_item[rate]', //これがcamp_commentモデルのrateカラムへ値を保存という意味
+    half: true
+  });
+// });
+</script>
