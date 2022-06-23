@@ -1,7 +1,6 @@
 <div class="container">
   <h5 class="text-center my-3">キャンプアイテム一覧</h5>
   <div class="row">
-    <div class="col-9"></div>
     <div class="col-2 my-3">
     <!--タグ検索窓-->
       <%= form_tag camp_items_path, method: :get, class: 'boards__searchForm' do %>
@@ -15,8 +14,8 @@
     </div>
     <!--タグ検索窓-->
     <!--アイコン（新規投稿）-->
-    <div class="col-1 icon ml-auto">
-    <%= link_to new_camp_item_path, style: "font-size:40px;" do %>
+    <div class="col-2 icon ml-auto">
+    <%= link_to new_camp_item_path, style: "font-size:35px;" do %>
       <i class="fas fa-campground" style="color: green;"></i>
     <% end %>
     </div>
@@ -79,6 +78,3 @@
     </div>
   </div>
 </div>
-
-
-
