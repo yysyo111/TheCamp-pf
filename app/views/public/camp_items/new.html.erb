@@ -1,14 +1,5 @@
 <div class="container d-flex justify-content-center my-3">
-  <% if @camp_item.errors.any? %>
-  <div id="error_explanation">
-    <h3><%= pluralize(@camp_item.errors.count, "") %> 件のエラーが出ました</h3>
-    <ul>
-      <% @camp_item.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-    </ul>
-  </div>
-  <% end %>
+  <%= render "layouts/errors", obj: @camp_item %>
 </div>
 <h5 class="text-center my-3">キャンプアイテム投稿フォーム</h5>
 <div class="container d-flex justify-content-center">

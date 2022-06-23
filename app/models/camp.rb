@@ -13,6 +13,7 @@ class Camp < ApplicationRecord
     camp_favorites.exists?(customer_id: customer.id)
   end
 
+  # モデルに対するGeocoding
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
 
