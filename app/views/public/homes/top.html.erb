@@ -6,7 +6,9 @@
       <div class="col mb-2">
         <div class="card h-100">
           <div id="camp-img">
-            <%= image_tag camp.get_camp_image(500, 500), class: "camp-index-img p-2" %>
+            <%= link_to camp_path(camp.id) do %>
+              <%= image_tag camp.get_camp_image(500, 500), class: "camp-index-img p-2" %>
+            <% end %>
           </div>
           <div class="card-body">
             <div id="camp_<%= camp.id %>">
