@@ -34,11 +34,11 @@ footer{
 }
 
 .size{
-  color: #00AA00; /*緑色にする*/
+  color: #638C0B; /*緑色にする*/
 }
 
 .navbar {
-  background-color: #00AA00;
+  background-color: #638C0B;
 }
 
 #camp-img{
@@ -88,24 +88,24 @@ footer{
   margin: 1em 0;
   color:#fff;
   border-radius: 10px;
-  background: #00AA00;
+  background: #638C0B;
   // box-shadow: 5px 5px ;
 }
 
 .btn:hover{
   background-color: #fff;
-  border-color: #00AA00;
-  color: #00AA00;
+  border-color: #638C0B;
+  color: #638C0B;
 }
 
 .pagination>li>a {
   border: none;     /*枠線をなくす*/
-  color: #696969;   /*文字の色を変える*/
+  color: #638C0B;   /*文字の色を変える*/
 }
 
 /* 表示しているページ番号のデザイン */
 .pagination>.active>a {
-  background: #93c9ff;     /*背景の色を変える*/
+  background-color: #638C0B; /*背景の色を変える*/
   border-radius: 15px;     /*角を丸くする*/
 }
 
@@ -153,7 +153,7 @@ header {
 .tab_item {
   width: calc(100%/3);
   height: 50px;
-  border-bottom: 3px solid #5ab4bd;
+  border-bottom: 3px solid #638C0B;
   background-color: #d9d9d9;
   line-height: 50px;
   font-size: 16px;
@@ -192,7 +192,7 @@ input[name="tab_item"] {
 
 /*選択されているタブのスタイルを変える*/
 .tabs input:checked + .tab_item {
-  background-color: #5ab4bd;
+  background-color: #638C0B;
   color: #fff;
 }
 

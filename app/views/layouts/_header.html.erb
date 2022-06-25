@@ -1,13 +1,13 @@
 <nav class="navbar navbar-expand-lg navbar-light">
   <div class="container">
     <% if customer_signed_in? %>
-      <a class="navbar-brand text-light", href="/camps">The camp</a>
+      <a class="navbar-brand", href="/camps">The camp</a>
     <% elsif admin_signed_in? %>
-      <a class="navbar-brand text-light", href="/admin/camps">The camp</a>
+      <a class="navbar-brand", href="/admin/camps">The camp</a>
     <% else %>
-      <a class="navbar-brand text-light", href="/">The camp</a>
+      <a class="navbar-brand", href="/">The camp</a>
     <% end %>
-    <div class="px-5 text-light ">
+    <div class="px-5 ">
       <% if customer_signed_in? %>
         ようこそ、<%= current_customer.last_name + current_customer.first_name %>さん！
       <% end %>
@@ -19,42 +19,42 @@
       <ul class="navbar-nav mr-auto ">
         <% if customer_signed_in? %>
           <li class="nav-item">
-            <%= link_to "キャンプアイテム一覧", camp_items_path, class: "nav-link text-light" %>
+            <%= link_to "キャンプアイテム一覧", camp_items_path, class: "nav-link" %>
           </li>
           <li class="nav-item">
-            <%= link_to "キャンプ場一覧", camps_path, class: "nav-link text-light" %>
+            <%= link_to "キャンプ場一覧", camps_path, class: "nav-link" %>
           </li>
           <li class="nav-item">
-            <%= link_to "会員一覧", customers_path, class: "nav-link text-light" %>
+            <%= link_to "会員一覧", customers_path, class: "nav-link" %>
           </li>
           <li class="nav-item">
-            <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "nav-link text-light" %>
+            <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "nav-link" %>
           </li>
         <% elsif admin_signed_in? %>
           <li class="nav-item">
-            <%= link_to "キャンプ場一覧", admin_camps_path, class: "nav-link text-light" %>
+            <%= link_to "キャンプ場一覧", admin_camps_path, class: "nav-link" %>
           </li>
           <li class="nav-item">
-            <%= link_to "会員一覧", admin_customers_path, class: "nav-link text-light" %>
+            <%= link_to "会員一覧", admin_customers_path, class: "nav-link" %>
           </li>
           <li class="nav-item">
-            <%= link_to "キャンプアイテム一覧", admin_camp_items_path, class: "nav-link text-light" %>
+            <%= link_to "キャンプアイテム一覧", admin_camp_items_path, class: "nav-link" %>
           </li>
           <li class="nav-item">
-            <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "nav-link text-light" %>
+            <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "nav-link" %>
           </li>
         <% else %>
           <li class="nav-item">
-            <%= link_to "トップ", root_path, class: "nav-link text-light" %>
+            <%= link_to "トップ", root_path, class: "nav-link" %>
           </li>
           <li class="nav-item">
-            <%= link_to "新規登録", new_customer_registration_path, class: "nav-link text-light" %>
+            <%= link_to "新規登録", new_customer_registration_path, class: "nav-link" %>
           </li>
           <li class="nav-item">
-            <%= link_to "ログイン", new_customer_session_path, class: "nav-link text-light" %>
+            <%= link_to "ログイン", new_customer_session_path, class: "nav-link" %>
           </li>
           <li class="nav-item">
-          <%= link_to 'ゲストログイン(企業様用)', customers_guest_sign_in_path, class: "nav-link text-light", method: :post %>
+          <%= link_to 'ゲストログイン(企業様用)', customers_guest_sign_in_path, class: "nav-link", method: :post %>
           </li>
         <% end %>
       </ul>
