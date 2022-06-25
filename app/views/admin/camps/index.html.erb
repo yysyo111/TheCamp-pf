@@ -3,7 +3,7 @@
   <h5 class="text-center my-3">管理者キャンプ場一覧</h5>
     <div class="col-2 my-3">
       <%= form_tag(admin_camps_path, method: "get", class: 'boards__searchForm') do %>
-        <%= select_tag :area, options_for_select(Camp.areas_i18n.invert, selected: @value), { prompt: 'エリアから選ぶ', onchange: 'submit(this.form);' } %>
+        <%= select_tag :area, options_for_select(Camp.areas_i18n.invert, selected: @value), { prompt: 'エリア', onchange: 'submit(this.form);' } %>
       <% end %>
     </div>
   </div>
@@ -19,7 +19,7 @@
   </div>
   <div class="row row-cols-1 row-cols-md-3 g-4">
     <% @camps.each do |camp| %>
-      <div class="col">
+      <div class="col mb-2">
         <div class="card h-100">
           <div id="camp-img">
             <%= link_to admin_camp_path(camp.id) do %>

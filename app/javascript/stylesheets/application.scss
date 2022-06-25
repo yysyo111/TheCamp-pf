@@ -238,6 +238,7 @@ input[name="tab_item"] {
 //   width: 300px;
 // }
 
+
 @media screen and (max-width: 768px) {
  .tabs {
   width: 100%;
@@ -250,7 +251,14 @@ input[name="tab_item"] {
  main {
   height: 100%;
  }
+
+ #area {
+  width: 100%;
 }
+
+}
+
+
 
 @media screen and (max-width: 425px){
 .tabs {
@@ -263,5 +271,9 @@ input[name="tab_item"] {
 
  main {
   height: 100%;
+ }
+
+ #area {
+  width: 100%;
  }
 }

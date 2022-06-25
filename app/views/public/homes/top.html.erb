@@ -3,7 +3,7 @@
   <h6 class="text-center">ログイン後にキャンプ場の詳細を確認できます。</h6>
   <div class="row row-cols-1 row-cols-md-3 g-4">
     <% @camps.each do |camp| %>
-      <div class="col">
+      <div class="col mb-2">
         <div class="card h-100">
           <div id="camp-img">
             <%= image_tag camp.get_camp_image(500, 500), class: "camp-index-img p-2" %>

@@ -52,7 +52,7 @@ class Admin::CampsController < ApplicationController
   def destroy
     @camp = Camp.find(params[:id])
     @camp.destroy
-    redirect_to admin_camps_path(@camp), notice: "キャンプ場の削除に成功しました"
+    redirect_to admin_camps_path, notice: "キャンプ場の削除に成功しました"
   end
 
   private
