@@ -88,7 +88,14 @@ footer{
   margin: 1em 0;
   color:#fff;
   border-radius: 10px;
-  box-shadow: 5px 5px ;
+  background: #00AA00;
+  // box-shadow: 5px 5px ;
+}
+
+.btn:hover{
+  background-color: #fff;
+  border-color: #00AA00;
+  color: #00AA00;
 }
 
 .pagination>li>a {
@@ -218,6 +225,16 @@ input[name="tab_item"] {
 
 .link {
   color: #4d4d4d;
+}
+
+#customer-img {
+  height: 100px;
+  width: 100px;
+}
+
+.customer-index-img {
+  height: 100%;
+  width: 100%;
 }
 
 @media screen and (max-width: 1024px) {

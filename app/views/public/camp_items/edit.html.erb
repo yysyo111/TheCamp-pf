@@ -12,11 +12,11 @@
           <%= f.text_field :name %>
         <h6>感想</h6>
           <%= f.text_area :impression %><br>
-        <%= f.submit "更新", class: "btn btn-info mb-3" %>
+        <%= f.submit "更新", class: "btn mb-3" %>
       <% end %>
     </div>
     <div class="col-12 ">
-      <%= link_to "戻る", camp_item_path(@camp_item.id), class: "btn btn-info" %>
+      <%= link_to "戻る", camp_item_path(@camp_item.id), class: "btn" %>
     </div>
   </div>
 </div>

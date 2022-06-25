@@ -26,8 +26,8 @@
         <% end %>
       </div>
       <!--タグ表示ここまで-->
-    <%= link_to "削除", admin_camp_item_path(@camp_item.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-info" %>
-    <%= link_to "戻る", admin_camp_items_path, class: "btn btn-info" %>
+    <%= link_to "削除", admin_camp_item_path(@camp_item.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn" %>
+    <%= link_to "戻る", admin_camp_items_path, class: "btn" %>
     </div>
     <!--コメント機能非同期通信-->
     <div class="col-md-6">

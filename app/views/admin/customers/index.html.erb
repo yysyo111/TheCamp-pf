@@ -2,7 +2,7 @@
   <h5 class="text-center my-3">管理者側会員一覧</h5>
   <div class="row">
     <div class="table-responsive">
-      <table class="table">
+      <table class="table-striped table">
         <thead>
           <tr>
             <th>会員</th>
@@ -15,8 +15,8 @@
         <tbody>
           <% @customers.each do |customer| %>
           <tr>
-            <td>
-              <%= image_tag customer.get_profile_image(70,70) %><br>
+            <td id="customer-img">
+              <%= image_tag customer.get_profile_image(70,70), class: "customer-index-img p-2"  %><br>
               <%= customer.last_name %><%= customer.first_name %>
             </td>
             <td><%= customer.id %></td>
@@ -28,7 +28,7 @@
               　退会済み
             　<% end %>
             </td>
-            <td><%= link_to "詳細", admin_customer_path(customer.id), class: "btn btn-info my-3" %></td>
+            <td><%= link_to "詳細", admin_customer_path(customer.id), class: "btn my-3" %></td>
           </tr>
           <% end %>
         </tbody>

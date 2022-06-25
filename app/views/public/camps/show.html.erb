@@ -45,7 +45,7 @@
       </div>
       <% end %>
       <!--星の平均-->
-      <%= link_to "戻る", camps_path, class: "btn btn-info" %>
+      <%= link_to "戻る", camps_path, class: "btn" %>
     </div>
   </div>
     </div>
@@ -94,7 +94,7 @@
                   コメント内容：<%= simple_format(camp_comment.comment) %><br>
                   投稿日：<%= camp_comment.created_at.strftime('%Y/%m/%d') %><br>
                   <% if camp_comment.customer == current_customer %>
-                    <%= link_to "コメント削除", camp_camp_comment_path(camp_comment.camp, camp_comment), method: :delete, class: "btn btn-info" %><br>
+                    <%= link_to "コメント削除", camp_camp_comment_path(camp_comment.camp, camp_comment), method: :delete, class: "btn" %><br>
                   <% end %>
                 </div>
               </div>
@@ -104,7 +104,7 @@
       </div>
       <!--コメント表示-->
       <div class="container d-flex justify-content-center">
-        <%= link_to "口コミ投稿", new_camp_camp_comment_path(@camp, @camp_comment), class: "btn btn-info" %>
+        <%= link_to "口コミ投稿", new_camp_camp_comment_path(@camp, @camp_comment), class: "btn" %>
       </div>
       <div class="container">
         <div class="row">

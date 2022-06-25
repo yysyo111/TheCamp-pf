@@ -19,7 +19,7 @@
           <td class="col-2 align-middle"><%= customer.last_name %><%= customer.first_name %></td>
           <% if customer.email != "guest@example.com" %>
             <% if current_customer.id == customer.id %>
-              <td><%= link_to "詳細", customer_path(customer.id), class: "btn btn-info my-3" %></td>
+              <td><%= link_to "詳細", customer_path(customer.id), class: "btn my-3" %></td>
             <% end %>
           <% end %>
           <td class="col-8"></td>
