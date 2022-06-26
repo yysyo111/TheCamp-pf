@@ -251,6 +251,17 @@ input[name="tab_item"] {
   width: 100%;
 }
 
+ul {
+  list-style: none;
+}
+
+#error_explanation {
+  color: #FF0000;
+  padding: 10px;
+  border: thick double red;
+  margin-bottom: 10px;
+}
+
 @media screen and (max-width: 1024px) {
  .tabs {
   width: 100%;

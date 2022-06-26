@@ -284,6 +284,8 @@ ja: # 日本語の設定を行う
 
 
   activerecord:
+    models:
+      customer: 会員
     attributes:
       customer:
         first_name: 名
