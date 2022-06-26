@@ -6,7 +6,7 @@
       <h5 class="card-title">プロフィール</h5>
       <p class="card-text">会員ID：<%= @customer.id %></p>
       <p class="card-text">氏名：<%= @customer.last_name %><%= @customer.first_name %></p>
-      <p class="card-text">自己紹介:<%= @customer.introduction %></p>
+      <p class="card-text">自己紹介:<%= simple_format(@customer.introduction) %></p>
       <p class="card-text">メールアドレス：<%= @customer.email %></p>
       <p class="card-text">
         会員ステータス：

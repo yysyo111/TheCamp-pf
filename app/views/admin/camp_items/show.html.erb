@@ -12,7 +12,7 @@
         <!--ここまで星表示の記述-->
       </div>
       <div>投稿者:<%= @camp_item.customer.last_name %><%= @camp_item.customer.first_name %></div>
-      <div>感想:<%= @camp_item.impression %></div>
+      <div>感想:<%= simple_format(@camp_item.impression) %></div>
       <div>いいね数:<%= @camp_item.camp_item_favorites.count %></div>
       <!--コメント機能非同期通信-->
       <div id="comments_number">

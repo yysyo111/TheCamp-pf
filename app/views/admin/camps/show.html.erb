@@ -91,7 +91,7 @@
                   </script>
                   コメント者：<%= camp_comment.customer.last_name %><%= camp_comment.customer.first_name %><br>
                   タイトル：<%= camp_comment.title %><br>
-                  コメント内容：<%= camp_comment.comment %><br>
+                  コメント内容：<%= simple_format(camp_comment.comment) %><br>
                   投稿日：<%= camp_comment.created_at.strftime('%Y/%m/%d') %><br>
                   <%= link_to "口コミ詳細へ", admin_camp_camp_comment_path(camp_comment.id), class: "btn" %>
                 </div>
