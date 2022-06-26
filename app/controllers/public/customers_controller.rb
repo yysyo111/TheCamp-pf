@@ -4,6 +4,7 @@ class Public::CustomersController < ApplicationController
   before_action :ensure_guest_user, only: [:edit, :show]
 
   def index
+    # 退会している人を表示させない
     @customers = Customer.where(is_deleted: false).page(params[:page]).per(5)
   end
 
