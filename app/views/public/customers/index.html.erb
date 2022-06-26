@@ -12,7 +12,6 @@
       </thead>
       <tbody>
         <% @customers.each do |customer| %>
-          <% if customer.is_deleted == false %>
         <tr>
           <td id="customer-index-image"><%= image_tag customer.get_profile_image(500,500), class: "customer-index-image" %></td>
           <!--<td><%#= customer.id %></td>-->
@@ -24,7 +23,6 @@
           <% end %>
           <td></td>
         </tr>
-          <% end %>
         <% end %>
       </tbody>
     </table>

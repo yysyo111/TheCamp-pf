@@ -15,15 +15,18 @@
       <%= render 'layouts/header' %>
     </header>
     <main>
+      <%#= if notice.present? %> <!--フラッシュメッセージが存在するか-->
       <div class="container d-flex justify-content-center">
         <div class="row">
           <div class="col-12">
             <div class="notice-box">
+              <%#= pp notice.present? %>
               <p id="notice"><%= notice %></p>
             </div>
           </div>
         </div>
       </div>
+      <!--% end %>-->
       <%= yield %>
     </main>
     <footer>
@@ -32,8 +35,13 @@
   </body>
 </html>
 
+<!--フラッシュメッセージが存在するか-->
 <script>
   $(function(){
-    setTimeout("$('#notice').fadeOut('slow')", 2000);
+    setTimeout(function(){
+      if ($('#notice').text() != "") {
+        $('#notice').fadeOut('slow');
+      }
+    }, 1000);
   });
 </script>
