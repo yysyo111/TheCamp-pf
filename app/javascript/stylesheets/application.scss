@@ -1,6 +1,10 @@
 @import '~bootstrap/scss/bootstrap';
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
 
+* {
+  font-family: sans-serif;
+}
+
 .index-img {
   height: 100%;
   width: 100%;
@@ -261,6 +265,7 @@ ul {
   border: thick double red;
   margin-bottom: 10px;
 }
+
 
 @media screen and (max-width: 1024px) {
  .tabs {
