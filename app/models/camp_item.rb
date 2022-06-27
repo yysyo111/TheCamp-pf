@@ -9,7 +9,7 @@ class CampItem < ApplicationRecord
 
   # バリデーション
   validates :name, :impression, :rate, presence: true
-  
+
   # いいね機能
   def camp_item_favorited_by?(customer)
     camp_item_favorites.exists?(customer_id: customer.id)
@@ -20,7 +20,7 @@ class CampItem < ApplicationRecord
 
   def get_camp_item_image(width, height)
     unless camp_item_image.attached?
-      file_path = Rails.root.join('app/assets/images/no_image.jpeg')
+      file_path = Rails.root.join('app/assets/images/fire.jpg')
       camp_item_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
     end
     camp_item_image.variant(resize_to_limit: [width, height]).processed
