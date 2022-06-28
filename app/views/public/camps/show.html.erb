@@ -14,21 +14,11 @@
       </div>
     </div>
     <div class="col-md-6">
-      <div>キャンプ場名:<%= @camp.name %></div>
-      <div>電話番号:<%= @camp.phone_number %></div>
-      <div>エリア:<%= @camp.area_i18n %></div>
-      <div>住所:<%= @camp.address %></div>
-      <div>コメント件数：<%= @camp.camp_comments.count %></div>
-      <div id="camp_<%= @camp.id %>">
-        <!--いいね機能非同期通信-->
-        <div class="favorite-btn">
-          <%= render 'public/camp_favorites/favorite-btn', camp: @camp %>
-        </div>
-      </div>
+      <h5><%= @camp.name %></h5>
       <% if @camp.get_camp_review_avg != -1 %>
       <!--星の平均-->
-      <div>
-        口コミ平均<div id="star_rate_<%= @camp_comment.id %>" class="form-group"></div>
+      <div class="mt-1">
+        <div id="star_rate_<%= @camp_comment.id %>" class="form-group"></div>
         <script>
         // ターボリンクはいらない
           // $('#rate_<%#= @camp.get_camp_review_avg %>').empty();
@@ -45,6 +35,16 @@
       </div>
       <% end %>
       <!--星の平均-->
+      <div id="camp_<%= @camp.id %>">
+        <!--いいね機能非同期通信-->
+        <div class="favorite-btn">
+          <%= render 'public/camp_favorites/favorite-btn', camp: @camp %>
+        </div>
+      </div>
+      <div><i class="fas fa-phone" style="color: #638C0B;"></i> <%= @camp.phone_number %></div>
+      <div><i class="fas fa-map" style="color: #638C0B;"></i> <%= @camp.area_i18n %></div>
+      <div><i class="fas fa-map-marker-alt" style="color: #638C0B;"></i> <%= @camp.address %></div>
+      <div>コメント件数：<%= @camp.camp_comments.count %></div>
       <%= link_to "戻る", camps_path, class: "btn" %>
     </div>
   </div>
@@ -89,7 +89,7 @@
                     })
                   // });
                   </script>
-                  コメント者：<%= camp_comment.customer.last_name %><%= camp_comment.customer.first_name %><br>
+                  <i class="fas fa-user" style="color: #638C0B;"></i> <%= camp_comment.customer.last_name %><%= camp_comment.customer.first_name %><br>
                   タイトル：<%= camp_comment.title %><br>
                   コメント内容：<%= simple_format(camp_comment.comment) %><br>
                   投稿日：<%= camp_comment.created_at.strftime('%Y/%m/%d') %><br>

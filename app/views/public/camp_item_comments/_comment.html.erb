@@ -1,6 +1,6 @@
 <% camp_item.camp_item_comments.each do |camp_item_comment| %>
   <%= image_tag camp_item_comment.customer.get_profile_image(100,100) %><br>
-  投稿者：<%= camp_item_comment.customer.last_name %><%= camp_item_comment.customer.first_name %><br>
+  <i class="fas fa-user" style="color: #638C0B;"></i> <%= camp_item_comment.customer.last_name %><%= camp_item_comment.customer.first_name %><br>
   コメント内容：<%= simple_format(camp_item_comment.comment) %><br>
   投稿日：<%= camp_item_comment.created_at.strftime('%Y/%m/%d') %><br>
   <% if camp_item_comment.customer == current_customer %>
