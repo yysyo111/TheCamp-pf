@@ -11,7 +11,7 @@
         <div id="rate_<%= @camp_item.id %>" class="form-group"></div>
         <!--ここまで星表示の記述-->
       </div>
-      <div>投稿者:<%= @camp_item.customer.last_name %><%= @camp_item.customer.first_name %></div>
+      <div><i class="fas fa-user" style="color: #638C0B;"></i> <%= @camp_item.customer.last_name %><%= @camp_item.customer.first_name %></div>
       <div>感想:<%= simple_format(@camp_item.impression) %></div>
       <div>いいね数:<%= @camp_item.camp_item_favorites.count %></div>
       <!--コメント機能非同期通信-->

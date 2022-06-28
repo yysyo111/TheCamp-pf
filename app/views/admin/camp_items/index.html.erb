@@ -46,7 +46,7 @@
             </script>
             <!--レビュー表示-->
             <!--プロフィール-->
-            投稿者：
+            <i class="fas fa-user" style="color: #638C0B;"></i>
             <%= link_to admin_customer_path(camp_item.customer.id ) do %>
               <%= camp_item.customer.last_name %><%= camp_item.customer.first_name %><br> <!--プロフィール画像と名前-->
             <% end %>

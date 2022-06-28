@@ -5,9 +5,9 @@
     <div class="card-body">
       <h5 class="card-title">プロフィール</h5>
       <p class="card-text">会員ID：<%= @customer.id %></p>
-      <p class="card-text">氏名：<%= @customer.last_name %><%= @customer.first_name %></p>
-      <p class="card-text">自己紹介:<%= simple_format(@customer.introduction) %></p>
-      <p class="card-text">メールアドレス：<%= @customer.email %></p>
+      <p class="card-text"><i class="fas fa-user" style="color: #638C0B;"></i> <%= @customer.last_name %><%= @customer.first_name %></p>
+      <p class="card-text"><i class="fas fa-envelope" style="color: #638C0B;"></i> <%= @customer.email %></p>
+      <p class="card-text">自己紹介：<%= simple_format(@customer.introduction) %></p>
       <p class="card-text">
         会員ステータス：
         <% if @customer.is_deleted == false %>

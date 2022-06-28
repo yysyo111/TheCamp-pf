@@ -4,9 +4,9 @@
     <div id="profile-img"><%= image_tag @customer.get_profile_image(1000,1000), class: "show-img p-2" %></div>
     <div class="card-body">
       <h5 class="card-title">プロフィール</h5>
-      <p class="card-text">氏名：<%= @customer.last_name %><%= @customer.first_name %></p>
-      <p class="card-text">自己紹介:<%= @customer.introduction %></p>
-      <p class="card-text">メールアドレス：<%= @customer.email %></p>
+      <p class="card-text"><i class="fas fa-user" style="color: #638C0B;"></i> <%= @customer.last_name %><%= @customer.first_name %></p>
+      <p class="card-text"><i class="fas fa-envelope" style="color: #638C0B;"></i> <%= @customer.email %></p>
+      <p class="card-text">自己紹介：<%= simple_format(@customer.introduction) %></p>
       <% if @customer.email != "guest@example.com" %>
         <%= link_to "プロフィールを編集する", edit_customer_path(@customer.id), class: "btn my-2 d-flex justify-content-center" %>
       <% end %>

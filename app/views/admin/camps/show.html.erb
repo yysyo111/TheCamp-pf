@@ -16,16 +16,10 @@
         <div class="col-md-6">
           <div>管理者ID：<%= @camp.admin_id %></div>
           <div>キャンプ場名:<%= @camp.name %></div>
-          <div>電話番号:<%= @camp.phone_number %></div>
-          <div>エリア:<%= @camp.area_i18n %></div>
-          <div>住所:<%= @camp.address %></div>
-          <div>いいね件数：<%= @camp.camp_favorites.count %></div>
-          <div>コメント件数：<%= @camp.camp_comments.count %></div>
-          <div>投稿日：<%= @camp.created_at.strftime('%Y/%m/%d') %></div>
           <% if @camp.get_camp_review_avg != -1 %>
           <!--星の平均-->
           <div>
-            口コミ平均<div id="star_rate_<%= @camp_comment.id %>" class="form-group"></div>
+            <div id="star_rate_<%= @camp_comment.id %>" class="form-group"></div>
             <script>
             // ターボリンクはいらない
               // $('#rate_<%#= @camp.get_camp_review_avg %>').empty();
@@ -42,6 +36,12 @@
           </div>
           <% end %>
           <!--星の平均-->
+          <div><i class="fas fa-phone" style="color: #638C0B;"></i> <%= @camp.phone_number %></div>
+          <div><i class="fas fa-map" style="color: #638C0B;"></i> <%= @camp.area_i18n %></div>
+          <div><i class="fas fa-map-marker-alt" style="color: #638C0B;"></i> <%= @camp.address %></div>
+          <div>いいね件数：<%= @camp.camp_favorites.count %></div>
+          <div>コメント件数：<%= @camp.camp_comments.count %></div>
+          <div>投稿日：<%= @camp.created_at.strftime('%Y/%m/%d') %></div>
           <%= link_to "戻る", admin_camps_path, class: "btn" %>
           <%= link_to "削除", admin_camp_path(@camp.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn" %>
           <%= link_to "編集", edit_admin_camp_path(@camp.id), class: "btn" %>
@@ -89,7 +89,7 @@
                     })
                   // });
                   </script>
-                  コメント者：<%= camp_comment.customer.last_name %><%= camp_comment.customer.first_name %><br>
+                  <i class="fas fa-user" style="color: #638C0B;"></i> <%= camp_comment.customer.last_name %><%= camp_comment.customer.first_name %><br>
                   タイトル：<%= camp_comment.title %><br>
                   コメント内容：<%= simple_format(camp_comment.comment) %><br>
                   投稿日：<%= camp_comment.created_at.strftime('%Y/%m/%d') %><br>

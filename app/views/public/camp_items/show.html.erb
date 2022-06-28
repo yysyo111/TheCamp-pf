@@ -17,12 +17,12 @@
           <%= render 'public/camp_item_favorites/favorite-btn', camp_item: @camp_item %>
         </div>
       </div>
+      <div><i class="fas fa-user" style="color: #638C0B;"></i> <%= @camp_item.customer.last_name %><%= @camp_item.customer.first_name %></div>
+      <div>感想：<%= simple_format(@camp_item.impression) %></div>
       <!--コメント機能非同期通信-->
       <div id="comments_number">
         <%= render 'public/camp_item_comments/number', camp_item: @camp_item %>
       </div>
-      <div><i class="fas fa-user" style="color: #638C0B;"></i> <%= @camp_item.customer.last_name %><%= @camp_item.customer.first_name %></div>
-      <div>感想:<%= simple_format(@camp_item.impression) %></div>
       <div>投稿日:<%= @camp_item.created_at.strftime('%Y/%m/%d') %></div>
       <!--タグ表示-->
       <div>
