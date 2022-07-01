@@ -1,11 +1,11 @@
 <nav class="navbar navbar-expand-lg navbar-light">
   <div class="container">
     <% if customer_signed_in? %>
-      <a class="navbar-brand", href="/camps">The camp</a>
+      <a class="navbar-brand" style="font-size: 30px;", href="/camps">The camp</a>
     <% elsif admin_signed_in? %>
-      <a class="navbar-brand", href="/admin/camps">The camp</a>
+      <a class="navbar-brand" style="font-size: 30px;", href="/admin/camps">The camp</a>
     <% else %>
-      <a class="navbar-brand", href="/">The camp</a>
+      <a class="navbar-brand" style="font-size: 30px;", href="/">The camp</a>
     <% end %>
     <div class="px-5 ">
       <% if customer_signed_in? %>
@@ -15,46 +15,106 @@
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon "></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
       <ul class="navbar-nav mr-auto">
         <% if customer_signed_in? %>
           <li class="nav-item">
-            <%= link_to "キャンプアイテム一覧", camp_items_path, class: "nav-link" %>
+            <div class="flex-column mx-3 text-center">
+            <%= link_to camp_items_path, class: "nav-link" do %>
+              <i class="fas fa-campground fa-2x"></i>
+              <p class="text-nowrap mb-0">アイテム一覧</p>
+            <% end %>
+            </div>
           </li>
           <li class="nav-item">
-            <%= link_to "キャンプ場一覧", camps_path, class: "nav-link" %>
+            <div class="flex-column mx-3 text-center">
+            <%= link_to camps_path, class: "nav-link" do %>
+              <i class="fas fa-map fa-2x"></i>
+              <p class="text-nowrap mb-0">キャンプ場一覧</p>
+            <% end %>
+            </div>
           </li>
           <li class="nav-item">
-            <%= link_to "会員一覧", customers_path, class: "nav-link" %>
+            <div class="flex-column mx-3 text-center">
+            <%= link_to customers_path, class: "nav-link" do %>
+              <i class="fas fa-user fa-2x"></i>
+              <p class="text-nowrap mb-0">会員一覧</p>
+            <% end %>
+            </div>
           </li>
           <li class="nav-item">
-            <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "nav-link" %>
+            <div class="flex-column mx-3 text-center">
+            <%= link_to destroy_customer_session_path, method: :delete, class: "nav-link" do %>
+              <i class="fas fa-sign-out-alt fa-2x"></i>
+              <p class="text-nowrap mb-0">ログアウト</p>
+            <% end %>
+            </div>
           </li>
         <% elsif admin_signed_in? %>
           <li class="nav-item">
-            <%= link_to "キャンプ場一覧", admin_camps_path, class: "nav-link" %>
+            <div class="flex-column mx-3 text-center">
+            <%= link_to admin_camps_path, class: "nav-link" do %>
+              <i class="fas fa-map fa-2x"></i>
+              <p class="text-nowrap mb-0">キャンプ場一覧</p>
+            <% end %>
+            </div>
           </li>
           <li class="nav-item">
-            <%= link_to "会員一覧", admin_customers_path, class: "nav-link" %>
+            <div class="flex-column mx-3 text-center">
+            <%= link_to admin_customers_path, class: "nav-link" do %>
+              <i class="fas fa-user fa-2x"></i>
+              <p class="text-nowrap mb-0">会員一覧</p>
+            <% end %>
+            </div>
           </li>
           <li class="nav-item">
-            <%= link_to "キャンプアイテム一覧", admin_camp_items_path, class: "nav-link" %>
+            <div class="flex-column mx-3 text-center">
+            <%= link_to admin_camp_items_path, class: "nav-link" do %>
+              <i class="fas fa-campground fa-2x"></i>
+              <p class="text-nowrap mb-0">アイテム一覧</p>
+            <% end %>
+            </div>
           </li>
           <li class="nav-item">
-            <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "nav-link" %>
+            <div class="flex-column mx-3 text-center">
+            <%= link_to destroy_admin_session_path, method: :delete, class: "nav-link" do %>
+              <i class="fas fa-sign-out-alt fa-2x"></i>
+              <p class="text-nowrap mb-0">ログアウト</p>
+            <% end %>
+            </div>
           </li>
         <% else %>
           <li class="nav-item">
-            <%= link_to "トップ", root_path, class: "nav-link" %>
+            <div class="flex-column mx-3 text-center">
+            <%= link_to root_path, class: "nav-link" do %>
+              <i class="fas fa-home fa-2x"></i>
+              <p class="text-nowrap mb-0">トップ</p>
+            <% end %>
+            </div>
           </li>
           <li class="nav-item">
-            <%= link_to "新規登録", new_customer_registration_path, class: "nav-link" %>
+            <div class="flex-column mx-3 text-center">
+            <%= link_to new_customer_registration_path, class: "nav-link" do %>
+              <i class="fas fa-user-plus fa-2x"></i>
+              <p class="text-nowrap mb-0">新規登録</p>
+            <% end %>
+            </div>
           </li>
           <li class="nav-item">
-            <%= link_to "ログイン", new_customer_session_path, class: "nav-link" %>
+            <div class="flex-column mx-3 text-center">
+            <%= link_to new_customer_session_path, class: "nav-link" do %>
+              <i class="fas fa-sign-in-alt fa-2x"></i>
+              <p class="text-nowrap mb-0">ログイン</p>
+            <% end %>
+            </div>
           </li>
           <li class="nav-item">
-          <%= link_to 'ゲストログイン(企業様用)', customers_guest_sign_in_path, class: "nav-link", method: :post %>
+            <div class="flex-column mx-3 text-center">
+            <%= link_to customers_guest_sign_in_path, class: "nav-link", method: :post do %>
+              <i class="fas fa-sign-in-alt fa-2x"></i>
+              <p class="text-nowrap mb-0">ゲストログイン(企業様用)</p>
+            <% end %>
+            </div>
           </li>
         <% end %>
       </ul>
