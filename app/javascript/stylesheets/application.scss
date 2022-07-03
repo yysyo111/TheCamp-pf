@@ -266,6 +266,31 @@ ul {
   margin-bottom: 10px;
 }
 
+// #tag_id {
+//   width: 300px;
+// }
+
+.vision_api {
+  background-color: #638C0B;
+  font-weight: 500;
+  display: inline;
+  padding: .2em .6em .3em;
+  font-size: 75%;
+  font-weight: bold;
+  line-height: 1;
+  color: #fff;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: .25em;
+}
+
+.vision_tag {
+  // padding: 10px;
+  // border: #ddd 2px solid;
+  // border-radius: 5px;
+  margin-top: 5px;
+}
 
 @media screen and (max-width: 1024px) {
  .tabs {
@@ -281,9 +306,6 @@ ul {
  }
 }
 
-// #tag_id {
-//   width: 300px;
-// }
 
 
 @media screen and (max-width: 768px) {
@@ -301,10 +323,8 @@ ul {
 
  #area {
   width: 100%;
+ }
 }
-
-}
-
 
 
 @media screen and (max-width: 425px){
