@@ -302,6 +302,7 @@ ja: # 日本語の設定を行う
         name: アイテム
         impression: 感想
         rate: レビュー
+        camp_item_image: 画像
       camp_comment:
         title: タイトル
         comment: コメント

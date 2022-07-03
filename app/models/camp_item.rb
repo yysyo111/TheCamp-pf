@@ -10,7 +10,9 @@ class CampItem < ApplicationRecord
   has_many :vision_tags, dependent: :destroy
 
   # バリデーション
-  validates :name, :impression, :rate, presence: true
+  validates :name, :impression, :rate, :camp_item_image, presence: true
+
+  # validates :camp_item_image, attached_file_presence: true
 
   # いいね機能
   def camp_item_favorited_by?(customer)
@@ -27,4 +29,6 @@ class CampItem < ApplicationRecord
     end
     camp_item_image.variant(resize_to_limit: [width, height]).processed
   end
+
+
 end
