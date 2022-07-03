@@ -21,7 +21,11 @@ class Public::CampItemsController < ApplicationController
     @camp_item = CampItem.new(camp_item_params)
     @camp_item.customer_id = current_customer.id
     if @camp_item.save
-    redirect_to camp_items_path, notice: "アイテムの投稿に成功しました"
+      vision_tags = Vision.get_image_data(@camp_item.camp_item_image)
+      vision_tags.each do |tag|
+      @camp_item.vision_tags.create(name: tag)
+      end
+      redirect_to camp_items_path, notice: "アイテムの投稿に成功しました"
     else
       render :new
     end

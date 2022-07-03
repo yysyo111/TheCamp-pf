@@ -7,6 +7,8 @@ class CampItem < ApplicationRecord
   has_many :camp_item_tags, dependent: :destroy
   has_many :tags, through: :camp_item_tags
 
+  has_many :vision_tags, dependent: :destroy
+
   # バリデーション
   validates :name, :impression, :rate, presence: true
 

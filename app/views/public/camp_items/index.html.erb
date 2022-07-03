@@ -63,6 +63,14 @@
               <div class="tag-color">＃<%= link_to tag.name, camp_items_path(tag_id: tag.id), class: "link" %></div>
             <% end %>
             <!--ここまでタグ検索-->
+            <!--vision api記述-->
+            <div class="vision_tag">
+              <i class="fas fa-tag" style='color: #638C0B'></i>
+              <% camp_item.vision_tags.each do |tag| %>
+                <span class="vision_api"><%= tag.name %></span>
+              <% end %>
+            </div>
+            <!--vision api記述-->
             </div>
           </div>
         </div>
