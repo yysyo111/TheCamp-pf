@@ -16,9 +16,9 @@
           退会済み
         <% end %>
       </p>
-      <% if @customer.email != "guest@example.com" %>
-        <%= link_to "プロフィールを編集する", edit_admin_customer_path(@customer.id), class: "btn my-2 d-flex justify-content-center" %>
-      <% end %>
+      <%#= if @customer.email != "guest@example.com" %>
+      <%= link_to "プロフィールを編集する", edit_admin_customer_path(@customer.id), class: "btn my-2 d-flex justify-content-center" %>
+      <%#= end %>
       <%= link_to "戻る", admin_customers_path, class: "btn d-flex justify-content-center" %>
     </div>
   </div>
