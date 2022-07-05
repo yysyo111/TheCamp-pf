@@ -17,7 +17,7 @@ class Public::CampsController < ApplicationController
       @camps = Camp.where(id: avg_order_camp_ids).order_as_specified(id: avg_order_camp_ids).page(params[:page]).per(6)
     # 全てのキャンプ場
     else
-      @camps = Camp.all.page(params[:page]).per(6)
+      @camps = Camp.all.page(params[:page]).order(created_at: :desc).per(6)
     end
       @value = params[:area]
   end

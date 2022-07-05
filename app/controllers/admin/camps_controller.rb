@@ -20,7 +20,7 @@ class Admin::CampsController < ApplicationController
       avg_order_camp_ids = avg_camp_comments.sort {|a,b| a[1]<=>b[1]}.to_h.keys
       @camps = Camp.where(id: avg_order_camp_ids).order_as_specified(id: avg_order_camp_ids).page(params[:page]).per(6)
     else
-      @camps = Camp.all.page(params[:page]).per(6)
+      @camps = Camp.all.page(params[:page]).order(created_at: :desc).per(6)
     end
       @value = params[:area]
   end
