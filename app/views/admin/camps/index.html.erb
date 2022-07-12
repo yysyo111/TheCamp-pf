@@ -11,15 +11,16 @@
   </div>
   <div class="row">
      <!--星の順番-->
-    <div class="col-9 my-2">
+    <div class="col-10 my-4">
       <%= link_to '口コミの高い順', admin_camps_path(rate_count: "true"), class: "link" %><!--平均の評価の高い順-->
       |
       <%= link_to '口コミの低い順', admin_camps_path(rate_asc_count: "true"), class: "link" %><!--平均の評価の低い順-->
     </div>
     <!--星の順番-->
     <div class="icon col-2">
-      <%= link_to  new_admin_camp_path(@camp), style: "font-size:40px;" do %>
-        <i class="fas fa-map" style="color: #638C0B;"></i>
+      <%= link_to  new_admin_camp_path(@camp), style: "font-size:50px;" do %>
+        <!--<i class="fas fa-map" style="color: #638C0B;"></i>-->
+        <i class="fas fa-plus-circle" style="color: #638C0B;"></i>
       <% end %>
     </div>
   </div>
