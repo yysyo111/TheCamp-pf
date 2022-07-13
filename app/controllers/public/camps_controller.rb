@@ -25,7 +25,7 @@ class Public::CampsController < ApplicationController
   def show
     @camp = Camp.find(params[:id])
     @camp_comment = CampComment.new
-    @camp_comments = CampComment.where(camp_id: @camp.id).page(params[:page]).per(3)
+    @camp_comments = CampComment.where(camp_id: @camp.id).order(created_at: :desc).page(params[:page]).per(3)
     # @camp_avg = @camp.get_camp_review_avg
   end
 
