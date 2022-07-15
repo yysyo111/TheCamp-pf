@@ -9,7 +9,7 @@
     </div>
     <!--星の順番-->
     <!--キャンプ場のエリア絞り込み表示機能-->
-    <div class="col-3 my-2">
+    <div class="col-2 my-2 cp_ipselect cp_sl04">
       <%= form_tag(camps_path, method: "get", class: 'boards__searchForm') do %>
         <%= select_tag :area, options_for_select(Camp.areas_i18n.invert, selected: @value), { prompt: 'エリア', onchange: 'submit(this.form);' } %>
       <% end %>
