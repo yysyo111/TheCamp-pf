@@ -19,10 +19,23 @@
       </div>
     </div>
   </div>
+  <div>
+    <h4 class="text-center">口コミ人気ランキング<i class="fas fa-crown fa-2x" style="color: #FFD700;"></i></h4>
+  </div>
   <div class="row row-cols-1 row-cols-md-3 g-4">
-    <% @camps.each do |camp| %>
+    <% @camps.each_with_index do |camp, i| %>
       <div class="col mb-2">
         <div class="card h-100">
+          <span class="position-absolute top-0 translate-middle fw-bold fa-stack">
+           <% if i == 0 %>
+              <i class="fas fa-crown fa-3x" style="color: #FFD700;"></i>
+            <% elsif i == 1 %>
+              <i class="fas fa-crown fa-3x" style="color: #B9C3C9;"></i>
+            <% elsif i == 2 %>
+              <i class="fas fa-crown fa-3x" style="color: #C47022;"></i>
+            <% end %>
+            <i class="position-absolute top-0 text-white fa-stack-1x ranking-number"><%= "#{i+1}" %></i>
+            </span>
           <div id="camp-img">
             <%= link_to camp_path(camp.id) do %>
               <%= image_tag camp.get_camp_image(500, 500), class: "camp-index-img p-2" %>
