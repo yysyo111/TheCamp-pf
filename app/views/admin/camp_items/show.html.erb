@@ -1,7 +1,7 @@
 <div class="container">
 <h5 class="text-center my-3">管理者アイテム詳細</h5>
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-4">
       <div id="camp-item-image">
         <%= image_tag @camp_item.get_camp_item_image(200, 200), class: "camp-item-show" %>
       </div>
@@ -14,10 +14,6 @@
       <div><i class="fas fa-user" style="color: #638C0B;"></i> <%= @camp_item.customer.last_name %><%= @camp_item.customer.first_name %></div>
       <div>感想:<%= simple_format(@camp_item.impression) %></div>
       <div>いいね数:<%= @camp_item.camp_item_favorites.count %></div>
-      <!--コメント機能非同期通信-->
-      <div id="comments_number">
-        <%= render 'public/camp_item_comments/number', camp_item: @camp_item %>
-      </div>
       <div>投稿日:<%= @camp_item.created_at.strftime('%Y/%m/%d') %></div>
       <!--タグ表示-->
       <div>
@@ -30,7 +26,11 @@
     <%= link_to "戻る", admin_camp_items_path, class: "btn" %>
     </div>
     <!--コメント機能非同期通信-->
-    <div class="col-md-6">
+    <div class="col-md-8">
+      <!--コメント機能非同期通信-->
+      <div id="comments_number">
+        <%= render 'public/camp_item_comments/number', camp_item: @camp_item %>
+      </div>
       <div id="comments_area">
         <%= render 'public/camp_item_comments/comment', camp_item: @camp_item %>
       </div>
