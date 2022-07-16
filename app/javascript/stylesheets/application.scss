@@ -145,6 +145,9 @@ footer{
   width: 100%;
   padding: 10px;
   border-radius: 5px;
+    // 半角英数折返しの設定
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 #home-top {
