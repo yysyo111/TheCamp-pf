@@ -2,20 +2,20 @@
   <h5 class="text-center my-3">キャンプ場一覧</h5>
   <div class="row">
     <!--星の順番-->
-    <div class="col-10 my-2">
+    <div class="col-9 my-2">
       <%= link_to '口コミの高い順', camps_path(rate_count: "true"), class: "link" %><!--平均の評価の高い順-->
       |
       <%= link_to '口コミの低い順', camps_path(rate_asc_count: "true"), class: "link" %><!--平均の評価の低い順-->
     </div>
-    <!--星の順番-->
     <!--キャンプ場のエリア絞り込み表示機能-->
-    <div class="col-2 my-2 cp_ipselect cp_sl04">
+    <div class="col-3 my-2 cp_ipselect cp_sl04">
       <%= form_tag(camps_path, method: "get", class: 'boards__searchForm') do %>
         <%= select_tag :area, options_for_select(Camp.areas_i18n.invert, selected: @value), { prompt: 'エリア', onchange: 'submit(this.form);' } %>
       <% end %>
     </div>
     <!--ここまで絞り込み表示機能-->
   </div>
+    <!--星の順番-->
   <div class="row row-cols-1 row-cols-md-3 g-4">
     <% @camps.each do |camp| %>
       <div class="col mb-2">

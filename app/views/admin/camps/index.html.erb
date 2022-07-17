@@ -4,14 +4,14 @@
   </div>
   <div class="row">
      <!--星の順番-->
-    <div class="col-9 my-4">
+    <div class="col-8 my-4">
       <%= link_to '口コミの高い順', admin_camps_path(rate_count: "true"), class: "link" %><!--平均の評価の高い順-->
       |
       <%= link_to '口コミの低い順', admin_camps_path(rate_asc_count: "true"), class: "link" %><!--平均の評価の低い順-->
     </div>
     <!--星の順番-->
     <!--キャンプ場のエリア絞り込み表示機能-->
-    <div class="col-2 my-3 cp_ipselect cp_sl04">
+    <div class="col-3 my-3 cp_ipselect cp_sl04">
       <%= form_tag(admin_camps_path, method: "get", class: 'boards__searchForm') do %>
         <%= select_tag :area, options_for_select(Camp.areas_i18n.invert, selected: @value), { prompt: 'エリア', onchange: 'submit(this.form);' } %>
       <% end %>
