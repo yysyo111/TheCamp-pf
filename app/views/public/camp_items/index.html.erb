@@ -1,8 +1,9 @@
 <div class="container">
   <h5 class="text-center my-3">アイテム一覧</h5>
   <div class="row">
-    <div class="col-8"></div>
-    <div class="col-3 my-3 cp_ipselect cp_sl04">
+    <div class="col-lg-8"></div>
+    <div class="col-xs-8"></div>
+    <div class="col-xs-3 my-3 mr-2 cp_ipselect cp_sl04">
     <!--タグ検索窓-->
       <%= form_tag camp_items_path, method: :get, class: 'boards__searchForm' do %>
         <%= select_tag :tag_id, options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]),
@@ -15,7 +16,7 @@
     </div>
     <!--タグ検索窓-->
     <!--アイコン（新規投稿）-->
-    <div class="col-1 icon ">
+    <div class="col-xs-1 icon ">
     <%= link_to new_camp_item_path, style: "font-size:50px;" do %>
       <!--<i class="fas fa-campground" style="color: #638C0B;"></i>-->
       <i class="fas fa-plus-circle" style="color: #638C0B;"></i>
