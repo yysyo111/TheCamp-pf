@@ -30,8 +30,6 @@
 - https://docs.google.com/spreadsheets/d/1m4j77f0T0M6QFqu2kok9lbe8Kiidl9M3Yc5Lairqp1U/edit#gid=844155663
 - ER図
 - https://app.diagrams.net/#G1gkPRwk3iXWFVSSFrmwq1Z2c-hJ1wETU4
-- 実装機能リスト
-- https://docs.google.com/spreadsheets/d/17jjVNdYWQKh7RdRF5VkDGYjtnorELuQVsBwyokOHiok/edit#gid=1091086188
 
 ## 開発環境
 - OS：Linux(CentOS)
