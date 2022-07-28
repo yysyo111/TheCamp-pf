@@ -1,5 +1,6 @@
 class Public::CampCommentsController < ApplicationController
   before_action :authenticate_customer!
+  before_action :ensure_correct_user, only: [:destroy]
 
   def new
     @camp = Camp.find(params[:camp_id])
@@ -24,7 +25,15 @@ class Public::CampCommentsController < ApplicationController
     redirect_to camp_path(params[:camp_id]), notice: "レビューの削除に成功しました"
   end
 
+  private
   def camp_comment_params
     params.require(:camp_comment).permit(:comment, :title, :rate)
+  end
+
+  def ensure_correct_user
+    @camp_comment = CampComment.find(params[:id])
+    unless @camp_comment.customer == current_customer
+      redirect_to camps_path
+    end
   end
 end

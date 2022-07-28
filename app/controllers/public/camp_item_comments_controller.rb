@@ -1,5 +1,6 @@
 class Public::CampItemCommentsController < ApplicationController
   before_action :authenticate_customer!
+  before_action :ensure_correct_user, only: [:destroy]
 
   def new
     # @camp_item = CampItem.find(params[:camp_item_id])
@@ -25,8 +26,16 @@ class Public::CampItemCommentsController < ApplicationController
     # redirect_to request.referer
   end
 
+  private
   def camp_item_comment_params
     params.require(:camp_item_comment).permit(:comment)
+  end
+
+  def ensure_correct_user
+    @camp_item_comment = CampItemComment.find(params[:id])
+    unless @camp_item_comment.customer == current_customer
+      redirect_to camp_items_path
+    end
   end
 
 end
